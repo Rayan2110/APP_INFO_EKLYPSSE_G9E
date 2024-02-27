@@ -25,11 +25,43 @@
              </ul>   
              <a href="#" class="action_btn">Se connecter</a>.
              <div class="plus_bouton"><i class="fa-solid fa-bars"></i></div>
+
+
+             <div class="dropdown_menu">
+                <li><a href="Carte.html">Carte</a></li>
+                <li><a href="Evenement.html">Evenement</a></li>
+                <li><a href="APropos.html">A propos</a></li>
+                <li><a href="FAQ.html">F.A.Q</a></li>
+                <li><a href="Contact.html">Contact</a></li>
+                <li><a href="#" class="action_btn">Se connecter</a>.</li>
+             </div>
             </div>
-        
         </div>
         </header>
-    
+
+        <main>
+            <section id="hero">
+                <h1>Welcome</h1>
+                <p>Neque porro quisquam est qui dolorem ipsum <br /> 
+                    quia dolor sit amet, consectetur, adipisci velit...</p>
+
+            </section>
+        </main>
+
+        <script>
+            const toogleBtn = document.querySelector('.toogle_btn')
+            const toogleBtnIcon = document.querySelector('.toogle_btn i')
+            const dropdown_menu = document.querySelector('.dropdown_menu')
+
+            toogleBtn.onclick = function (){
+                dropdown_menu.classList.toggle('open')
+                const isOpen = dropdown_menu.classList.contains('open')
+
+                toogleBtnIcon.classList = isOpen
+                ? 'fa-solid fa-xmark'
+                : 'fa-solid fa-bars'
+            }
+        </script>
     </body>
     <footer>
 
