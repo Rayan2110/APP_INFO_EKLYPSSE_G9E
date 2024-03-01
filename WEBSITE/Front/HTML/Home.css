@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 /* Réinitialisation des styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
 }
 
 /* Styles généraux */
@@ -34,7 +37,7 @@ a:hover {
 header {
     position: relative;
     padding: 0 2rem;
-    background-color: violet;
+    background-color: rgb(0, 0, 0);
 }
 
 .navbar {
@@ -79,7 +82,81 @@ header {
     transform: scale(0.95);
 }
 
+/* language menu */
 
+.menu-lang {
+    margin-top: 5px;
+    position: relative;
+}
+
+.selected-lang {
+    cursor: pointer;
+    color: #ffff;
+    display: flex;
+    justify-content: space-between;
+    line-height: 2;
+    width: 110px;
+}
+
+.selected-lang:before { 
+    content: '';
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-image: url(https://flagsapi.com/FR/flat/32.png);
+}
+
+.menu-lang ul{
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    border: 1px solid #000000;
+    box-shadow: 0px 1px 10px rgba(207, 206, 206, 0.2);
+    border-radius: 5px;
+    display: none;
+    position: absolute;
+    top: 33px;
+    left: -10px;
+}
+
+.menu-lang ul li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-lang ul li a {
+    display: block;
+    width: 150px;
+    padding: 5px 10px;
+}
+
+.menu-lang ul li a:hover {
+    background-color: #313131;
+    color: #ffff;
+}
+
+.menu-lang ul li a:before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    vertical-align: middle;
+    /*background-image: url(https://flagsapi.com/FR/flat/32.png);*/
+}
+
+.en:before {
+    background-image: url(https://flagsapi.com/GB/flat/32.png);
+}
+
+.sp:before {
+    background-image: url(https://flagsapi.com/ES/flat/32.png);
+}
+
+.menu-lang:hover ul{
+    display: block;
+}
 
 /* Dropdown Menu */
 .dropdown_menu {
