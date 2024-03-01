@@ -17,6 +17,7 @@ body {
     background-position: center;
     background-attachment: scroll; /* Modification de la propriété */
     /* Déplacer cette ligne après les autres propriétés de fond */
+    
 }
 
 li {
