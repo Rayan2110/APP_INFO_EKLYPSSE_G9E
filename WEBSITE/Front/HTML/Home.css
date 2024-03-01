@@ -37,7 +37,7 @@ a:hover {
 header {
     position: relative;
     padding: 0 2rem;
-    background-color: rgb(0, 0, 0);
+    background-color: purple;
 }
 
 .navbar {
@@ -158,6 +158,8 @@ header {
     display: block;
 }
 
+
+
 /* Dropdown Menu */
 .dropdown_menu {
     display: none;
@@ -211,25 +213,25 @@ section#hero {
     margin-bottom: 1rem;
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-    .navbar .links,
-    .navbar .action_btn {
-        display: none;
-    }
+.box-container{
+    display : flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
-    .navbar .toogle_btn {
-        display: block;
-    }
+.box-container .box {
+    height: 20rem;
+    width: 25rem;
+    background: white;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.5) ;
+    margin: 2rem;
+    cursor: pointer;
+}
 
-    .dropdown_menu {
-        display: block;
-    }
 
-    @media (max-width: 576px) { 
-        .dropdown_menu {
-            left: 2rem;
-            width: unset;
-        }
-    }
+
+.box-container .box p{
+    color: black;
 }

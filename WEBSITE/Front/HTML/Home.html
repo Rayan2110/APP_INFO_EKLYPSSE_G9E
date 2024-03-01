@@ -11,6 +11,8 @@
 <body>
 
 <header>
+
+
     <div class="navbar">
         <div class="logo"><a href="#">Eklypsse</a></div>
         <ul class="liens">
@@ -21,21 +23,8 @@
             <li><a href="Contact.html">Contact</a></li>
         </ul>   
         <a href="#" class="action_btn">Se connecter</a>
-        <a href="#" class="action_btn">S'inscrire</a> 
-        <div class="menu-lang">
-            <div class="selected-lang">
-                Français
-            </div>
-            <ul>
-                <li>
-                    <a href="#" class="en">Anglais</a>
-                </li>
-                <li>
-                    <a href="#" class="sp">Espagnol</a>
-                </li>
-            </ul>
-        </div>
-        <div class="plus_bouton"><i class="fa-solid fa-bars"></i></div>
+        <a href="#" class="action_btn">S'inscrire</a>
+        <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
         <div class="dropdown_menu">
             <li><a href="Carte.html">Carte</a></li>
             <li><a href="Evenement.html">Evenement</a></li>
@@ -55,25 +44,35 @@
             quia dolor sit amet, consectetur, adipisci velit...</p>
     </section>
 
-    <section id="content">
-        
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        <p>Ce contenu apparaît en dessous de l'image.</p>
-        
-        
-    </section>
+
+    <div class="box-container">
+
+        <div class="box">
+            <i class="fa-solid fa-music"></i>
+            <h3> Vendredi 14 juillet</h3>
+            <p>Lorem ipsum dolor sit amet </p>
+
+        </div>
+
+        <div class="box">
+            <i class="fa-solid fa-music"></i>
+            <h3> Jeudi 14 juillet</h3>
+            <p>Lorem ipsum dolor sit amet </p>
+        </div>
+
+        <div class="box">
+            <i class="fa-solid fa-music"></i>
+            <h3> Samedi 14 juillet</h3>
+            <p>Lorem ipsum dolor sit amet </p>
+
+        </div>
+
+    </div>
 </main>
 <footer>
     <!-- Contenu du pied de page -->
 </footer>
-
+<!--
 <script>
     const toogleBtn = document.querySelector('.toogle_btn');
     const toogleBtnIcon = document.querySelector('.toogle_btn i');
@@ -88,5 +87,6 @@
         : 'fa-solid fa-bars';
     }
 </script>
+-->
 </body>
 </html>
