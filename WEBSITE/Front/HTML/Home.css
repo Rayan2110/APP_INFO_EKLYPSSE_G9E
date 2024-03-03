@@ -218,6 +218,8 @@ section#hero {
     display : flex;
     justify-content: center;
     flex-wrap: wrap;
+    position: relative;
+    background-color: white;
 }
 
 .box-container .box {
@@ -231,8 +233,43 @@ section#hero {
     cursor: pointer;
 }
 
-
-
 .box-container .box p{
     color: black;
+}
+
+.box-container .box {
+    height: 20rem;
+    width: 25rem;
+    background: white;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.5) ;
+    margin: 2rem;
+    cursor: pointer;
+    background-image: url('https://cdn.pixabay.com/photo/2016/08/25/07/30/orange-1618917_1280.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-container .box b{
+
+    font-weight: bold;
+    font-size : 2.3rem;
+}
+
+.box-container .vertical-text {
+    
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    white-space: nowrap;
+    position: absolute;
+    top: 84%;
+    left: 5px; /* Ajustez cette valeur selon vos besoins */
+    color: orange; /* Couleur du texte */
+    font-weight: bold; /* Gras pour le texte */
+    font-size: 2rem; /* Taille de la police */
 }
