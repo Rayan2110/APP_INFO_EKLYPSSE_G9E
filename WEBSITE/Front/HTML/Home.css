@@ -76,7 +76,9 @@ header {
 
 .navbar .action_btn:hover {
     transform: scale(1.05);
-    color: #ffff; 
+    color: orange; 
+    background-color: #ffff;
+    border: 2px solid orange;
 }
 
 .navbar .action_btn:active {
@@ -212,6 +214,24 @@ section#hero {
 #hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+}
+
+.circle-container{
+    display : flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: azure;
+}
+
+.circle-container .circle {
+    height: 20vh;
+    width: 20vh;
+    background: white;
+    border: 10px solid orange;
+    text-align: center;
+    border-radius: 50%;
+    margin: 10rem;
+    cursor: pointer;
 }
 
 .box-container{
