@@ -38,7 +38,7 @@ a:hover {
 header {
     position: relative;
     padding: 0 2rem;
-    background-color: purple;
+    background-color: black;
 }
 
 .navbar {
@@ -212,8 +212,34 @@ section#hero {
 }
 
 #hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    color: white;
+    transition: transform 0.3s ease;
+    
+}
+
+#hero p {
+    color :white;
+    transition: transform 0.3s ease;
+}
+
+#hero h1:hover{
+    color:orange;
+}
+
+#hero p:hover{
+    color : orange;
+}
+/* retarde laffichage du texte de bienvenue*/
+#hero h1, #hero p {
+    opacity: 0; /* Rend initialement le texte invisible */
+    animation: fadeIn 0.5s ease 0.5s forwards; /* Ajoute l'animation fadeIn avec un délai de 1 seconde */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; } /* Début de l'animation avec une opacité de 0 */
+    to { opacity: 1; } /* Fin de l'animation avec une opacité de 1 */
 }
 
 .circle-container{
@@ -238,6 +264,13 @@ section#hero {
     display : flex;
     justify-content: center;
     flex-wrap: wrap;
+    position: relative;
+    background-color: #EDEFF2;
+}
+
+
+.box-container .box p{
+    color: black;
 }
 
 .box-container .box {
@@ -249,10 +282,126 @@ section#hero {
     box-shadow: 0 .3rem .5rem rgba(0,0,0,.5) ;
     margin: 2rem;
     cursor: pointer;
+    background-image: url('https://cdn.pixabay.com/photo/2016/08/25/07/30/orange-1618917_1280.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-container .box b{
+
+    font-weight: bold;
+    font-size : 2.3rem;
+}
+
+.box-container .vertical-text {
+    
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    white-space: nowrap;
+    position: absolute;
+    top: 97%;
+    left: 5px; /* Ajustez cette valeur selon vos besoins */
+    color: orange; /* Couleur du texte */
+    font-weight: bold; /* Gras pour le texte */
+    font-size: 2.8rem; /* Taille de la police */
+}
+
+
+.box:hover {
+    transform: scale(1.1); /* Grossissement de 10% */
+    transition: transform 0.3s ease; /* Ajout d'une transition fluide */
+    color: orange;
+}
+
+.box-container .box a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-decoration: none; /* Supprime le soulignement du lien */
+    color: inherit; /* Hérite de la couleur du texte de la boîte */
+}
+
+.box-container .box:hover p {
+    opacity: 1; /* Rend le texte visible au survol */
+    
 }
 
 
 
-.box-container .box p{
-    color: black;
+/* Partie box information */
+
+.container-information{
+    display : flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    background-color: white;
+    
+}
+
+.container-information .box-info {
+    height: 20rem;
+    width: 25rem;
+    background: white;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.5) ;
+    margin: 3.8rem;
+    cursor: pointer;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-information {
+    
+    display: flex;
+    justify-content: space-around; /* Pour espacer également les boîtes */
+    align-items: center; /* Pour centrer verticalement le contenu */
+}
+
+.container-information .box-info {
+    text-align: center; /* Pour centrer le contenu à l'intérieur de chaque boîte */
+    padding: 1rem;
+
+    
+}
+
+.container-information .box-info h1{
+    color :orange;
+    font-weight: bold;
+    font-size: 2.8em;
+}
+
+.container-information .box-info h2{
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.container-information .box-info p{
+    padding : 1.5rem;
+}
+
+.chiffre{
+    padding : 1.7rem;
+    text-align: center;
+    background-color: white;
+}
+
+.chiffre h1{
+    font-weight: bold;
+    color : orange;
+}
+
+.chiffre:hover + .container-information .box-info {
+    transform: scale(1.05); /* Augmente légèrement la taille des cases */
+    transition: transform 0.3s ease; /* Ajoute une transition fluide */
 }
