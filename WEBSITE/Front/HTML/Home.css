@@ -38,7 +38,7 @@ a:hover {
 header {
     position: relative;
     padding: 0 2rem;
-    background-color: black;
+    background-color: linear-gradient(#ffdad5,#fff7f9);
 }
 
 .navbar {
