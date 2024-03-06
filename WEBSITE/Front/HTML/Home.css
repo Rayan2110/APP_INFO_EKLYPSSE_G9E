@@ -242,24 +242,6 @@ section#hero {
     to { opacity: 1; } /* Fin de l'animation avec une opacité de 1 */
 }
 
-.circle-container{
-    display : flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: azure;
-}
-
-.circle-container .circle {
-    height: 20vh;
-    width: 20vh;
-    background: white;
-    border: 10px solid orange;
-    text-align: center;
-    border-radius: 50%;
-    margin: 10rem;
-    cursor: pointer;
-}
-
 .box-container{
     display : flex;
     justify-content: center;
