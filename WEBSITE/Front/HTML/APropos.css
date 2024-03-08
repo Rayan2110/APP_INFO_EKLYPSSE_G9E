@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+section{
+    padding: 4% 10%;
+}
+.about-us{
+    width: 100%;
+    height: 100vh;
+    background-color: #0c0b0b;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 4rem;
+}
+.main-img img{
+    max-width: 100%;
+    width: 560px;
+    height:auto
+}
+.text{
+    padding: 6% 0;
+}
+.text h4{
+    color: #ce1446;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.text h1{
+    color: #fff;
+    font-size: 36px;
+    text-transform: capitalize;
+    font-weight: 700;
+    line-height: 46px;
+    margin-bottom: 30px;
+}
+hr{
+    width: 30%;
+    border: none;
+    height: 2px;
+    background-color: #ce1446;
+    margin-bottom: 50px;
+}
+.text p{
+    max-width: 600px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 60px;
+}
+.last-text{
+    display: flex;
+}
+.text1{
+    margin-right: 60px;
+}
+.last-text h3{
+    color: #ce1446;
+    font-size: 60px;
+    font-weight: 700;
+}
+.last-text h5{
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+/* Animations */
+@media(max-width:1385px){
+    section{
+        padding: 4% 4%;
+        transition: .3s;
+    }
+    .main-img img{
+        width: 500px;
+        height: auto;
+        transition: .3s;
+    }
+}
+@media(max-width:1240px){
+    .text h1{
+        font-size: 30px;
+        transition: .3s;
+    }
+}
+@media(max-width:1040px){
+    .about-us{
+        grid-template-columns: 1fr;
+        height: 100%;
+    }
+    .main-img img{
+        padding-top: 40px;;
+    }
+}
+.footer {
+    background-color: #F9D8B7;
+    color: #0c0b0b;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer-content p {
+    margin: 0;
+    font-size: 14px;
+}
+
+@media(max-width:768px) {
+    .footer-content {
+        flex-direction: column;
+    }
+}
