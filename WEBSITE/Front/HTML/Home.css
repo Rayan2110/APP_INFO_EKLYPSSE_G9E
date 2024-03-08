@@ -38,7 +38,7 @@ a:hover {
 header {
     position: relative;
     padding: 0 2rem;
-    background-color: black;
+    background-color: linear-gradient(#ffdad5,#fff7f9);
 }
 
 .navbar {
@@ -76,7 +76,9 @@ header {
 
 .navbar .action_btn:hover {
     transform: scale(1.05);
-    color: #ffff; 
+    color: orange; 
+    background-color: #ffff;
+    border: 2px solid orange;
 }
 
 .navbar .action_btn:active {
