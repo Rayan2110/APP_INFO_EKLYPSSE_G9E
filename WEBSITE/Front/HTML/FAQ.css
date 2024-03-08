@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  max-width: 75%;
+  margin: auto;
+  text-align: center; /* Ajout pour centrer le contenu */
+}
+
+.wrapper > h1 {
+  margin: 1.5rem auto; /* Modification pour centrer le titre */
+}
+
+.accordion {
+  background-color: #F9D8B7;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 2rem 2.5rem;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin: 0 auto; /* Ajout pour centrer les questions */
+  max-width: 800px; /* Ajout pour limiter la largeur des questions */
+}
+
+.accordion i {
+  font-size: 1.6rem;
+}
+
+.active,
+.accordion:hover {
+  background-color: #F6BF87;
+}
+
+.pannel {
+  padding: 0 2rem 2.5rem 2rem;
+  background-color: #F9D8B7;
+  overflow: hidden;
+  background-color: #F6BF87;
+  display: none;
+}
+
+.pannel p {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.faq {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 10px auto; /* Ajout pour centrer les questions */
+  max-width: 800px; /* Ajout pour limiter la largeur des questions */
+}
+
+.faq.active {
+  border: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #F6BF87;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.social-icons {
+  display: flex;
+}
+
+.social-icons a {
+  margin-right: 10px;
+}
+
+.footer-text {
+  flex: 1; /* Pour occuper l'espace restant */
+  text-align: center; /* Pour centrer le texte */
+}
+
+.copyright {
+  margin-left: auto; /* Pour déplacer le texte à droite */
+}
