@@ -38,7 +38,7 @@ a:hover {
 header {
     position: relative;
     padding: 0 2rem;
-    background-color: linear-gradient(#ffdad5,#fff7f9);
+    background-color: black;
 }
 
 .navbar {
@@ -49,6 +49,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.navbar .logo {
+    flex-grow: 1;
+    display: block;
 }
 
 .navbar .logo a {
@@ -209,19 +214,22 @@ section#hero {
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #hero h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     color: white;
     transition: transform 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     
 }
 
 #hero p {
     color :white;
     transition: transform 0.3s ease;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #hero h1:hover{
@@ -242,12 +250,108 @@ section#hero {
     to { opacity: 1; } /* Fin de l'animation avec une opacité de 1 */
 }
 
+.box-container-what-we-do {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    background: linear-gradient(#F7A434, #F7A434 50%, #EDEFF2 50%, #EDEFF2 100%);
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+}
+
+.services-section {
+    text-align: center;
+    margin-top: -20px;
+    position: absolute; /* Position absolue pour placer le titre */
+    top: 10%; /* Ajustez la position verticale selon vos besoins */
+    width: 100%; /* Occupe toute la largeur */
+    font-size: 2.4rem;
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+
+.box-container-what-we-do .box-what-we-do {
+    position: relative;
+    width: calc(33.33% - 40px);
+    margin: 20px;
+    background: #fff;
+    padding: 60px 40px; /* Ajoutez du padding en haut et en bas */
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+    height: 300px
+    
+}
+.box-container-what-we-do .box-what-we-do::before
+{
+    content:'';
+    position : absolute;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height: 150%;
+    background : #F7A434;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.5s;
+}
+
+.box-container-what-we-do .box-what-we-do:hover:before
+{
+    transform: scaleY(1);
+    transform-origin: bottom;
+    transition: transform 0.5s;   
+}
+
+.box-container-what-we-do .box-what-we-do h2{
+    position:absolute;
+    left : 40px;
+    top : 60px;
+    font-size:  4em;
+    font-weight: 800;
+    z-index: 1;
+    opacity : 0.1;
+    transition: 0.5s;
+}
+
+.box-container-what-we-do .box-what-we-do:hover h2{
+    opacity : 1;
+    color: #fff;
+    transform:  translateY(-40px);
+}
+
+.box-container-what-we-do .box-what-we-do h3
+{
+    position: relative;
+    font-size: 1.5em;
+    z-index: 2 ;
+    transition: 0.5s;
+    margin-top: 20px; 
+}
+
+.box-container-what-we-do .box-what-we-do p {
+    position: relative;
+    z-index: 2;
+    color : #555;
+    transition: 0.5s;
+    margin-top: 20px; 
+
+}
+
+.box-container-what-we-do .box-what-we-do:hover h3,
+.box-container-what-we-do .box-what-we-do:hover p{
+    color: #fff;
+}
+
 .box-container{
     display : flex;
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
     background-color: #EDEFF2;
+    
 }
 
 
