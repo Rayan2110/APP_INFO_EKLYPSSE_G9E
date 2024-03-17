@@ -101,3 +101,17 @@ function setupCarousel(carouselId) {
 setupCarousel("carousel1");
 setupCarousel("carousel2");
 setupCarousel("carousel3");
+
+
+/* search bar */
+
+const searchBar = document.querySelector('.search-bar');
+const searchInput = searchBar.querySelector('input');
+
+searchInput.addEventListener('focus', () => {
+  searchBar.classList.add('open');
+});
+
+searchInput.addEventListener('blur', () => {
+  searchBar.classList.remove('open');
+});
