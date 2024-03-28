@@ -10,46 +10,40 @@
     </head>
     <body>
 
-    <header>
+        <header>
 
 
-        <div class="navbar">
-            <div class="logo"><a href="Home.html">Eklypsse</a></div>
-            <ul class="liens">
-                
-                <li><a href="Evenement.html">Evenement</a></li>
-                <li><a href="APropos.html">A propos</a></li>
-                <li><a href="FAQ.html">F.A.Q</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-            </ul>   
-            <a href="SeConnecter.html" class="action_btn">Se connecter</a>
-            <a href="SInscrire.html" class="action_btn">S'inscrire</a>
-            <div class="menu-lang">
-                <div class="selected-lang">
-                    Français
-                </div>
-                <ul>
-                    <li>
-                        <a href="#" class="en">Anglais</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sp">Espagnol</a>
-                    </li>
+            <div class="navbar">
+                <div class="logo"><a href="Home.html">Eklypsse</a></div>
+                <ul class="liens">
+                    
+                    <li><a href="Evenement.html">Evenement</a></li>
+                    <li><a href="APropos.html">A propos</a></li>
+                    <li><a href="FAQ.html">F.A.Q</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
                 </ul>
+    
+                <div class="action-btn-container">
+                <div class="menu-lang">
+                    <div class="selected-lang">
+                        Français
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="#" class="en">Anglais</a>
+                        </li>
+                        <li>
+                            <a href="#" class="sp">Espagnol</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="SeConnecter.html" class="action_btn">Se connecter</a>
             </div>
+                
+    
+                
+        </header>
 
-            <div class="toggle_btn"><i class="fa-solid fa-bars"></i></div>
-            <div class="dropdown_menu">
-              
-                <li><a href="Evenement.html">Evenement</a></li>
-                <li><a href="APropos.html">A propos</a></li>
-                <li><a href="FAQ.html">F.A.Q</a></li>
-                <li><a href="Contact.html">Contact</a></li>
-                <li><a href="SeConnecter.html" class="action_btn">Se connecter</a></li>
-                <li><a href="SInscrire.html" class="action_btn">S'inscrire</a></li>
-            </div>
-        </div>
-    </header>
 
     <main>
 
@@ -143,21 +137,6 @@
     <footer>
         <!-- Contenu du pied de page -->
     </footer>
-    <!--
-    <script>
-        const toogleBtn = document.querySelector('.toogle_btn');
-        const toogleBtnIcon = document.querySelector('.toogle_btn i');
-        const dropdown_menu = document.querySelector('.dropdown_menu');
-
-        toogleBtn.onclick = function (){
-            dropdown_menu.classList.toggle('open');
-            const isOpen = dropdown_menu.classList.contains('open');
-
-            toogleBtnIcon.classList = isOpen
-            ? 'fa-solid fa-xmark'
-            : 'fa-solid fa-bars';
-        }
-    </script>
-    -->
+    
     </body>
     </html>
