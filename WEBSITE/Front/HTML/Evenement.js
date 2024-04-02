@@ -1,31 +1,70 @@
 /* image slider */
 
-var slideIndex = 1;
-showSlides(slideIndex);
+// var slideIndex = 1;
+// showSlides(slideIndex, id);
 
-function plusSlide(n){
-    showSlides(slideIndex += n);
+// function plusSlide(n){
+//     showSlides(slideIndex += n);
+// }
+
+// function currentSlide(n) {
+//     showSlides(slideIndex = n);
+// }
+
+// // .getElementById("")
+// function showSlides(n, id) {
+//     var i;
+//     var slides = document.getElementsByClassName("custom-slider").getElementById(id);
+//     var dots = document.getElementsByClassName("dot").getElementById(id);
+//     if (n > slides.length) {slideIndex = 1}
+//     if (n < 1) {slideIndex = slides.length}
+//     for (i = 0; i < slides.length; i++) {
+//         slides[i].style.display = "none";
+//     }
+//     for (i = 0; i < dots.length; i++) {
+//         dots[i].className = dots[i].className.replace(" active", "");
+//     }
+//     slides[slideIndex-1].style.display = "block";
+//     dots[slideIndex-1].className += " active";
+// }
+
+
+var slideIndex = {};
+slideIndex['slider1'] = 1;
+slideIndex['slider2'] = 1;
+
+showSlides(slideIndex['slider1'], 'slider1');
+showSlides(slideIndex['slider2'], 'slider2');
+
+function plusSlide(n, id) {
+    showSlides(slideIndex[id] += n, id);
 }
 
-function currentSlide(n) {
-    showSlides(slideIndex = n);
+function currentSlide(n, id) {
+    showSlides(slideIndex[id] = n, id);
 }
 
-function showSlides(n) {
+function showSlides(n, id) {
     var i;
-    var slides = document.getElementsByClassName("custom-slider");
-    var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}
-    if (n < 1) {slideIndex = slides.length}
+
+    var slides = document.querySelectorAll('#' + id + ' .custom-slider');
+    var dots = document.querySelectorAll('#' + id + ' .dot');
+    if (slides.length === 0 || dots.length === 0) {
+        console.error("Slider or dots not found for ID:", id);
+        return;
+    }
+    if (n > slides.length) { slideIndex[id] = 1; }
+    if (n < 1) { slideIndex[id] = slides.length; }
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
     for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+        dots[i].classList.remove("active");
     }
-    slides[slideIndex-1].style.display = "block";
-    dots[slideIndex-1].className += " active";
+    slides[slideIndex[id] - 1].style.display = "block";
+    dots[slideIndex[id] - 1].classList.add("active");
 }
+
 
 
 /* caroussel */
@@ -102,6 +141,42 @@ setupCarousel("carousel1");
 setupCarousel("carousel2");
 setupCarousel("carousel3");
 
+/* affichage/cachage des détails des festivals */
+
+$(document).ready(function() {
+    $(".card").click(function() {
+        var targetId = $(this).data("target");
+        var detail = $("#" + targetId);
+        
+        // Si le détail est déjà ouvert, le fermer
+        if (detail.is(":visible")) {
+            detail.hide();
+        } else {
+            // Cacher tous les détails, puis afficher celui correspondant à la carte cliquée
+            $(".détails").hide();
+            detail.css("display", "flex"); // Modifier display en flex
+        }
+    });
+});
+
+
+/* rotation du chevron */
+
+// Sélectionne tous les éléments avec la classe "card"
+var cards = document.getElementsByClassName("card");
+
+// Parcourt tous les éléments avec la classe "card" et ajoute un gestionnaire d'événements à chacun
+for (var i = 0; i < cards.length; i++) {
+    cards[i].addEventListener("click", function() {
+        // Lorsque l'élément est cliqué, recherchez l'élément ".fa-chevron-down" à l'intérieur de cet élément et basculez la classe "active"
+        var chevron = this.querySelector('.fa-chevron-down');
+        if (chevron) {
+            chevron.classList.toggle("active");
+        }
+    });
+}
+
+
 
 /* search bar */
 
@@ -115,3 +190,6 @@ searchInput.addEventListener('focus', () => {
 searchInput.addEventListener('blur', () => {
   searchBar.classList.remove('open');
 });
+
+
+
