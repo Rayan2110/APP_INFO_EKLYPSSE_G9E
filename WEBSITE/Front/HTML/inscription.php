@@ -20,8 +20,9 @@ if(isset($_POST['envoi'])){
         if(password_verify($mdp, $userInfo['mdp'])){
             $_SESSION['pseudo'] = $pseudo;
             $_SESSION['id'] = $userInfo['id'];
+            $_SESSION['id'] = $recupUser->fetch()['id'];
 
-            echo $_SESSION['id'];
+            echo "Vous êtes connecté en tant que " . $_SESSION['pseudo'];
         } else {
             echo "Mot de passe incorrect";
         }
