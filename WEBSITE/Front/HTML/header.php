@@ -13,10 +13,10 @@
 
 <header>
     <div class="navbar">
-        <div class="logo"><a href="Home.html">Eklypsse</a></div>
+        <div class="logo"><a href="Home.php">Eklypsse</a></div>
         <ul class="liens">
-            <li><a href="Evenement.html">Evenement</a></li>
-            <li><a href="APropos.html">A propos</a></li>
+            <li><a href="Evenement.php">Evenement</a></li>
+            <li><a href="APropos.php">A propos</a></li>
             <li><a href="FAQ.php">F.A.Q</a></li>
             <li><a href="Contact.html">Contact</a></li>
             <?php
@@ -42,9 +42,9 @@
             </div>
             <?php
                 if(isset($_SESSION['pseudo'])) {
-                    echo '<a href="SeConnecter.html" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
+                    echo '<a href="deconnexion.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
                 } else {
-                    echo '<a href="SeConnecter.html" class="action_btn">Se connecter</a>';
+                    echo '<a href="connexion.php" class="action_btn">Se connecter</a>';
                 }
             ?>
         </div>
