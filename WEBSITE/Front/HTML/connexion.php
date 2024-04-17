@@ -15,7 +15,7 @@ if(isset($_POST['envoi'])){
             if ($userInfo !== false) {
                 $_SESSION['pseudo'] = $pseudo;
                 $_SESSION['mdp'] = $mdp;
-                header('Location: index.php');
+                header('Location: Home.php');
             } else {
                 echo "Mauvais identifiants";
             }
