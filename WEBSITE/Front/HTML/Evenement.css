@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-
+@import url(navbar.css);
 * {
     margin: 0;
     padding: 0;
@@ -208,6 +208,18 @@
     align-items: center;
     justify-content: flex-start;
 }
+
+/* .event-header .left  .fa-sliders.filters {
+    display: flex;
+    height: 430px;
+    margin: 20px 10px;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+} */
+
+
+
 .event-header .right{
     display: flex;
     align-items: center;
