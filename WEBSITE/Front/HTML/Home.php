@@ -10,40 +10,11 @@
         </head>
         <body>
 
-            <header>
-
-
-                <div class="navbar">
-                    <div class="logo"><a href="Home.html">Eklypsse</a></div>
-                    <ul class="liens">
-                        
-                        <li><a href="Evenement.html">Evenement</a></li>
-                        <li><a href="APropos.html">A propos</a></li>
-                        <li><a href="FAQ.html">F.A.Q</a></li>
-                        <li><a href="Contact.html">Contact</a></li>
-                    </ul>
-        
-                    <div class="action-btn-container">
-                    <div class="menu-lang">
-                        <div class="selected-lang">
-                            Français
-                        </div>
-                        <ul>
-                            <li>
-                                <a href="#" class="en">Anglais</a>
-                            </li>
-                            <li>
-                                <a href="#" class="sp">Espagnol</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="SeConnecter.html" class="action_btn">Se connecter</a>
-                </div>
+                <?php
+                // Inclure le fichier header.php
+                include 'header.php';
+                ?>
                     
-        
-                    
-            </header>
-            
 
 
         <main>
