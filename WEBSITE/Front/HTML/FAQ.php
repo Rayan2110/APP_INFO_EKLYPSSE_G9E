@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,69 +15,29 @@
     <?php
                 // Inclure le fichier header.php
                 include 'header.php';
+
+                $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
+
+                $recupArticle = $bdd->query('SELECT * FROM faq');
+                while($article = $recupArticle->fetch()){
+                    ?>
+                    <div class="faq active">
+                        <button class="accordion">
+                            <?= $article['question'] ?>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                        <div class="pannel">
+                            <p><?= $article['reponse'] ?></p>
+                        </div>
+                    </div>
+                    <?php
+                }
                 ?>
 
-                <div class="faq active">
-                    <button class="accordion">
-                        Ou est situé l'événement?
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="pannel">
-                        <p>Le prochain événement aura lieu :
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq">
-                    <button class="accordion">
-                        Quels sont les niveaux de décibels sécuritaires durant un festival ?
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="pannel">
-                        <p>Les niveaux de décibels sécuritaires pendant un festival varient généralement entre 85 et 105 dB.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq">
-                    <button class="accordion">
-                        Comment puis-je protéger mon audition pendant le festival ?
-
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="pannel">
-                        <p>Portez des bouchons d'oreilles spécialement conçus pour la musique pour atténuer le bruit tout en permettant une expérience sonore agréable.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq">
-                    <button class="accordion">
-                        Comment utilisez-vous les données de décibels collectées ?
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="pannel">
-                        <p>Nous utilisons des capteurs pour collecter les données de décibels pendant le festival, puis les affichons sur une carte interactive disponible sur notre site afin que les festivaliers puissent surveiller les niveaux sonores en temps réel.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq">
-                    <button class="accordion">
-                        Qu'est-ce que le niveau de décibels (dB) et pourquoi est-il important dans un festival ?
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="pannel">
-                        <p>Le niveau de décibels (dB) mesure l'intensité du son, important dans un festival pour protéger l'audition des participants et respecter les normes de sécurité.
-                        </p>
-                    </div>
-                </div>
+               
 
 
 
-             </div>
-            </div>
-        </div>
 
         <script>
     var acc = document.getElementsByClassName("accordion");
