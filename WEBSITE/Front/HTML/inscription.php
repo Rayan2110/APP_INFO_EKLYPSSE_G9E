@@ -18,33 +18,50 @@ if(isset($_POST['envoi'])){
             echo "Erreur: Un compte avec cet email existe déjà.";
         } else {
             
-            // Vérification s'il y a un doublon pour le pseudo donné
-            $recupUser = $bdd->prepare('SELECT * FROM users WHERE pseudo = ?');
-            $recupUser->execute(array($pseudo));
-            $verifPseudo = $recupUser ->rowCount() ;
+            // Liste des caractères spéciaux à vérifier
+            $caracteres_speciaux = array('/', '@', '$', '&', '*', '+', '-', '_', '=', '{', '}', '[', ']', '(', ')', '<', '>', '|', '\\', ':', ';', '"', '\'', '.', ',', '?', '!', '~', '`', '^', '°', '§');
 
-            if($verifPseudo !== 0){
-                echo "Erreur: Un compte avec cet pseudo existe déjà";
-            } else {
-
-                // Récupération de l'utilisateur
-                $userInfo = $recupUser->fetch();
-
-                // Insertion de l'utilisateur avec mot de passe hashé
-                $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
-                $insertUser = $bdd->prepare('INSERT INTO users(pseudo, nom,date_naissance,email,mdp) VALUES(?, ?,?,?,?)');
-                $insertUser->execute(array($pseudo, $nom, $date_naissance, $email, $mdpHash));
- 
-                // Vérification du mot de passe
-                if(password_verify($mdp, $userInfo['mdp'])){
-                    $_SESSION['pseudo'] = $pseudo;
-                    $_SESSION['id'] = $userInfo['id'];
-                    $_SESSION['id'] = $recupUser->fetch()['id'];
-                    echo "Vous êtes connecté en tant que " . $_SESSION['pseudo'];
-                } else {
-                    echo "Mot de passe incorrect";
+            // Vérification si le pseudo contient des caractères spéciaux
+            $contient_special = false;
+            foreach($caracteres_speciaux as $caractere) {
+                if(strpos($pseudo, $caractere) !== false || strpos($nom, $caractere) !== false) {
+                    $contient_special = true;
+                    break;
                 }
             }
+
+            if($contient_special == true) {
+                echo "Le pseudo ou le nom ne doit pas contenir de caractères spéciaux.";
+            } else {
+
+                // Vérification s'il y a un doublon pour le pseudo donné
+                $recupUser = $bdd->prepare('SELECT * FROM users WHERE pseudo = ?');
+                $recupUser->execute(array($pseudo));
+                $verifPseudo = $recupUser ->rowCount() ;
+
+                if($verifPseudo !== 0){
+                    echo "Erreur: Un compte avec cet pseudo existe déjà";
+                } else {
+
+                    // Récupération de l'utilisateur
+                    $userInfo = $recupUser->fetch();
+
+                    // Insertion de l'utilisateur avec mot de passe hashé
+                    $mdpHash = password_hash($mdp, PASSWORD_DEFAULT);
+                    $insertUser = $bdd->prepare('INSERT INTO users(pseudo, nom,date_naissance,email,mdp) VALUES(?, ?,?,?,?)');
+                    $insertUser->execute(array($pseudo, $nom, $date_naissance, $email, $mdpHash));
+ 
+                    // Vérification du mot de passe
+                    if(password_verify($mdp, $mdpHash)){
+                        $_SESSION['pseudo'] = $pseudo;
+                        $_SESSION['id'] = $userInfo['id'];
+                        $_SESSION['id'] = $recupUser->fetch()['id'];
+                        echo "Vous êtes connecté en tant que " . $_SESSION['pseudo'];
+                    } else {
+                        echo "Mot de passe incorrect";
+                    }
+                }
+            } 
         } 
     } else {
         echo "Veuillez remplir tous les champs...";
