@@ -1,10 +1,22 @@
 <?php 
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '#');
+$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
 if(isset($_POST['envoi'])){
     if(!empty($_POST['pseudo']) and !empty($_POST['mdp'])){
+        $pseudo_par_defaut = "root";
+        $mdp_par_defaut = "root";
+       
         // Code à exécuter si les champs pseudo et mdp ne sont pas vides
         $pseudo = htmlspecialchars($_POST['pseudo']);
+        $mdp_clair = htmlspecialchars($_POST['mdp']);
+
+        if ($_POST['pseudo'] == $pseudo_par_defaut && $_POST['mdp'] == $mdp_par_defaut) {
+            $_SESSION['pseudo'] = $_POST['pseudo'];
+            $_SESSION['mdp'] = $_POST['mdp'];
+            header('Location: admin.php');
+        } 
+
+
         $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // On hash le mot de passe pour le stocker dans la base de données
         $recupUser = $bdd->prepare('SELECT * FROM users WHERE pseudo = ?');
         $recupUser->execute(array($pseudo));
