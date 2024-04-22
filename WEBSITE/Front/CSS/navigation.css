@@ -1,0 +1,335 @@
+/* NAVBAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+}
+
+/* Styles généraux */
+body {
+    background-color: antiquewhite;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll; /* Modification de la propriété */
+    /* Déplacer cette ligne après les autres propriétés de fond */
+    
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #ffff;
+    font-size: 1rem;
+}
+
+a:hover {
+    color: orange;
+}
+
+/* Header */
+header {
+    position: relative;
+    padding: 0 2rem;
+    background-color: black;
+}
+
+.navbar {
+    width: 100%;
+    height: 59px;
+    max-width: 1150px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+.navbar .logo {
+    flex-grow: 1;
+    display: block;
+}
+
+.navbar .logo a {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .liens {
+    display: flex;
+    gap: 2rem;
+}
+.navbar .liens {
+    flex-grow: 1; /* Utilise tout l'espace disponible */
+    display: flex;
+    justify-content: center; /* Centre les éléments horizontalement */
+    align-items: center; /* Centre les éléments verticalement */
+}
+
+.navbar .liens li {
+    margin: 0 10px; /* Espacement entre les éléments de la liste */
+}
+.navbar .action_btn {
+    background-color: orange;
+    color: #ffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale 0.2s ease;
+}
+
+.navbar .action_btn:hover {
+    transform: scale(1.05);
+    color: orange; 
+    background-color: #ffff;
+    border: 2px solid orange;
+}
+
+.navbar .action_btn:active {
+    transform: scale(0.95);
+}
+
+/* language menu */
+
+.menu-lang {
+    margin-top: 5px;
+    margin-right: 20px; /* Ajoute de l'espace à droite de la langue */
+    position: relative;
+    margin-left: auto; /* Déplace le menu des langues vers la droite */
+}
+
+.selected-lang {
+    cursor: pointer;
+    color: #ffff;
+    display: flex;
+    justify-content: space-between;
+    line-height: 2;
+    width: 110px;
+}
+
+.selected-lang:before { 
+    content: '';
+    display: block;
+    width: 32px;
+    height: 32px;
+    background-image: url(https://flagsapi.com/FR/flat/32.png);
+}
+
+.menu-lang ul{
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    border: 1px solid #000000;
+    box-shadow: 0px 1px 10px rgba(207, 206, 206, 0.2);
+    border-radius: 5px;
+    display: none;
+    position: absolute;
+    top: 33px;
+    left: -10px;
+}
+
+.action-btn-container {
+    display: flex;
+    align-items: center;
+}
+
+.menu-lang {
+    margin-right: 20px;
+}
+
+.action_btn {
+    margin-left: auto;
+}
+
+.menu-lang ul li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-lang ul li a {
+    display: block;
+    width: 150px;
+    padding: 5px 10px;
+}
+
+.menu-lang ul li a:hover {
+    background-color: #313131;
+    color: #ffff;
+}
+
+.menu-lang ul li a:before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    vertical-align: middle;
+    /*background-image: url(https://flagsapi.com/FR/flat/32.png);*/
+}
+
+.en:before {
+    background-image: url(https://flagsapi.com/GB/flat/32.png);
+}
+
+.sp:before {
+    background-image: url(https://flagsapi.com/ES/flat/32.png);
+}
+
+.menu-lang:hover ul{
+    display: block;
+}
+
+body, header {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* FOOTER */
+.footerContainer{
+    width: 100%;
+    padding: 70px 30px 20px;
+}
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+.socialIcons a{
+    text-decoration: none;
+    padding: 10px;
+    background-color:rgba(6, 199, 119, 0.326);
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.socialIcons a i {
+    font-size: 2em;
+    color: burlywood;
+    opacity: 0.9;
+}
+
+/* Effect Hover sur les icones */
+
+.socialIcons a:hover{
+    background-color: aqua;
+    transition: 0.5s;
+}
+
+.socialIcons a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+
+.footerNav ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.footerNav ul li a{
+    color:chocolate;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.footerNav ul li a:hover{
+    opacity: 10;   
+}
+
+.footerBottom{
+    background-color: burlywood;
+    padding: 20px;
+    text-align: center;
+}
+
+.footerBottom p{
+    color: white;
+}
+
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin:0px 5px;
+}
+
+@media (max-width: 700px){
+    .footerNav ul{
+        flex-direction: column;
+    }
+    .footerNav ul li{
+       width: 100%;
+       text-align: center;
+       margin: 10px;
+
+    }
+}
+
+
+
+/* FOOTER 2
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(to right, #ffb700, #fd3f00);
+    color: #fff;
+    padding: 100px 0 30px;
+    border-top-left-radius: 125px;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.row{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.col{
+    flex-basis: 25%;
+    padding: 10px;
+}
+
+.logo{
+    width: 80px;
+    margin-bottom: 30px;
+}
+
+.col h3{
+    width: fit-content;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+email-id{
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 0;
+}
+*/
