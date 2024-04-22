@@ -43,6 +43,7 @@ if(isset($_POST['envoi'])){
     <title>Document</title>
 </head>
 <body>
+    <div class="font">
     <form action="" method="POST">
         <label for="nom">Nom:</label>
         <input type="text" name="nom" autocomplete="off">
@@ -61,5 +62,6 @@ if(isset($_POST['envoi'])){
         <br/><br/>
         <input type="submit" name="envoi">
     </form>
+    </div>
 </body>
 </html>
