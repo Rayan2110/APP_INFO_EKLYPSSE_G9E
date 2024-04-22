@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '#');
+$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
 if(isset($_POST['envoi'])){
     if(!empty($_POST['pseudo']) and !empty($_POST['mdp'])){
         // Code à exécuter si les champs pseudo et mdp ne sont pas vides
