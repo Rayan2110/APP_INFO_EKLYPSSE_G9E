@@ -1,5 +1,16 @@
+/* Styles communs */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif; /* Montserrat comme police principale */
+}
+
+
+/* HOME */
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url(navbar.css);
+@import url(header.css);
 /* Réinitialisation des styles */
 * {
     margin: 0;
