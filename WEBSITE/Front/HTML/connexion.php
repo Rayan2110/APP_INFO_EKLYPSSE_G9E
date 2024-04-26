@@ -47,6 +47,7 @@ if(isset($_POST['envoi'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=j, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../CSS/auth.css">
 </head>
 <body>
 <form action="" method="POST">
