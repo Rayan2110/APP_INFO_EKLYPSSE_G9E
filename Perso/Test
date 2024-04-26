@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Description de ma page web">
+    <meta name="keywords" content="mots-clés, pour, référencement">
+    <meta name="author" content="Votre nom">
+    <title>Titre de ma page</title>
+</head>
+<body>
+
+<header>
+    <h1>Titre principal de la page</h1>
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Contenu principal</h2>
+    <p>Ceci est un paragraphe de texte.</p>
+    <p>Voici un autre paragraphe.</p>
+</main>
+
+<footer>
+    <p>&copy; 2024 Nom de votre entreprise</p>
+</footer>
+
+</body>
+</html>

@@ -9,7 +9,22 @@ body{
     background-position: center;
 }
 
-
+.boutonconnexion{
+    background-color: orangered; /* Couleur de fond */
+    border: none; /* Pas de bordure */
+    color: black; /* Couleur du texte */
+    padding: 15px 32px; /* Espacement à l'intérieur du bouton */
+    text-align: center; /* Alignement du texte */
+    text-decoration: none; /* Pas de soulignement */
+    display: inline-block; /* Afficher en ligne */
+    font-size: 16px; /* Taille de la police */
+    margin: 4px 2px; /* Marge autour du bouton */
+    cursor: pointer; /* Curseur au survol */
+    border-radius: 10px; /* Bordure arrondie */
+}
+.boutonconnexion:hover {
+    background-color: blue; /* Changement de couleur de fond au survol */
+}
 .wrapper{
     width: 420px;
     background: transparent;
@@ -46,7 +61,7 @@ body{
 }
 
 .input-box input::placeholder {
-    colors: #fff;
+    color: #fff;
 
 }
 
