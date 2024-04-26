@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@');
 if(isset($_POST['envoi'])){
     if(!empty($_POST['nom']) and !empty($_POST['mdp']) and !empty($_POST['pseudo']) and !empty($_POST['email']) and !empty($_POST['date_naissance'])){
         $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -40,7 +40,6 @@ if(isset($_POST['envoi'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=j, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../CSS/auth.css">
 </head>
 <body>
     <div class="font">
