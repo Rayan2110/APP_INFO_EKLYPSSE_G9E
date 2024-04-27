@@ -5,10 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="../CSS/main.css">
+        <!-- <link rel="stylesheet" href="../CSS/main.css"> -->
         <meta charset=" utf-8" />
         <title>F.A.Q</title>
-        <link rel="stylesheet" href="pages.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="../CSS/pages.css" />
 
     </head>
     <body>
@@ -16,7 +16,7 @@
                 // Inclure le fichier header.php
                 include 'header.php';
 
-                $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+                $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
 
                 $recupArticle = $bdd->query('SELECT * FROM faq');
                 while($article = $recupArticle->fetch()){
@@ -44,11 +44,14 @@
         acc[i].addEventListener("click", function() {
             this.classList.toggle("active");
             var panel = this.nextElementSibling;
-
+            var chevron = this.querySelector('.fa-chevron-down');
+            
             if (panel.style.display === "block") {
                 panel.style.display = "none";
+                chevron.classList.toggle("active2");
             } else {
                 panel.style.display = "block";
+                chevron.classList.toggle("active2");
             }
         });
     }

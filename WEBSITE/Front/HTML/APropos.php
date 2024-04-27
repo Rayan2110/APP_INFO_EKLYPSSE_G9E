@@ -8,7 +8,7 @@
         <meta charset=" utf-8" />
         <title>A propos</title>
 
-        <link rel="stylesheet" href="../CSS/page.css">
+        <link rel="stylesheet" href="../CSS/pages.css">
         <link rel="preconnect" href="https://fonts.googleleapis.com">
         <link rel="preconnect" href="https://fonts.gstatics.com" crossorigin>
         <link href="https://fonts.googleleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">

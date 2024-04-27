@@ -127,12 +127,12 @@ hr{
 }
 
 /* FAQ */
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Roboto", sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
   
   .wrapper {
@@ -154,6 +154,7 @@ hr{
     padding: 2rem 2.5rem;
     border: none;
     outline: none;
+    border-radius: 10px;
     transition: 0.4s;
     display: flex;
     justify-content: space-between;
@@ -170,6 +171,7 @@ hr{
   .active,
   .accordion:hover {
     background-color: #F6BF87;
+    border-radius: 10px;
   }
   
   .pannel {
@@ -178,6 +180,7 @@ hr{
     overflow: hidden;
     background-color: #F6BF87;
     display: none;
+    border-radius: 10px;
   }
   
   .pannel p {
@@ -195,6 +198,10 @@ hr{
   .faq.active {
     border: none;
   }
+
+  .fa-chevron-down.active2 {
+    transform: rotate(180deg); /* Rotation de 180 degrés lorsqu'il est actif */
+}
   
   footer {
     position: fixed;

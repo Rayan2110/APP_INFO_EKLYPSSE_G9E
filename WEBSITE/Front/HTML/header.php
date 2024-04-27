@@ -12,7 +12,16 @@
 <body>
 
 <header>
-    <div class="logo"><a href="Home.php">Eklypsse</a></div>
+    <div class="logos">
+        <div class="logoEklypsse">
+            <a href="Home.php">Eklypsse</a> 
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,300,250">
+        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M7.71875,6.28125l-1.4375,1.4375l17.28125,17.28125l-17.28125,17.28125l1.4375,1.4375l17.28125,-17.28125l17.28125,17.28125l1.4375,-1.4375l-17.28125,-17.28125l17.28125,-17.28125l-1.4375,-1.4375l-17.28125,17.28125z"></path></g></g>
+        </svg>
+        <img src="../Images/logo_eventIT_app.png">
+    </div>
+
     <ul class="liens">
         <li><a href="Evenement.php">Evenement</a></li>
         <li><a href="APropos.php">A propos</a></li>

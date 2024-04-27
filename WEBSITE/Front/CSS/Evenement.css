@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: antiquewhite;
+    background: rgba(233, 216, 196, 0.308);
     flex-direction: column;
 } 
 
@@ -25,10 +25,13 @@
     margin: 0 35px;
     padding-left: 20px;
     padding-right: 20px;
-    max-width: 1550px;
-    width: 100%;
+    /* max-width: 1550px; */
+    width: 95%;
     border-radius: 10px;
     background: rgb(255, 245, 245);
+    /* background: rgb(252, 220, 220); */
+    box-shadow: 0px 0px 10px 0px rgba(185, 185, 185, 0.5);
+    margin-bottom: 50px;
 }
 
 /* promo */
@@ -38,14 +41,15 @@
     padding: 0 5%;
     display: flex;
     color: #424144;
-    height: 75vh;
-    width: 200vh;
+    height: 500px;
+    width: 95%;
     /* justify-content: center; */
     align-items: center;
-    margin-top: 10px;
+    margin-top: 30px;
     margin-bottom: 40px;
     border-radius: 10px;
     position: relative;
+    box-shadow: 0px 0px 10px 0px rgba(185, 185, 185, 0.5);
 }
 
 .content-promo .text{

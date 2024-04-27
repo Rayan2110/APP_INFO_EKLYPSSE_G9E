@@ -31,14 +31,26 @@ header {
 }
 
 
-header .logo {
+header .logos{
     flex-grow: 1;
     display: block;
+    display: flex;
+    align-items: center;
+    height: 50px;
 }
 
-header .logo a {
+header .logoEklypsse a {
     font-size: 1.5rem;
     font-weight: bold;
+}
+header .logos img {
+    height: 45px;
+    border-radius: 8%;
+}
+
+header .logos svg {
+    width: 4%;
+    margin: 0 8px;
 }
 
 header .liens {
