@@ -12,43 +12,43 @@
 <body>
 
 <header>
-    <div class="navbar">
-        <div class="logo"><a href="Home.php">Eklypsse</a></div>
-        <ul class="liens">
-            <li><a href="Evenement.php">Evenement</a></li>
-            <li><a href="APropos.php">A propos</a></li>
-            <li><a href="FAQ.php">F.A.Q</a></li>
-            <li><a href="Contact.html">Contact</a></li>
-            <?php
-                session_start();
-                if(isset($_SESSION['pseudo'])) {
-                    echo '<li><a href="Carte.php">Carte</a></li>';
-                }
-            ?>
-        </ul>
-        <div class="action-btn-container">
-            <div class="menu-lang">
-                <div class="selected-lang">
-                    Français
-                </div>
-                <ul>
-                    <li>
-                        <a href="#" class="en">Anglais</a>
-                    </li>
-                    <li>
-                        <a href="#" class="sp">Espagnol</a>
-                    </li>
-                </ul>
-            </div>
-            <?php
-                if(isset($_SESSION['pseudo'])) {
-                    echo '<a href="deconnexion.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
-                } else {
-                    echo '<a href="connexion.php" class="action_btn">Se connecter</a>';
-                }
-            ?>
+    <div class="logo"><a href="Home.php">Eklypsse</a></div>
+    <ul class="liens">
+        <li><a href="Evenement.php">Evenement</a></li>
+        <li><a href="APropos.php">A propos</a></li>
+        <li><a href="FAQ.php">F.A.Q</a></li>
+        <li><a href="Contact.html">Contact</a></li>
+        <?php
+            session_start();
+            if(isset($_SESSION['pseudo'])) {
+                echo '<li><a href="Carte.php">Carte</a></li>';
+            }
+        ?>
+    </ul>
+
+    <div class="menu-lang">
+        <div class="selected-lang">
+            Français
         </div>
+        <ul>
+            <li>
+                <a href="#" class="en">Anglais</a>
+            </li>
+            <li>
+                <a href="#" class="sp">Espagnol</a>
+            </li>
+        </ul>
     </div>
+    <div class="action-btn-container">
+    <?php
+        if(isset($_SESSION['pseudo'])) {
+            echo '<a href="deconnexion.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
+        } else {
+            echo '<a href="connexion.php" class="action_btn">Se connecter</a>';
+        }
+    ?>
+    </div>
+
 </header>
 
 <main>
