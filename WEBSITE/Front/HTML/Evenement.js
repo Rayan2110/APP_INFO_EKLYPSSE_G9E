@@ -32,9 +32,28 @@
 var slideIndex = {};
 slideIndex['slider1'] = 1;
 slideIndex['slider2'] = 1;
+slideIndex['slider3'] = 1;
+slideIndex['slider4'] = 1;
+slideIndex['slider5'] = 1;
+slideIndex['slider6'] = 1;
+slideIndex['slider7'] = 1;
+slideIndex['slider8'] = 1;
+slideIndex['slider9'] = 1;
+slideIndex['slider10'] = 1;
+slideIndex['slider11'] = 1;
 
 showSlides(slideIndex['slider1'], 'slider1');
 showSlides(slideIndex['slider2'], 'slider2');
+showSlides(slideIndex['slider3'], 'slider3');
+showSlides(slideIndex['slider4'], 'slider4');
+showSlides(slideIndex['slider5'], 'slider5');
+showSlides(slideIndex['slider6'], 'slider6');
+showSlides(slideIndex['slider7'], 'slider7');
+showSlides(slideIndex['slider8'], 'slider8');
+showSlides(slideIndex['slider9'], 'slider9');
+showSlides(slideIndex['slider10'], 'slider10');
+showSlides(slideIndex['slider11'], 'slider11');
+
 
 function plusSlide(n, id) {
     showSlides(slideIndex[id] += n, id);
@@ -153,7 +172,7 @@ $(document).ready(function() {
             detail.hide();
         } else {
             // Cacher tous les détails, puis afficher celui correspondant à la carte cliquée
-            $(".détails").hide();
+            $(".details").hide();
             detail.css("display", "flex"); // Modifier display en flex
         }
     });

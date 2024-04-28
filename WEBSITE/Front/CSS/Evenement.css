@@ -43,7 +43,7 @@
     color: #424144;
     height: 500px;
     width: 95%;
-    /* justify-content: center; */
+    justify-content: space-between;
     align-items: center;
     margin-top: 30px;
     margin-bottom: 40px;
@@ -103,9 +103,9 @@
 .custom-slider { display:none; }
 
 .slide-container {
-    max-width: 800px;
+    max-width: 700px;
     position: relative;
-    margin-left: 200px;
+    /* margin-left: 200px; */
 }
 
 .prev, .next {
@@ -396,7 +396,7 @@
 
 /* Détails des festivals */
 
-.content-fest .détails{
+.content-fest .details{
     display: none;
     height: 430px;
     margin: 20px 10px;
@@ -406,7 +406,7 @@
     border-radius: 10px;
 }
 
-.détails .leftSide {
+.details .leftSide {
     display: flex;
     flex-direction: column;
     height: 350px;
@@ -414,14 +414,14 @@
     margin: 0 20px;
 }
 
-.détails .leftSide h2 {
+.details .leftSide h2 {
     margin-bottom: 10px;
     margin-left: 50px;
     font-weight: 700;
     color: orange;
 }
 
-.détails .leftSide .lieuDate {
+.details .leftSide .lieuDate {
     margin-top: 15px;
     margin-left: 15px;  
     border: 2px solid #4e5055;
@@ -434,35 +434,35 @@
     color: #4e5055;
 }
 
-.détails .leftSide .lieuDate span {
+.details .leftSide .lieuDate span {
     margin: 5px 10px;
 }
 
-.détails .leftSide .resume p {
+.details .leftSide .resume p {
     margin-top: 10px;
     margin-left: 15px; 
     max-width: 700px; 
 }
 
-.détails .leftSide .resume h4 {
+.details .leftSide .resume h4 {
     margin-top: 20px;
     margin-left: 30px;
     font-weight: 800;
 }
 
-.détails .leftSide .artists p {
+.details .leftSide .artists p {
     margin-top: 10px;
     margin-left: 15px; 
     max-width: 700px;   
 }
 
-.détails .leftSide .artists h4 {
+.details .leftSide .artists h4 {
     margin-top: 20px;
     margin-left: 30px;  
     font-weight: 800;
 }
 
-.détails .middleSide{
+.details .middleSide{
     margin-top: 140px;
     min-width: 220px;
     min-height: 260px;
@@ -474,17 +474,17 @@
     align-items: center;
 }
 
-.détails .middleSide h4 {
+.details .middleSide h4 {
     font-weight: 800;
     margin-bottom: 40px;
 }
 
-.détails .middleSide span {
+.details .middleSide span {
     font-weight: 500;
     margin-bottom: 30px;
 }
 
-.détails .middleSide .cartButton {
+.details .middleSide .cartButton {
     min-width: 180px;
     min-height: 40px;
     margin-bottom: 10px;
@@ -495,11 +495,11 @@
     cursor: pointer;
 }
 
-.détails .middleSide .cartButton:hover {
+.details .middleSide .cartButton:hover {
     background-color: #fdc482;
 }
 
-.détails .middleSide .favButton {
+.details .middleSide .favButton {
     min-width: 180px;
     min-height: 40px;
     color: orange;
@@ -509,18 +509,27 @@
     cursor: pointer;
 }
 
-.détails .middleSide .favButton:hover {
+.details .middleSide .favButton:hover {
     color: #fdc482;
     border-color: #fdc482;
 }
 
-.détails .rightSide {
+.details .rightSide {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-right: 40px;
     margin-top: 70px;
+}
+
+.slide-img2 {
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    margin-left: 30px;
 }
 
 @media screen and (max-width: 900px){
