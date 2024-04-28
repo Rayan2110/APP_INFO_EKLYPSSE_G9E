@@ -16,28 +16,30 @@ if(isset($_POST['envoi'])){
             header('Location: admin.php');
         } 
 
-
-        $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // On hash le mot de passe pour le stocker dans la base de données
+        // On hash le mot de passe pour le stocker dans la base de données
+        $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); 
         $recupUser = $bdd->prepare('SELECT * FROM users WHERE pseudo = ?');
         $recupUser->execute(array($pseudo));
 
         if($recupUser->rowCount() > 0){
             // Si l'utilisateur existe
             $userInfo = $recupUser->fetch();
-            if ($userInfo !== false) {
+            $mdp_hash = $userInfo['mdp']; // Mot de passe haché de la base de données
+
+            if (password_verify($mdp_clair, $mdp_hash)) {
                 $_SESSION['pseudo'] = $pseudo;
-                $_SESSION['mdp'] = $mdp;
+                $_SESSION['id'] = $userInfo['id']; // Supposons que 'id' est le champ ID de l'utilisateur dans la base de données
                 header('Location: Home.php');
             } else {
-                echo "Mauvais identifiants";
+                echo '<script>alert("Mauvais mot de passe");</script>';
             }
         }
         else{
-            echo "Mauvais identifiants";
+            echo '<script>alert("Mauvais identifiants");</script>';
         }
     }
     else{
-        echo "Veuillez remplir tous les champs";
+        echo '<script>alert("Veuillez remplir tous les champs...");</script>';
     }
 }
 ?>
@@ -51,11 +53,14 @@ if(isset($_POST['envoi'])){
 </head>
 <body>
 <form action="" method="POST">
+    <label for="Pseudo">Pseudo :</label>
     <input type="text" name="pseudo" autocomplete="off">
     <br/>
+    <label for="password">Mot de passe :</label>
     <input type="password" name="mdp" autocomplete="off">
     <br/><br/>
-    <input type="submit" name="envoi">
-</form>
+    <button type="button" name="Inscrire" class="BoutonInscrire" onclick="document.location='inscription.php'">S'inscrire</button>
+    <input type="submit" name="envoi" value="Se Connecter">
+</form> 
 </body>
 </html>
