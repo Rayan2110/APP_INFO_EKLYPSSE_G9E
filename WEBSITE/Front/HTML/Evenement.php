@@ -27,7 +27,7 @@
                     <button>DECOUVRIR</button>
                 </div>
                 
-                <div id="slider11">
+                <div id="slider20">
                     <div class="slide-container">
                         <div class="custom-slider fade">
                             <div class="slide-index">1 / 3</div>
@@ -44,14 +44,14 @@
                             <img class="slide-img" src="https://www.touslesfestivals.com/caches/917596f63c654b95aa32173381c337e2e21abe4f-1040x540-outbound.jpg">
                             <div class="slide-text">Praesent lobortis libero sed egestas suscipit.</div>
                         </div>
-                        <a class="prev" onclick="plusSlide(-1, 'slider11')">&#10094;</a>
-                        <a class="next" onclick="plusSlide(1, 'slider11')">&#10095;</a>
+                        <a class="prev" onclick="plusSlide(-1, 'slider20')">&#10094;</a>
+                        <a class="next" onclick="plusSlide(1, 'slider20')">&#10095;</a>
                     </div>
                     <br>
                     <div class="slide-dot">
-                        <span class="dot" onclick="currentSlide(1, 'slider11')"></span>
-                        <span class="dot" onclick="currentSlide(2, 'slider11')"></span>
-                        <span class="dot" onclick="currentSlide(3, 'slider11')"></span>
+                        <span class="dot" onclick="currentSlide(1, 'slider20')"></span>
+                        <span class="dot" onclick="currentSlide(2, 'slider20')"></span>
+                        <span class="dot" onclick="currentSlide(3, 'slider20')"></span>
                     </div>
                 </div>
             </div>
@@ -240,36 +240,36 @@
                                 <span class="dot" onclick="currentSlide(3, 'slider2')"></span>
                             </div>
                         </div>
-                     -->
+                    </div> -->
                     
-                        <?php foreach ($festivals as $festival): ?>
-                        <div class="details" id="detail<?= $festival['id'] ?>">
+                    <?php foreach ($festivals as $festival): ?>
+                    <div class="details" id="detail<?= $festival['id'] ?>">
 
-                            <div class="leftSide">
-                                <h2><?= htmlspecialchars($festival['nom']) ?></h2>
-                                <div class="lieuDate">
-                                    <span><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($festival['localisation']) ?></span>    
-                                    <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('j - n Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('j - n Y', strtotime($festival['date_fin']))) ?></span>                          
-                                </div>
-                                <div class="resume">
-                                    <h4><i class="fa-regular fa-pen-to-square"></i> Description</h4>
-                                    <p><?= htmlspecialchars($festival['description']) ?></p>
-                                </div>
-                                <div class="artists">
-                                    <h4><i class="fa-solid fa-music"></i> Artistes</h4>
-                                    <p>GAZO & TIAKOLA - MARTIN GARRIX - PLK - MIKA - ZOLA - SDM - POMME - LOUISE ATTAQUE - WERENOI - CHARLOTTE CARDIN - LA FEVE - DIPLO - URUMI - VIENS LA FETE - TIF - SANTA - JETLAG GANG - SAM SMITH - ZAMDANE - SO LA LUNE - LA DARUDE - TRINIX - LAURENT GARNIER - STYLETO - BABY VOLCANO</p>
-                                </div>
+                        <div class="leftSide">
+                            <h2><?= htmlspecialchars($festival['nom']) ?></h2>
+                            <div class="lieuDate">
+                                <span><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($festival['localisation']) ?></span>    
+                                <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('j - n Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('j - n Y', strtotime($festival['date_fin']))) ?></span>                          
                             </div>
-                            
-                            <div class="middleSide">
-                                <h4><i class="fa-solid fa-ticket"></i> Billetterie</h4>
-                                <span><?= htmlspecialchars($festival['prix']) ?> &#8364;</span>
-                                <button class="cartButton">Ajouter au panier</button>
-                             <button class="favButton">Ajouter aux favoris <i class="fa-regular fa-heart"></i></button>
-                             </div>
-    
-                            <div class="rightSide" id="slider<?= $festival['id'] ?>">
-                                <div class="slide-container">
+                            <div class="resume">
+                                <h4><i class="fa-regular fa-pen-to-square"></i> Description</h4>
+                                <p><?= htmlspecialchars($festival['description']) ?></p>
+                            </div>
+                            <div class="artists">
+                                <h4><i class="fa-solid fa-music"></i> Artistes</h4>
+                                <p>GAZO & TIAKOLA - MARTIN GARRIX - PLK - MIKA - ZOLA - SDM - POMME - LOUISE ATTAQUE - WERENOI - CHARLOTTE CARDIN - LA FEVE - DIPLO - URUMI - VIENS LA FETE - TIF - SANTA - JETLAG GANG - SAM SMITH - ZAMDANE - SO LA LUNE - LA DARUDE - TRINIX - LAURENT GARNIER - STYLETO - BABY VOLCANO</p>
+                            </div>
+                        </div>
+                        
+                        <div class="middleSide">
+                            <h4><i class="fa-solid fa-ticket"></i> Billetterie</h4>
+                            <span><?= htmlspecialchars($festival['prix']) ?> &#8364;</span>
+                            <button class="cartButton">Ajouter au panier</button>
+                            <button class="favButton">Ajouter aux favoris <i class="fa-regular fa-heart"></i></button>
+                        </div>
+
+                        <div class="rightSide" id="slider<?= $festival['id'] ?>">
+                            <div class="slide-container">
                                 <div class="custom-slider fade">
                                     <div class="slide-index">1 / 3</div>
                                     <img class="slide-img2" src="https://www.solidays.org/wp-content/uploads/2022/01/riles_1140_500_px-1140x570.jpg">
@@ -288,6 +288,7 @@
                                 <a class="prev" onclick="plusSlide(-1, 'slider<?= $festival['id'] ?>')">&#10094;</a>
                                 <a class="next" onclick="plusSlide(1, 'slider<?= $festival['id'] ?>')">&#10095;</a>
                             </div>
+                        
                             <br>
                             <div class="slide-dot">
                                 <span class="dot" onclick="currentSlide(1, 'slider<?= $festival['id'] ?>')"></span>
@@ -295,11 +296,12 @@
                                 <span class="dot" onclick="currentSlide(3, 'slider<?= $festival['id'] ?>')"></span>
                             </div>
                         </div>
-                        <?php endforeach; ?>
+                    </div>
+                    <?php endforeach; ?>
 
-                        <!-- <div class="details" id="detail2">
-                            <h2>Rock en Seine</h2>
-                        </div> -->
+                    <!-- <div class="details" id="detail2">
+                        <h2>Rock en Seine</h2>
+                    </div> -->
                     
 
                 </div>
@@ -455,7 +457,7 @@
                             <span>Saint-Brieuc</span>
                             <span>17-19 mai 2024</span>
                             <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
+                        </li>   a
                     </ul>
                     <i id="right-carousel3" class="fa-solid fa-angle-right arrow"></i>
                 </div>
