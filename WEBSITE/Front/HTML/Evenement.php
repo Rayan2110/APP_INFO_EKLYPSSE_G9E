@@ -166,7 +166,7 @@
 
             <?php  
             // $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
-            $fest = $bdd->query("SELECT * FROM evenements");
+            $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true;");
             $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
              ?>
 
@@ -257,7 +257,7 @@
                             </div>
                             <div class="artists">
                                 <h4><i class="fa-solid fa-music"></i> Artistes</h4>
-                                <p>GAZO & TIAKOLA - MARTIN GARRIX - PLK - MIKA - ZOLA - SDM - POMME - LOUISE ATTAQUE - WERENOI - CHARLOTTE CARDIN - LA FEVE - DIPLO - URUMI - VIENS LA FETE - TIF - SANTA - JETLAG GANG - SAM SMITH - ZAMDANE - SO LA LUNE - LA DARUDE - TRINIX - LAURENT GARNIER - STYLETO - BABY VOLCANO</p>
+                                <p><?= htmlspecialchars($festival['artistes']) ?></p>
                             </div>
                         </div>
                         
@@ -272,17 +272,17 @@
                             <div class="slide-container">
                                 <div class="custom-slider fade">
                                     <div class="slide-index">1 / 3</div>
-                                    <img class="slide-img2" src="https://www.solidays.org/wp-content/uploads/2022/01/riles_1140_500_px-1140x570.jpg">
+                                    <img class="slide-img2" src="<?= htmlspecialchars($festival['imageDetail1']) ?>">
                                     <div class="slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                                 </div>
                                 <div class="custom-slider fade">
                                     <div class="slide-index">2 / 3</div>
-                                    <img class="slide-img2" src="https://www.guettapen.com/wp-content/uploads/2023/11/363420158_660100122812004_8265898842019057879_n.jpeg">
+                                    <img class="slide-img2" src="<?= htmlspecialchars($festival['imageDetail2']) ?>">
                                     <div class="slide-text">Nullam luctus aliquam ornare.</div>
                                 </div>
                                 <div class="custom-slider fade">
                                     <div class="slide-index">3 / 3</div>
-                                    <img class="slide-img2" src="https://www.soonnight.com/images/editor/1/fichiers/images/hippodrome-de-longchamp-l-773597_103.jpg">
+                                    <img class="slide-img2" src="<?= htmlspecialchars($festival['imageDetail3']) ?>">
                                     <div class="slide-text">Praesent lobortis libero sed egestas suscipit.</div>
                                 </div>
                                 <a class="prev" onclick="plusSlide(-1, 'slider<?= $festival['id'] ?>')">&#10094;</a>
@@ -384,6 +384,7 @@
                     <i id="right-carousel2" class="fa-solid fa-angle-right arrow"></i>
                 </div>
 
+
                 <div class="content-fest">
                     <h3>Festivals de Rock</h3>
                     <i id="left-carousel3" class="fa-solid fa-angle-left arrow"></i>
@@ -457,7 +458,7 @@
                             <span>Saint-Brieuc</span>
                             <span>17-19 mai 2024</span>
                             <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>   a
+                        </li>   
                     </ul>
                     <i id="right-carousel3" class="fa-solid fa-angle-right arrow"></i>
                 </div>
