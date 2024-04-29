@@ -5,7 +5,7 @@ function afficherUtilisateurs() {
     // Connexion à la base de données
     
     // Connexion
-    $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
     
     $requete = "SELECT * FROM users";
     $resultat = $bdd->query($requete);
@@ -32,10 +32,23 @@ function afficherUtilisateurs() {
         echo "<td>" . $ligne["email"] . "</td>";
         echo "<td>" . $ligne["date_naissance"] . "</td>";
         echo "</tr>";
+        // Formulaire de suppression
+echo "<td>";
+echo "<form method='post' action='supprimer_utilisateur.php'>";
+echo "<input type='hidden' name='pseudo' value='" . $ligne["pseudo"] . "'>";
+echo "<input type='hidden' name='nom' value='" . $ligne["nom"] . "'>";
+echo "<input type='hidden' name='email' value='" . $ligne["email"] . "'>";
+echo "<button type='submit' name='submit'>Supprimer</button>";
+echo "</form>";
+echo "</td>";
+echo "</tr>";
     }
     
     // Fin du tableau
     echo "</table>";
+
+
+    
 
 
 
@@ -49,3 +62,19 @@ function afficherUtilisateurs() {
 afficherUtilisateurs();
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Admin</h1>
+    <br>
+    <a href="admin.php">Espace administrateur</a>
+    <br>
+    <a href="Home.php">Accueil</a>
+</body>
+</html>
