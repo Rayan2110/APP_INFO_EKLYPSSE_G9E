@@ -8,5 +8,7 @@
 <body>
     <h1>Admin</h1>
     <a href="publier-article.php">Publier un nouvel article</a>
+    <br>
+    <a href="afficher_utilisateur.php">Afficher les utilisateurs</a>
 </body>
 </html>
