@@ -21,7 +21,7 @@
         // Connexion à la base de données
 
         // Connexion
-        $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+        $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@');
 
         $requete = "SELECT * FROM users";
         $resultat = $bdd->query($requete);
