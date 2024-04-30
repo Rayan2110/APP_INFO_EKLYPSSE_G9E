@@ -1,0 +1,81 @@
+/* Réinitialisation de base et styles globaux */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="submit"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Include padding in width/height */
+}
+
+input[type="submit"] {
+    background-color: #5cb85c;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #4cae4c;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+/* Style pour afficher des messages d'erreur ou de confirmation */
+.message {
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.error {
+    background-color: #d9534f;
+}
+
+.success {
+    background-color: #5cb85c;
+}
