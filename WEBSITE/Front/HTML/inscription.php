@@ -146,26 +146,27 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
     <div class="font">
     <form action="" method="POST">
         <label for="nom">Nom :</label>
-        <input type="text" name="nom" autocomplete="off">
+        <input type="text" name="nom" autocomplete="off" placeholder="Nom">
         <br/>
         <label for="prenom">Pseudo :</label>
-        <input type="text" name="pseudo" autocomplete="off">
+        <input type="text" name="pseudo" autocomplete="off" placeholder="Pseudo">
         <br/>
         <label for="email">Email :</label>
-        <input type="email" name="email" autocomplete="off">
+        <input type="email" name="email" autocomplete="off" placeholder="Email" >
         <br/>
         <label for="date_naissance">Date de naissance :</label>
         <input type="date" name="date_naissance">
         <br/>
         <label for="mdp">Mot de passe :</label>
-        <button onclick="TexteCondition()" class="BoutonCondition" name="BontonCondition" >Condition</button>
-        <input type="password" name="mdp" autocomplete="off">
+        <label for="condition" style="font-size: 12px">Votre mot de passe doit au moins contenir: <br> - 8 caractères<br>- majuscule<br>- minuscule<br> - chiffre<br> - caractère spécial</label>
+        <input type="password" name="mdp" autocomplete="off" placeholder="Mot de passe" >
         <br/>
         <label for="cmdp">Confirmation de mot de passe :</label>
-        <input type="password" name='cmdp' autocomplete="off">
+        <input type="password" name='cmdp' autocomplete="off" placeholder="Confirmer mot de passe" >
         <br/><br/>
         <input type="submit" name="envoi" value="S'inscrire" >
         <button type="button" name="Connecter" class="BoutonConnecter" onclick="document.location='connexion.php'">Se connecter</button>
+        <button type="button" name = "Retour" class= "BoutonRetour" onclick="window.location.href='Home.php'"> Retour </button>
     </form>
     </div>
 </body>
