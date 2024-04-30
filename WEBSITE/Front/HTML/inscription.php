@@ -166,6 +166,7 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
         <br/><br/>
         <input type="submit" name="envoi" value="S'inscrire" >
         <button type="button" name="Connecter" class="BoutonConnecter" onclick="document.location='connexion.php'">Se connecter</button>
+        <button type="button" name = "Retour" class= "BoutonRetour" onclick="window.location.href='Home.php'"> Retour </button>
     </form>
     </div>
 </body>
