@@ -7,11 +7,13 @@
     <title>Document</title>
 </head>
 <body>
+<?php
+                // Inclure le fichier header.php
+                include 'header.php';
+                ?>
     <a href="admin.php" class="Admin" ><h1>Admin</h1></a>
     <br>
-    <div class="Accueil" >
-        <a href="Home.php">Accueil</a>
-    </div>
+   
     
     <?php
     // Fonction pour afficher la liste des utilisateurs
