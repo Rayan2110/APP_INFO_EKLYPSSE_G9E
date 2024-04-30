@@ -50,7 +50,7 @@
     </div>
     <div class="action-btn-container">
     <?php
-        if(isset($_SESSION['pseudo'])) {
+        if(isset($_SESSION['id'])) {
             echo '<a href="deconnexion.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
         } else {
             echo '<a href="connexion.php" class="action_btn">Se connecter</a>';

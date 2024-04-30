@@ -2,24 +2,22 @@
 session_start();
 $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
 if(isset($_POST['envoi'])){
-    if(!empty($_POST['pseudo']) and !empty($_POST['mdp'])){
-        $pseudo_par_defaut = "root";
-        $mdp_par_defaut = "root";
-       
+    if(!empty($_POST['email']) and !empty($_POST['mdp'])){
         // Code à exécuter si les champs pseudo et mdp ne sont pas vides
-        $pseudo = htmlspecialchars($_POST['pseudo']);
+        $email = htmlspecialchars($_POST['email']);
         $mdp_clair = htmlspecialchars($_POST['mdp']);
 
-        if ($_POST['pseudo'] == $pseudo_par_defaut && $_POST['mdp'] == $mdp_par_defaut) {
-            $_SESSION['pseudo'] = $_POST['pseudo'];
-            $_SESSION['mdp'] = $_POST['mdp'];
+        if ($email == "root" && $mdp_clair == "root") {
+            $_SESSION['pseudo'] = "root"; 
+            $_SESSION['id'] = 0; 
             header('Location: admin.php');
+            exit();
         } 
 
         // On hash le mot de passe pour le stocker dans la base de données
         $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); 
-        $recupUser = $bdd->prepare('SELECT * FROM users WHERE pseudo = ?');
-        $recupUser->execute(array($pseudo));
+        $recupUser = $bdd->prepare('SELECT * FROM users WHERE email = ?');
+        $recupUser->execute(array($email));
 
         if($recupUser->rowCount() > 0){
             // Si l'utilisateur existe
@@ -27,7 +25,7 @@ if(isset($_POST['envoi'])){
             $mdp_hash = $userInfo['mdp']; // Mot de passe haché de la base de données
 
             if (password_verify($mdp_clair, $mdp_hash)) {
-                $_SESSION['pseudo'] = $pseudo;
+                $_SESSION['pseudo'] = $userInfo['pseudo'];
                 $_SESSION['id'] = $userInfo['id']; // Supposons que 'id' est le champ ID de l'utilisateur dans la base de données
                 header('Location: Home.php');
             } else {
@@ -35,7 +33,7 @@ if(isset($_POST['envoi'])){
             }
         }
         else{
-            echo '<script>alert("Mauvais identifiants");</script>';
+            echo '<script>alert("");</script>';
         }
     }
     else{
@@ -53,8 +51,8 @@ if(isset($_POST['envoi'])){
 </head>
 <body>
 <form action="" method="POST">
-    <label for="Pseudo">Pseudo :</label>
-    <input type="text" name="pseudo" autocomplete="off" placeholder="Pseudo" >
+    <label for="email">Email :</label>
+    <input type="text" name="email" autocomplete="off" placeholder="Email" >
     <br/>
     <label for="password">Mot de passe :</label>
     <input type="password" name="mdp" autocomplete="off" placeholder="Mot de passe" >
