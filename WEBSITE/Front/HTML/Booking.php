@@ -13,8 +13,25 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Requête SQL pour récupérer les dates de juin
+// Requête SQL pour récupérer les initiales du festival "We Love Green"
+$sql = "SELECT initiales FROM evenements WHERE nom = 'We Love Green'";
 $sql2 = "SELECT date_début FROM evenements WHERE date_début LIKE '2024-06%'";
+
+// Exécution de la requête SQL pour récupérer les initiales
+$resultInitiales = $conn->query($sql);
+
+// Variable pour stocker les initiales
+$initiales = '';
+
+// Vérifier si des résultats sont retournés
+if ($resultInitiales->num_rows > 0) {
+    // Récupérer les initiales
+    while ($row = $resultInitiales->fetch_assoc()) {
+        $initiales = $row['initiales'];
+    }
+} else {
+    echo "Aucun résultat trouvé pour les initiales du festival.";
+}
 
 // Exécution de la requête SQL pour récupérer les dates de juin
 $result2 = $conn->query($sql2);
@@ -283,40 +300,48 @@ $conn->close();
                     <div class="day">Booked</div>
                     <div class="day">Selected</div>
                 </div>
-                <div class="all-seats">
-                    <?php
+                                <div class="all-seats">
+                                <?php
                     for ($i = 1; $i <= 31; $i++) {
                         // Vérifier si le jour actuel est dans le tableau des jours récupérés
                         if (in_array($i, $dates_juin)) {
                             // Si oui, rendre la case disponible
                             $labelContent = "<div class='day-number'>$i</div>";
                             $bookedClass = "";
+                            // Intégrer les initiales récupérées dans la requête SQL
+                            $seatContent = "<div class='initiales'>$initiales</div>";
                         } else {
                             // Sinon, rendre la case indisponible
                             $labelContent = "";
                             $bookedClass = "booked";
+                            $seatContent = "";
                         }
 
                         echo "<input type='checkbox' name='tickets' id='s$i' />";
                         echo "<label for='s$i' class='seat $bookedClass'>";
                         echo $labelContent;
+                        echo $seatContent;
                         echo "</label>";
                     }
                     ?>
                 </div>
 
-            </div>
-            <div class="timings">
-                <div class="dates">
-                    <input type="radio" name="date" id="d1" checked/>
-                    <label for="d1" class="dates-item">
-                        <div class="day">Sun</div>
-                        <div class="date">11</div>
-                    </label>
-                    <!-- Répétez pour chaque jour -->
-                </div>
-            </div>
-        </div>
+                <div class="timings">
+                    <div class="dates">
+                        <?php
+                        for ($i = 1; $i <= 31; $i++) {
+                            if (in_array($i, $dates_juin)) {
+                                echo "<input type='radio' name='date' id='d$i' />";
+                                echo "<label for='d$i' class='dates-item'>";
+                                echo "<div class='day'>Sun</div>"; // Modifier pour inclure le jour de la semaine si nécessaire
+                                echo "<div class='date'>$i</div>";
+                                echo "</label>";
+                            }
+                        }
+                        ?>
+    </div>
+</div>
+
         <div class="price">
             <div class="total">
                 <span> <span class="count">0</span> Tickets </span>
@@ -336,15 +361,21 @@ $conn->close();
             amount = Number(amount);
             count = Number(count);
 
-            if (ticket.checked) {
-                count += 1;
-                amount += 200;
+            let seat = ticket.nextElementSibling; // Sélectionner le siège associé au billet
+
+            if (!seat.classList.contains('booked')) { // Vérifier si le siège n'est pas déjà réservé
+                if (ticket.checked) {
+                    count += 1;
+                    amount += 200;
+                } else {
+                    count -= 1;
+                    amount -= 200;
+                }
+                document.querySelector(".amount").innerHTML = amount;
+                document.querySelector(".count").innerHTML = count;
             } else {
-                count -= 1;
-                amount -= 200;
+                ticket.checked = false; // Annuler la sélection si le siège est réservé
             }
-            document.querySelector(".amount").innerHTML = amount;
-            document.querySelector(".count").innerHTML = count;
         });
     });
 </script>
