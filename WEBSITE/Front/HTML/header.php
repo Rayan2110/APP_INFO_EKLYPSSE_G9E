@@ -32,6 +32,11 @@
             if(isset($_SESSION['pseudo'])) {
                 echo '<li><a href="Carte.php">Carte</a></li>';
             }
+            
+            if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' && isset($_SESSION['mdp']) && $_SESSION['mdp'] === 'root') {
+                echo '<li><a href="Admin.php">Admin</a></li>';
+            }
+            
         ?>
     </ul>
 
