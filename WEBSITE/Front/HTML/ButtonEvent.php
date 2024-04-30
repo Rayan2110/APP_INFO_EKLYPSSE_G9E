@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@');
+$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
 
 // Traitement du formulaire
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
