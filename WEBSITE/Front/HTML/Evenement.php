@@ -1,5 +1,5 @@
 
-<?php $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', ''); ?>
+<?php $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@'); ?>
 
 <!DOCTYPE html>
 <html>
@@ -467,7 +467,10 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </body>
     <footer>
-        
+    <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
     </footer>
 </html>
 
