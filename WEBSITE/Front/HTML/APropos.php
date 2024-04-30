@@ -48,10 +48,10 @@
         </div>
         </section>
         <footer>
-            <div class="footer-content">
-                <p>Réalisé par Eklypsse Sound</p>
-                <p>Copyright © 2024</p>
-            </div>
+        <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
         </footer>
     </body>
 </html>

@@ -16,6 +16,10 @@
 
     </body>
     <footer>
+    <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
 
     </footer>
 </html>

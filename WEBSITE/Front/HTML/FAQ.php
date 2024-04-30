@@ -58,16 +58,9 @@
         </script>
     </body>
     <footer>
-            <div class="social-icons">
-                <a href="#"><img src="facebook.png" alt="Facebook"></a>
-                <a href="#"><img src="twitter.png" alt="Twitter"></a>
-                <a href="#"><img src="instagram.png" alt="Instagram"></a>
-            </div>
-            <div class="footer-text">
-                Réalisé par Eklypsse Sound
-            </div>
-            <div class="copyright">
-                Copyright © 2024
-            </div>
+    <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
     </footer>
 </html>
