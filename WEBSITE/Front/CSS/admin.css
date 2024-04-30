@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Montserrat", sans-serif;
+}
+
+.Admin{
+   cursor: pointer;
+   text-decoration: none;
+}
+
+a{
+   color: black;
+   text-decoration: underline;
+   width: 100px;
+   height: 100px;
+   cursor: pointer;
+}
+
+a:hover{
+   color: orange;
+}
+
+body{
+   background-color: aliceblue;
+   text-align: center;
+   min-height: 100vh;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+button[type="button"]{
+   border: 1px solid black;
+   padding: 10px;
+   display: inline-block;
+   margin: 10px auto;
+   border-radius: 10px;
+   background-color: #f2f2f2;
+   margin-top: 15px;
+   margin-left: 15px;
+   cursor: pointer;
+}
+
+button[type="button"]:hover{
+   border: 1px solid orange;
+   color: orange;
+}
+
+input[type="submit"]{
+   margin-top: 15px;
+   margin-left: 15px;
+   background-color: #f2f2f2;
+   color: black;
+   border: 1px solid #f2f2f2;
+   cursor: pointer;
+   border-radius: 10px;
+   padding: 5px;
+}
+
+input[type="submit"]:hover{
+   color: orange;
+   border: 1px solid orange;
+}
+
+form{
+   margin-top: 15px;
+   margin-left: 15px;   
+}
+
+input[type="text"], textarea {
+   margin: 10px 0; 
+   padding: 10px; 
+   width: 350px;
+   border: 1px solid #f2f2f2; 
+   border-radius: 5px; 
+}
+
+table {
+   border-collapse: collapse;
+   width: 80%; /* Largeur du tableau */
+   max-width: 800px; /* Largeur maximale du tableau */
+   margin: 20px auto 0; /* Centrer le tableau horizontalement */
+}
+
+th, td {
+   border: 1px solid black;
+   padding: 8px;
+   text-align: center;
+}
+
+th {
+   background-color: #f2f2f2;
+}
