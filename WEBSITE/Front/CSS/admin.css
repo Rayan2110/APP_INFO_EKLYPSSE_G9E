@@ -15,9 +15,10 @@
    margin-top: 100px;
    width: 100%;
    height: 35px;
+   color: black;
 }
 
-a{
+.Lien a{
    color: black;
    text-decoration: underline;
    width: 100px;
@@ -25,7 +26,7 @@ a{
    cursor: pointer;
 }
 
-a:hover{
+.Lien a:hover{
    color: orange;
 }
 
@@ -33,12 +34,12 @@ body{
    background-color: aliceblue;
    text-align: center;
    min-height: 100vh;
+   display: flex;
    flex-direction: column;
-   justify-content: center;
    align-items: center;
 }
 
-button[type="button"]{
+.Lien button[type="button"]{
    border: 1px solid black;
    padding: 10px;
    display: inline-block;
@@ -50,7 +51,7 @@ button[type="button"]{
    cursor: pointer;
 }
 
-button[type="button"]:hover{
+.Lien button[type="button"]:hover{
    border: 1px solid orange;
    color: orange;
 }
@@ -64,6 +65,7 @@ input[type="submit"]{
    cursor: pointer;
    border-radius: 10px;
    padding: 5px;
+   margin-bottom: 30px;
 }
 
 input[type="submit"]:hover{
@@ -99,4 +101,58 @@ th, td {
 
 th {
    background-color: #f2f2f2;
+}
+
+
+/* delete */
+
+.liste {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+.faq.active {
+   background-color: white;
+   max-width: 600px;
+   border-radius: 10px;
+   margin: 10px;
+   padding: 20px;
+   display: flex;
+   justify-content: center;
+}
+.fa-chevron-down.active2 {
+   transform: rotate(180deg); /* Rotation de 180 degrés lorsqu'il est actif */
+}
+.questRep {
+   display: flex;
+   flex-direction: column;
+   margin-right: 15px;
+}
+.accordion {
+   padding: 8px;
+   color: rgb(80, 80, 80);
+   border: 2px solid rgb(80, 80, 80);
+   border-radius: 10px;
+   cursor: pointer;
+}
+.accordion:hover {
+   color: rgb(0, 0, 0);
+   border: 2px solid rgb(0, 0, 0);
+}
+.pannel {
+   margin-top: 5px;
+   display: none;
+}
+.btnDelete {
+   color:rgb(250, 95, 95);
+   background-color : rgb(255, 255, 255);
+   border-radius: 10px;
+   border: 2px solid rgb(250, 95, 95);
+   padding: 8px;
+   cursor: pointer;
+}
+
+.btnDelete:hover {
+   background-color : rgb(255, 248, 248);
 }
