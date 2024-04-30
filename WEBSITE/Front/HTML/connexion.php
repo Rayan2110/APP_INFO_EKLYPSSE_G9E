@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@');
+$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
 if(isset($_POST['envoi'])){
     if(!empty($_POST['email']) and !empty($_POST['mdp'])){
         // Code à exécuter si les champs pseudo et mdp ne sont pas vides
@@ -33,7 +33,7 @@ if(isset($_POST['envoi'])){
             }
         }
         else{
-            echo '<script>alert("");</script>';
+            echo '<script>alert("Ce mail n\'est pas relié à un compte.");</script>';
         }
     }
     else{
