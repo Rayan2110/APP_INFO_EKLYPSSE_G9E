@@ -47,11 +47,15 @@ if (isset($_POST['supprimer'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/admin.css">
     <title>Document</title>
 </head>
 <body>
-<h1>Ajouter une section F.A.Q</h1>
-
+    
+<a href="admin.php" class="Admin" ><h1>Admin</h1></a>
+<br>
+<h2>Ajouter une section F.A.Q</h2>
+<br>
 
 <form method="POST" action="">
     <input type="text" name="question" placeholder="Question">
