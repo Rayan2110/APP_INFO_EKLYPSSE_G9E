@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@');
 if(isset($_POST['envoi'])){
     if(!empty($_POST['pseudo']) and !empty($_POST['mdp'])){
         $pseudo_par_defaut = "root";

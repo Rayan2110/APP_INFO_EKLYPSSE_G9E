@@ -1,3 +1,34 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/admin.css">
+    <title>Document</title>
+</head>
+<body>
+<?php
+                // Inclure le fichier header.php
+                include 'header.php';
+                ?>
+    
+<a href="admin.php" class="Admin" ><h1>Admin</h1></a>
+<br>
+<h2>Ajouter une section F.A.Q</h2>
+<br>
+
+<form method="POST" action="">
+    <input type="text" name="question" placeholder="Question">
+    <br/>
+    <textarea name="reponse" placeholder="Réponse"></textarea>
+    <br/>
+    <input type="submit" name="envoi">
+    <input type="submit" name="supprimer" value="Supprimer une section">
+</form>
+
 <?php
 if (isset($_POST['envoi'])) {
     if (!empty($_POST['question']) and !empty($_POST['reponse'])) {
@@ -40,31 +71,6 @@ if (isset($_POST['supprimer'])) {
 
 
 ?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/admin.css">
-    <title>Document</title>
-</head>
-<body>
-    
-<a href="admin.php" class="Admin" ><h1>Admin</h1></a>
-<br>
-<h2>Ajouter une section F.A.Q</h2>
-<br>
-
-<form method="POST" action="">
-    <input type="text" name="question" placeholder="Question">
-    <br/>
-    <textarea name="reponse" placeholder="Réponse"></textarea>
-    <br/>
-    <input type="submit" name="envoi">
-    <input type="submit" name="supprimer" value="Supprimer une section">
-</form>
 
 <script>
     var acc = document.getElementsByClassName("accordion");
