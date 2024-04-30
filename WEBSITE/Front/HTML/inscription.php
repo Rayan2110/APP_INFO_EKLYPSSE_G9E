@@ -132,40 +132,62 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=j, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../CSS/auth.css">
+    <link rel="stylesheet" href="../CSS/auth.css?id=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inscription</title>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
     <script type="text/javascript">
         function TexteCondition(){
             alert("Votre mot de passe doit au moins contenir : \n- 8 caractères\n- un majuscule\n- un minuscule\n- un chiffre\n- un caractère spécial")
         }
     </script>
-
 </head>
 <body>
-    <div class="font">
     <form action="" method="POST">
-        <label for="nom">Nom :</label>
-        <input type="text" name="nom" autocomplete="off" placeholder="Nom">
+        <h4>Inscription</h4>
+        <div class="row">
+            <input type="text" name="nom" class="nom" autocomplete="off" placeholder="nom">
+            <input type="text" name="pseudo" class="prenom" autocomplete="off" placeholder="Prenom"> 
+        </div>
         <br/>
-        <label for="prenom">Pseudo :</label>
-        <input type="text" name="pseudo" autocomplete="off" placeholder="Pseudo">
+        <input type="email" name="email" autocomplete="off" placeholder="Adresse mail">
+        <!--
+        <div class="select-box">
+            <div class="selected-option">
+                <div>
+                    <span class="iconify" data-icon="flag:gb-4x3"></span>
+                </div>
+                <input type="tel" name="tel" placeholder="Phone Number">
+            </div>
+            <div class="options">
+                <input type="text" class="search-box" placeholder="Search Country Name">
+                <ol>
+
+                </ol>
+            </div>
+        </div>
+            -->
+        <script src="scriptphone.js"></script>
+        </div>
         <br/>
-        <label for="email">Email :</label>
-        <input type="email" name="email" autocomplete="off" placeholder="Email" >
+        <label for="date_naissance" style="color: white;">Date de naissance</label>
+        <input type="date" name="date_naissance" placeholder="Date de naissance">
         <br/>
-        <label for="date_naissance">Date de naissance :</label>
-        <input type="date" name="date_naissance">
+        <button onclick="TexteCondition()" class="BoutonCondition" name="BontonCondition" style="margin-left:40px;width:100px;margin-bottom:5px" >Condition</button>
+        <input type="password" name="mdp" autocomplete="off" placeholder="Mot de Passe">
         <br/>
-        <label for="mdp">Mot de passe :</label>
-        <label for="condition" style="font-size: 12px">Votre mot de passe doit au moins contenir: <br> - 8 caractères<br>- majuscule<br>- minuscule<br> - chiffre<br> - caractère spécial</label>
-        <input type="password" name="mdp" autocomplete="off" placeholder="Mot de passe" >
+        <input type="password" name="cmdp" autocomplete="off" placeholder="Confirmer Mot de Passe">
         <br/>
-        <label for="cmdp">Confirmation de mot de passe :</label>
-        <input type="password" name='cmdp' autocomplete="off" placeholder="Confirmer mot de passe" >
-        <br/><br/>
-        <input type="submit" name="envoi" value="S'inscrire" >
-        <button type="button" name="Connecter" class="BoutonConnecter" onclick="document.location='connexion.php'">Se connecter</button>
+        <div class="row">
+            <input type="checkbox" name="cocheun" id="cocheun" >  
+            <label for="cocheun" style="color: white;font-size: 14px;text-align: left;" >Je confirme avoir lu et accepté les <a href="#" style="font-size: 14px;">conditions générales d'utilisation</a> et <a href="#" style="font-size: 14px">mentions légales</a></label>
+        </div> 
+        <input type="submit" name="envoi" >
+        <div class="row">
+        <button type="button" name="Retour" onclick="document.location='Evenement.php'" class="retour" style="width: 50%;margin-left: 40px ; height:27px">Retour</button>
+            <button type="button" name="Connecter" class="BoutonConnecter" onclick="document.location='connexion.php'" style="width: 50%; height:27px;margin-left:5px;margin-right: 40px">Se connecter</button>
+        </div>
     </form>
     </div>
 </body>

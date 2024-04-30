@@ -5,70 +5,44 @@ compte utilisateur. */
 @import url(header.css);
 
 /* Inscription */
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
 
-font{
+body{
+    background-image: url("../Images/Festivals_ete.jpg");
     background-color:  #17a2b8;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;   
+    flex-direction: column;
 }
+
 
 form{
     display: flex;
     flex-direction: column;
+    align-self: center;
+    margin-top: 100px;
     background-color: #fff;
+    width: 400px;
     padding: 10px;
     border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 50px rgba(0,0,0,0.2);
+    background-image: url("../Images/Festivals_ete.jpg");
+    
 }
 
-form .BoutonInscrire{
-    margin-top: 15px;
-    background-color: #17a2b8;
-    color: #fff;
-    border: 1px solid #17a2b8;
-    cursor: pointer;
-    border-radius: 10px;
-    height: 30px;
+.column {
+    display: flex;
+    flex-direction: column;
 }
 
-.BoutonInscrire:hover{
-    color: black;
-}
+.row {
+    display: flex;
+    flex-direction: row;
 
-form .BoutonConnecter{
-    margin-top: 15px;
-    background-color: #17a2b8;
-    color: #fff;
-    border: 1px solid #17a2b8;
-    cursor: pointer;
-    border-radius: 10px;
-    height: 30px;
-}
-
-.BoutonConnecter:hover{
-    color: black;
 }
 
 h4{
     text-align: center;
-    font-size: 20px;
-}
-
-hr{
-    margin: 10px 0;
-    background-color: #ccc;
-    border: 0;
-    height: 1px;
-    width: 100%;
-
+    font-size: 30px;
+    color: #fff;
 }
 
 .name-field{
@@ -89,15 +63,336 @@ hr{
 
 label{
     margin-bottom: 6px;
-
+    text-align: center;
 }
+
 
 input{
    margin-bottom: 5px; 
    padding: 5px;
    outline: 0;
+   width: 80%;
+   align-self: center;
    border: 1px solid rgba(0,0,0,0.4);
+   border-radius: 20px;
 }
+
+input[type=text],[type=email],[type=password]{
+    text-align: center;
+}
+
+input[type=date]{
+    text-align: center;
+    color:grey;
+}
+
+input:hover {
+    box-shadow:1px 1px 1px 1    px #17a2b8;
+    transition-duration: 1s;
+}
+
+input[type=submit]:active {
+    background-color: #1dcbe6;
+    transition-duration: 100ms;
+}
+
+::placeholder:hover {
+    opacity: 0.5;
+}
+
+::-webkit-input-placeholder:hover {
+    opacity: 0.5;
+}
+
+::-moz-placeholder:hover {
+    opacity: 0.5;
+}
+
+::-ms-placeholder:hover {
+    opacity: 0.5;
+}
+
+input:focus{
+    border: 1px solid #17a2b8;
+}
+
+
+
+::placeholder {
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+}
+
+::-moz-placeholder {
+    text-align: center;
+}
+
+::-ms-placeholder {
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    color: white;
+    margin-right: -60px;
+    margin-left: -50px;
+    padding-right: -5px;
+    border: 2px solid #648a4f;
+    border-radius: 4px;
+    align-self: flex-start;
+}
+
+
+
+input[type="submit"]{
+    margin-top: 15px;
+    background-color: #17a2b8;
+    color: #fff;
+    border: 1px solid #17a2b8;
+    cursor: pointer;
+}
+
+
+.nom{
+    border-radius: 20px 0px 0px 20px;
+    width: 150px;
+    margin-left: 36px;
+    margin-right: 6px;
+}
+
+.prenom{
+    border-radius: 0px 20px 20px 0px;
+    width: 150px;
+}
+
+.retour{
+    border-radius: 10px 0px 0px 20px;
+    background-color: #17a2b8;
+    border: none;
+    color: white;
+}
+
+.retour:active {
+    background-color: #1dcbe6;
+    transition-duration: 100ms;
+}
+
+
+
+
+.mdp{
+    border-radius: 5px 10px 15px 20px
+
+}
+
+.confirmer{
+
+    border-radius: 5px 10px 15px 20px
+
+}
+
+
+/*-------------------NUMERO TEL------------------ */
+
+
+
+.select-box {
+    position: relative;
+    width: 82%;
+    padding-top: 7px;
+    margin-top: 10px;
+    margin-left: 36px;
+}
+
+.select-box input {
+    width: 200%;
+    font-size: 12px;
+    border: .1rem solid transparent;
+    outline: none;
+    height: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+input[type="tel"] {
+    border-radius: 20px;
+}
+
+
+.selected-option {
+    background-color: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-option div{
+    position: relative;
+    padding: 0 15px 0 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.selected-option div::after{
+    position: absolute;
+    content: "";
+    right: .8rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: .8rem;
+    height: .8rem;
+    border-right: .12rem solid var(--primary);
+    border-bottom: .12rem solid var(--primary);
+
+    transition: .2s;
+}
+
+.selected-option div.active::after{
+    transform: translateY(-50%) rotate(225deg);
+}
+
+.select-box .options {
+    position: absolute;
+    top: 4rem;
+    width: 100%;
+    background-color: #fff;
+    border-radius: .5rem;
+
+    display: none;
+}
+
+.select-box .options.active {
+    display: block;
+}
+
+.select-box .options::before {
+    position: absolute;
+    content: "";
+    left: 1rem;
+    top: -1.2rem;
+    width: 0;
+    height: 0;
+    border: .6rem solid transparent;
+    border-bottom-color: var(--primary);
+}
+
+input.search-box {
+    align-self: center;
+    background-color: white;
+    border: 1px solid grey;
+    width: 290px;
+    color: black;
+    margin-left: 10px;
+    margin-right: 30px;
+    border-radius: .5rem .5rem 0 0;
+}
+
+.select-box ol {
+    list-style: none;
+    max-height: 23rem;
+    overflow: overlay;
+}
+
+.select-box ol::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+.select-box ol::-webkit-scrollbar-thumb {
+    width: 0.4rem;
+    height: 3rem;
+    background-color: #ccc;
+    border-radius: .4rem;
+}
+
+.select-box ol li {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.select-box ol li.hide {
+    display: none;
+}
+
+.select-box ol li:not(:last-child) {
+    border-bottom: .1rem solid #eee;
+}
+
+.select-box ol li:hover {
+    background-color: lightcyan;
+}
+
+.select-box ol li .country-name {
+    margin-left: 0px;
+}
+
+/*------*/
+form .BoutonCondition{
+    width: 70px ;
+    background-color: #17a2b8;
+    border: 1px solid #17a2b8;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.BoutonCondition:hover{
+    color: black;
+}
+
+form .BoutonInscrire{
+    margin-top: 15px;
+    background-color: #17a2b8;
+    color: #fff;
+    border: 1px solid #17a2b8;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 30px;
+}
+
+.BoutonInscrire:hover{
+    color: black;
+}
+
+form .BoutonConnecter{  
+    background-color: #17a2b8;
+    color: #fff;
+    border: 1px solid #17a2b8;
+    cursor: pointer;
+    border-radius: 0px 10px 20px 0px;
+    height: 30px;
+}
+
+.BoutonConnecter:hover{
+    color: black;
+}
+
+.BoutonConnecter:active{
+    background-color: #1dcbe6;
+    transition-duration: 100ms;
+}
+
+.name-field{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.name-field div{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.name-field div{
+    width: 49%; 
+}
+
 
 input:focus{
     border: 1px solid #17a2b8;
@@ -116,45 +411,13 @@ input[type="submit"]:hover{
     color: black;
 }
 
-p{
-    text-align: center;
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-p a {
-    text-decoration: 0;
-    color: #17a2b8;
-}
-
-p a:hover{
-    text-decoration: underline;
-
-}
-
-/* Login */
-
-
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(https://media.timeout.com/images/105976410/750/562/image.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
 .boutonconnexion{
     background-color: orangered; /* Couleur de fond */
     border: none; /* Pas de bordure */
     color: black; /* Couleur du texte */
-    padding: 15px 32px; /* Espacement à l'intérieur du bouton */
     text-align: center; /* Alignement du texte */
     text-decoration: none; /* Pas de soulignement */
-    display: inline-block; /* Afficher en ligne */
     font-size: 16px; /* Taille de la police */
-    margin: 4px 2px; /* Marge autour du bouton */
     cursor: pointer; /* Curseur au survol */
     border-radius: 10px; /* Bordure arrondie */
 }
@@ -253,11 +516,6 @@ body{
 
 }
 
-.register-link p a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-}
 
 .register-link p a:hover {
     text-decoration:  underline;
