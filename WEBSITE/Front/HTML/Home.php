@@ -188,7 +188,10 @@
         
         </main>
         <footer>
-            <!-- Contenu du pied de page -->
+        <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
         </footer>
         
         </body>

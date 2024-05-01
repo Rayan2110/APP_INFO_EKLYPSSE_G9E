@@ -7,6 +7,10 @@
     <title>Eklypsse</title>
 </head>
 <body>
+<?php
+                // Inclure le fichier header.php
+                include 'header.php';
+                ?>
     <a href="admin.php" class="Admin" ><h1>Admin</h1></a>
     <br>
     <div class="Lien" >
