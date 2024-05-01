@@ -21,7 +21,7 @@
         // Connexion à la base de données
 
         // Connexion
-        $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@');
+        $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
 
         $requete = "SELECT * FROM users";
         $resultat = $bdd->query($requete);
@@ -70,4 +70,10 @@
     ?>
 
 </body>
+<footer>
+    <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
+    </footer>
 </html>

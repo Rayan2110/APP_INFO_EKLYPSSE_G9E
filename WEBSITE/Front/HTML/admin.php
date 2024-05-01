@@ -18,4 +18,10 @@
         <button type="button" name="AfficherUser" class="AfficherUser" ><a href="afficher_utilisateur.php">Afficher les utilisateurs</a></button>
     </div>
 </body>
+<footer>
+    <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
+    </footer>
 </html>
