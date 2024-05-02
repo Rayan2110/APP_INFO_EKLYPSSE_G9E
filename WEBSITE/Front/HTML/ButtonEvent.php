@@ -26,6 +26,7 @@
             <label for="prix">Prix par jour (€):</label>
             <input type="number" id="prix" name="prix" ><br><br>
             <input type="submit" name="envoi" value="Ajouter l'événement" >
+            <button type="button" name="admin" class="admin" ><a href="admin.php">Retour</a></button>
         </form>
     </div>
    <!-- <script src="ajouter_evenement.js" defer></script> -->

@@ -57,8 +57,8 @@ if(isset($_POST['envoi'])){
     <label for="password">Mot de passe :</label>
     <input type="password" name="mdp" autocomplete="off" placeholder="Mot de passe" >
     <br/><br/>
-    <button type="button" name="Inscrire" class="BoutonInscrire" onclick="document.location='inscription.php'">S'inscrire</button>
     <input type="submit" name="envoi" value="Se Connecter">
+    <button type="button" name="Inscrire" class="BoutonInscrire" onclick="document.location='inscription.php'">S'inscrire</button>
     <button type="button" name = "Retour" class= "BoutonRetour" onclick="window.location.href='Home.php'"> Retour </button>
 </form> 
 </body>

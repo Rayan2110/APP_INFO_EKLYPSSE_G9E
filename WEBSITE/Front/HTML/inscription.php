@@ -78,7 +78,6 @@ if(isset($_POST['envoi'])){
             } 
         } 
     } else {
-        echo '<script>alert("Veuillez remplir tous les champs...");</script>';
     }
 }
 
@@ -127,46 +126,161 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
 }
 ?>
 
+<script>
+    function validateForm() {
+        // Récupération des valeurs des champs
+        var nom = document.forms["monFormulaire"]["nom"].value;
+        var pseudo = document.forms["monFormulaire"]["pseudo"].value;
+        var email = document.forms["monFormulaire"]["email"].value;
+        var date_naissance = document.forms["monFormulaire"]["date_naissance"].value;
+        var mdp = document.forms["monFormulaire"]["mdp"].value;
+        var cmdp = document.forms["monFormulaire"]["cmdp"].value;
+        var checkbox = document.forms["monFormulaire"]["cocheun"];
+
+
+        // Vérification des autres champs
+        if (nom == "") {
+            alert("Veuillez entrer votre nom.");
+            return false;
+        }
+        if (nom.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+            alert("Le prénom ne doit pas contenir de caractères spéciaux.");
+            return false;
+        }
+        if (pseudo == "") {
+            alert("Veuillez entrer votre prénom.");
+            return false;
+        }
+        if (pseudo.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+            alert("Le prénom ne doit pas contenir de caractères spéciaux.");
+            return false;
+        }
+        if (email == "") {
+            alert("Veuillez entrer votre adresse email.");
+            return false;
+        }
+
+
+        if (date_naissance == "") {
+            alert("Veuillez entrer votre date de naissance.");
+            return false;
+        }
+        if (mdp == "") {
+            alert("Veuillez entrer votre mot de passe.");
+            return false;
+        }
+        if (mdp.length < 8) {
+            alert("Votre mot de passe doit contenir au moins 8 caractères.");
+            return false;
+        }
+
+        if (!mdp.match(/[A-Z]/)) {
+            alert("Votre mot de passe ne contient pas de majuscule");
+            return false;
+        }
+
+        // Vérification de la présence d'au moins un caractère minuscule
+        if (!mdp.match(/[a-z]/)) {
+            alert("Votre mot de passe ne contient pas de minuscule");
+            return false;
+        }
+
+        // Vérification de la présence d'au moins un chiffre
+        if (!mdp.match(/[0-9]/)) {
+            alert("Votre mot de passe ne contient pas de chiffre");
+            return false;
+        }
+
+        if (!mdp.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+            alert("Votre mot de passe doit contenir au moins un caractère spécial.");
+            return false;
+        }
+
+        if (cmdp == "") {
+            alert("Veuillez confirmer votre mot de passe.");
+            return false;
+        }
+
+        // Vérification du mot de passe et de sa confirmation
+        if (mdp !== cmdp) {
+            alert("Les mots de passe ne correspondent pas.");
+            return false;
+        }
+
+        // Vérification de la case à cocher
+        if (!checkbox.checked) {
+            alert("Veuillez accepter les conditions générales d'utilisation.");
+            return false;
+        }
+
+        // Si toutes les validations passent, le formulaire est valide
+        return true;
+    }
+</script>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=j, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../CSS/auth.css">
+    <link rel="stylesheet" href="../CSS/inscription.css?id=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inscription</title>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
 
     <script type="text/javascript">
         function TexteCondition(){
             alert("Votre mot de passe doit au moins contenir : \n- 8 caractères\n- un majuscule\n- un minuscule\n- un chiffre\n- un caractère spécial")
         }
     </script>
-
 </head>
 <body>
-    <div class="font">
-    <form action="" method="POST">
-        <label for="nom">Nom :</label>
-        <input type="text" name="nom" autocomplete="off" placeholder="Nom">
+    <form id="monFormulaire"  action="" method="POST" onsubmit="return validateForm();">
+        <h4>Inscription</h4>
+        <div class="row">
+            <input type="text" name="nom" class="nom" autocomplete="off" placeholder="nom">
+            <input type="text" name="pseudo" class="prenom" autocomplete="off" placeholder="Prenom"> 
+        </div>
         <br/>
-        <label for="prenom">Pseudo :</label>
-        <input type="text" name="pseudo" autocomplete="off" placeholder="Pseudo">
+        <input type="email" name="email" autocomplete="off" placeholder="Adresse mail">
+        <!--
+        <div class="select-box">
+            <div class="selected-option">
+                <div>
+                    <span class="iconify" data-icon="flag:gb-4x3"></span>
+                </div>
+                <input type="tel" name="tel" placeholder="Phone Number">
+            </div>
+            <div class="options">
+                <input type="text" class="search-box" placeholder="Search Country Name">
+                <ol>
+
+                </ol>
+            </div>
+        </div>
+            -->
+        <script src="scriptphone.js"></script>
+        </div>
         <br/>
-        <label for="email">Email :</label>
-        <input type="email" name="email" autocomplete="off" placeholder="Email" >
+        <label for="date_naissance" style="color: white;">Date de naissance</label>
+        <input type="date" name="date_naissance" placeholder="Date de naissance">
         <br/>
-        <label for="date_naissance">Date de naissance :</label>
-        <input type="date" name="date_naissance">
+        <button onclick="TexteCondition()" class="BoutonCondition" name="BontonCondition" style="margin-left:40px;width:100px;margin-bottom:5px" >Condition</button>
+        <input type="password" name="mdp" autocomplete="off" placeholder="Mot de Passe">
         <br/>
-        <label for="mdp">Mot de passe :</label>
-        <label for="condition" style="font-size: 12px">Votre mot de passe doit au moins contenir: <br> - 8 caractères<br>- majuscule<br>- minuscule<br> - chiffre<br> - caractère spécial</label>
-        <input type="password" name="mdp" autocomplete="off" placeholder="Mot de passe" >
+        <input type="password" name="cmdp" autocomplete="off" placeholder="Confirmer Mot de Passe">
         <br/>
-        <label for="cmdp">Confirmation de mot de passe :</label>
-        <input type="password" name='cmdp' autocomplete="off" placeholder="Confirmer mot de passe" >
-        <br/><br/>
-        <input type="submit" name="envoi" value="S'inscrire" >
-        <button type="button" name="Connecter" class="BoutonConnecter" onclick="document.location='connexion.php'">Se connecter</button>
-        <button type="button" name = "Retour" class= "BoutonRetour" onclick="window.location.href='Home.php'"> Retour </button>
+        <div class="row">
+            <input type="checkbox" name="cocheun" id="cocheun" >  
+            <label for="cocheun" style="color: white;font-size: 14px;text-align: left;" >Je confirme avoir lu et accepté les <a href="uploads/CGU.pdf" target="_blank" style="font-size: 14px;">conditions générales d'utilisation</a> et <a href="uploads/MentionsLegales.pdf  " target="_blank" style="font-size: 14px">mentions légales</a></label>
+        </div> 
+        <input type="submit" name="envoi" >
+        <div class="row">
+        <button type="button" name="Retour" onclick="document.location='Evenement.php'" class="retour" style="width: 50%;margin-left: 40px ; height:27px">Retour</button>
+            <button type="button" name="Connecter" class="BoutonConnecter" onclick="document.location='connexion.php'" style="width: 50%; height:27px;margin-left:5px;margin-right: 40px">Se connecter</button>
+        </div>
     </form>
     </div>
 </body>
