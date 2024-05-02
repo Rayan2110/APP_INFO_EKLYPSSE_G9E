@@ -32,7 +32,9 @@
             if(isset($_SESSION['pseudo'])) {
                 echo '<li><a href="Carte.php">Carte</a></li>';
             }
-            
+            if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' ) {
+                echo '<li><a href="admin.php">Admin</a></li>';
+            } 
         ?>
 
 
