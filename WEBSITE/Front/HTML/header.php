@@ -33,10 +33,6 @@
                 echo '<li><a href="Carte.php">Carte</a></li>';
             }
             
-            if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' && isset($_SESSION['mdp']) && $_SESSION['mdp'] === 'root') {
-                echo '<li><a href="Admin.php">Admin</a></li>';
-            }
-            
         ?>
 
 
@@ -55,6 +51,12 @@
             </li>
         </ul>
     </div>
+        <?php
+        if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' && isset($_SESSION['mdp']) && $_SESSION['mdp'] === 'root') {
+            echo '<li><a href="admin.php"><i class="fa-solid fa-user-gear"></i></a></li>';
+        } 
+        ?>
+
     <div class="action-btn-container">
     <?php
         if(isset($_SESSION['id'])) {

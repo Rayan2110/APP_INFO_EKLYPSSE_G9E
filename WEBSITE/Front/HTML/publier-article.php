@@ -46,9 +46,11 @@ if (isset($_POST['supprimer'])) {
     $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
 
     ?>
-    <h2>Liste des F.A.Q</h2> 
+    <div class="deleteHeader">
+        <h2>Liste des F.A.Q</h2>
+        <!-- <button class="closeBtn"><i class='bx bx-x'></i> Fermer</button> -->
+    </div>
     <div class="liste">
-
     <?php
     $recupArticle = $bdd->query('SELECT * FROM faq');
     while ($article = $recupArticle->fetch()) {
@@ -75,7 +77,12 @@ if (isset($_POST['supprimer'])) {
 }
 ?>
 </div>
-
+<footer>
+    <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
+    </footer>
 
 <script>
     var acc = document.getElementsByClassName("accordion");
@@ -96,5 +103,7 @@ if (isset($_POST['supprimer'])) {
             }
         });
     }
+
 </script>
+
 </body>

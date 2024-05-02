@@ -47,7 +47,7 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
 
         try {
             // Préparation et exécution de la requête SQL
-            $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@');
+            $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
             $stmt = $bdd->prepare("INSERT INTO evenements (nom, localisation, date_début, date_fin, prix) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute(array($nom, $localisation, $date_debut, $date_fin, $prix));
             
