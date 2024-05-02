@@ -17,6 +17,7 @@
         <button type="button" name="PublierArticle" class="PublierArticle" ><a href="publier-article.php">Publier une article</a></button>
         <button type="button" name="AfficherUser" class="AfficherUser" ><a href="afficher_utilisateur.php">Afficher les utilisateurs</a></button>
         <button type="button" name="ButtonEvent" class="ButtonEvent" ><a href="ButtonEvent.php">Ajouter un evenement</a></button>
+        <button type="button" name="CGU" class="CGU" ><a href="gestion-cgu.php">Modifier les CGU et mentions légales</a></button>
     </div>
 </body>
 <footer>

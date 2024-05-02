@@ -14,8 +14,9 @@
 <header>
     <div class="logos">
         <div class="logoEklypsse">
-            <a href="Home.php">Eklypsse</a> 
+            <img src="../Images/logo.png">
         </div>
+        <a href="Home.php" style="margin-left:5px;font-size:22px;color:rgb(249, 186, 68);">SonoFest</a> 
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,300,250">
         <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M7.71875,6.28125l-1.4375,1.4375l17.28125,17.28125l-17.28125,17.28125l1.4375,1.4375l17.28125,-17.28125l17.28125,17.28125l1.4375,-1.4375l-17.28125,-17.28125l17.28125,-17.28125l-1.4375,-1.4375l-17.28125,17.28125z"></path></g></g>
         </svg>
@@ -64,7 +65,7 @@
         if(isset($_SESSION['id'])) {
             echo '<a href="deconnexion.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
         } else {
-            echo '<a href="connexion.php" class="action_btn">Se connecter</a>';
+            echo '<a href="connexion.php" class="action_btn">Se connecter / S\'inscrire</a>';
         }
     ?>
     </div>

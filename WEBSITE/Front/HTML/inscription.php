@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', 'Yanis2425262@');
+$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
 if(isset($_POST['envoi'])){
     if(!empty($_POST['nom']) and !empty($_POST['mdp']) and !empty($_POST['pseudo']) and !empty($_POST['email']) and !empty($_POST['date_naissance']) and !empty($_POST['cmdp'])){
         $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -274,7 +274,7 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
         <br/>
         <div class="row">
             <input type="checkbox" name="cocheun" id="cocheun" >  
-            <label for="cocheun" style="color: white;font-size: 14px;text-align: left;" >Je confirme avoir lu et accepté les <a href="#" style="font-size: 14px;">conditions générales d'utilisation</a> et <a href="#" style="font-size: 14px">mentions légales</a></label>
+            <label for="cocheun" style="color: white;font-size: 14px;text-align: left;" >Je confirme avoir lu et accepté les <a href="uploads/CGU.pdf" target="_blank" style="font-size: 14px;">conditions générales d'utilisation</a> et <a href="uploads/MentionsLegales.pdf  " target="_blank" style="font-size: 14px">mentions légales</a></label>
         </div> 
         <input type="submit" name="envoi" >
         <div class="row">
