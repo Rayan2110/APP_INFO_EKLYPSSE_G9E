@@ -127,12 +127,119 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
 }
 ?>
 
+<script>
+    function validateForm() {
+        // Récupération des valeurs des champs
+        var nom = document.forms["monFormulaire"]["nom"].value;
+        var pseudo = document.forms["monFormulaire"]["pseudo"].value;
+        var email = document.forms["monFormulaire"]["email"].value;
+        var date_naissance = document.forms["monFormulaire"]["date_naissance"].value;
+        var mdp = document.forms["monFormulaire"]["mdp"].value;
+        var cmdp = document.forms["monFormulaire"]["cmdp"].value;
+        var checkbox = document.forms["monFormulaire"]["cocheun"];
+
+
+        // Vérification des autres champs
+        if (nom == "") {
+            alert("Veuillez entrer votre nom.");
+            return false;
+        }
+        if (nom.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+            alert("Le prénom ne doit pas contenir de caractères spéciaux.");
+            return false;
+        }
+        if (pseudo == "") {
+            alert("Veuillez entrer votre prénom.");
+            return false;
+        }
+        if (pseudo.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+            alert("Le prénom ne doit pas contenir de caractères spéciaux.");
+            return false;
+        }
+        if (email == "") {
+            alert("Veuillez entrer votre adresse email.");
+            return false;
+        }
+
+        <?php 
+        $email = htmlspecialchars($_POST['email']);
+
+        // Vérification s'il y a un doublon pour l'email donné
+        $verifEmail = $bdd->prepare('SELECT * FROM users WHERE email = ?');
+        $verifEmail->execute(array($email));
+        $verifDoublon = $verifEmail->rowCount();
+
+        if($verifDoublon !== 0){
+            echo '<script>alert("Un compte avec cet email existe déjà.");</script>';
+            return false;
+        }
+        ?>
+
+        if (date_naissance == "") {
+            alert("Veuillez entrer votre date de naissance.");
+            return false;
+        }
+        if (mdp == "") {
+            alert("Veuillez entrer votre mot de passe.");
+            return false;
+        }
+        if (mdp.length < 8) {
+            alert("Votre mot de passe doit contenir au moins 8 caractères.");
+            return false;
+        }
+
+        if (!mdp.match(/[A-Z]/)) {
+            alert("Votre mot de passe ne contient pas de majuscule");
+            return false;
+        }
+
+        // Vérification de la présence d'au moins un caractère minuscule
+        if (!mdp.match(/[a-z]/)) {
+            alert("Votre mot de passe ne contient pas de minuscule");
+            return false;
+        }
+
+        // Vérification de la présence d'au moins un chiffre
+        if (!mdp.match(/[0-9]/)) {
+            alert("Votre mot de passe ne contient pas de chiffre");
+            return false;
+        }
+
+        if (!mdp.match(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/)) {
+            alert("Votre mot de passe doit contenir au moins un caractère spécial.");
+            return false;
+        }
+
+        if (cmdp == "") {
+            alert("Veuillez confirmer votre mot de passe.");
+            return false;
+        }
+
+        // Vérification du mot de passe et de sa confirmation
+        if (mdp !== cmdp) {
+            alert("Les mots de passe ne correspondent pas.");
+            return false;
+        }
+
+        // Vérification de la case à cocher
+        if (!checkbox.checked) {
+            alert("Veuillez accepter les conditions générales d'utilisation.");
+            return false;
+        }
+
+        // Si toutes les validations passent, le formulaire est valide
+        return true;
+    }
+</script>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=j, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/auth.css?id=1">
+    <link rel="stylesheet" href="../CSS/inscription.css?id=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Inscription</title>
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
@@ -144,7 +251,7 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
     </script>
 </head>
 <body>
-    <form action="" method="POST">
+    <form id="monFormulaire"  action="" method="POST" onsubmit="return validateForm();">
         <h4>Inscription</h4>
         <div class="row">
             <input type="text" name="nom" class="nom" autocomplete="off" placeholder="nom">
