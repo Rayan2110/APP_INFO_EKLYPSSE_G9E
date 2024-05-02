@@ -40,6 +40,14 @@ slideIndex['slider7'] = 1;
 slideIndex['slider8'] = 1;
 slideIndex['slider9'] = 1;
 slideIndex['slider10'] = 1;
+slideIndex['slider11'] = 1;
+slideIndex['slider12'] = 1;
+slideIndex['slider13'] = 1;
+slideIndex['slider14'] = 1;
+slideIndex['slider15'] = 1;
+slideIndex['slider16'] = 1;
+slideIndex['slider17'] = 1;
+slideIndex['slider18'] = 1;
 slideIndex['slider20'] = 1;
 
 showSlides(slideIndex['slider1'], 'slider1');
@@ -52,6 +60,14 @@ showSlides(slideIndex['slider7'], 'slider7');
 showSlides(slideIndex['slider8'], 'slider8');
 showSlides(slideIndex['slider9'], 'slider9');
 showSlides(slideIndex['slider10'], 'slider10');
+showSlides(slideIndex['slider11'], 'slider11');
+showSlides(slideIndex['slider12'], 'slider12');
+showSlides(slideIndex['slider13'], 'slider13');
+showSlides(slideIndex['slider14'], 'slider14');
+showSlides(slideIndex['slider15'], 'slider15');
+showSlides(slideIndex['slider16'], 'slider16');
+showSlides(slideIndex['slider17'], 'slider17');
+showSlides(slideIndex['slider18'], 'slider18');
 showSlides(slideIndex['slider20'], 'slider20');
 
 
@@ -211,4 +227,4 @@ searchInput.addEventListener('blur', () => {
 });
 
 
-
+/* format date */

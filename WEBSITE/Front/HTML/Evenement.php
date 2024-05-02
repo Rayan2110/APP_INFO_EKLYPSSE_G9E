@@ -187,60 +187,6 @@
                     </ul>
                     <i id="right-carousel1" class="fa-solid fa-angle-right arrow"></i>
                   
-
-                    <!-- <div class="details" id="detail1">
-
-                        <div class="leftSide">
-                            <h2>Solidays</h2>
-                            <div class="lieuDate">
-                                <span><i class="fa-solid fa-location-dot"></i> Paris-Longchamp</span>    
-                                <span><i class="fa-solid fa-calendar-days"></i> 28 - 30 juin 2024</span>                          
-                            </div>
-                            <div class="resume">
-                                <h4><i class="fa-regular fa-pen-to-square"></i> Description</h4>
-                                <p>Solidays est un festival de musique organisé par l’association Solidarité sida. Depuis 1999, il rassemble des artistes, conférenciers, militants et festivaliers. 
-                                    Durant les « 3 jours de musique et de solidarité » promis par les organisateurs, les bénéfices récoltés permettent de financer des programmes de prévention et d’aide aux malades du SIDA dans 21 pays.
-                                </p>
-                            </div>
-                            <div class="artists">
-                                <h4><i class="fa-solid fa-music"></i> Artistes</h4>
-                                <p>GAZO & TIAKOLA - MARTIN GARRIX - PLK - MIKA - ZOLA - SDM - POMME - LOUISE ATTAQUE - WERENOI - CHARLOTTE CARDIN - LA FEVE - DIPLO - URUMI - VIENS LA FETE - TIF - SANTA - JETLAG GANG - SAM SMITH - ZAMDANE - SO LA LUNE - LA DARUDE - TRINIX - LAURENT GARNIER - STYLETO - BABY VOLCANO</p>
-                            </div>
-                        </div>
-                        <div class="middleSide">
-                            <h4><i class="fa-solid fa-ticket"></i> Billetterie</h4>
-                            <span>180 &#8364;</span>
-                            <button class="cartButton">Ajouter au panier</button>
-                            <button class="favButton">Ajouter aux favoris <i class="fa-regular fa-heart"></i></button>
-                        </div>
-                        <div class="rightSide" id="slider2">
-                            <div class="slide-container" >
-                                <div class="custom-slider fade">
-                                    <div class="slide-index">1 / 3</div>
-                                    <img class="slide-img2" src="https://www.solidays.org/wp-content/uploads/2022/01/riles_1140_500_px-1140x570.jpg">
-                                    <div class="slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-                                </div>
-                                <div class="custom-slider fade">
-                                    <div class="slide-index">2 / 3</div>
-                                    <img class="slide-img2" src="https://www.guettapen.com/wp-content/uploads/2023/11/363420158_660100122812004_8265898842019057879_n.jpeg">
-                                    <div class="slide-text">Nullam luctus aliquam ornare.</div>
-                                </div>
-                                <div class="custom-slider fade">
-                                    <div class="slide-index">3 / 3</div>
-                                    <img class="slide-img2" src="https://www.soonnight.com/images/editor/1/fichiers/images/hippodrome-de-longchamp-l-773597_103.jpg">
-                                    <div class="slide-text">Praesent lobortis libero sed egestas suscipit.</div>
-                                </div>
-                                <a class="prev" onclick="plusSlide(-1, 'slider2')">&#10094;</a>
-                                <a class="next" onclick="plusSlide(1, 'slider2')">&#10095;</a>
-                            </div>
-                            <br>
-                            <div class="slide-dot">
-                                <span class="dot" onclick="currentSlide(1, 'slider2')"></span>
-                                <span class="dot" onclick="currentSlide(2, 'slider2')"></span>
-                                <span class="dot" onclick="currentSlide(3, 'slider2')"></span>
-                            </div>
-                        </div>
-                    </div> -->
                     
                     <?php foreach ($festivals as $festival): ?>
                     <div class="details" id="detail<?= $festival['id'] ?>">
@@ -299,91 +245,89 @@
                     </div>
                     <?php endforeach; ?>
 
-                    <!-- <div class="details" id="detail2">
-                        <h2>Rock en Seine</h2>
-                    </div> -->
-                    
-
                 </div>
+
+
+                <?php  
+            $fest = $bdd->query("SELECT * FROM evenements WHERE type = 1;");
+            $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
+             ?>
 
                 <div class="content-fest">
-                    <h3>Festivals de Rap - Hip-hop</h3>
+                    <h3>Festivals de Hip-hop / Rap</h3>
                     <i id="left-carousel2" class="fa-solid fa-angle-left arrow"></i>
-                    <ul class="carousel-container  carousel2">
-                        <li class="card">
-                            <div class="img"><img src="https://www.lalibre.be/resizer/sm6KnxernBa1o26E-RAez0VBQWI=/1200x800/filters:format(jpeg):focal(895x556.5:905x546.5)/cloudfront-eu-central-1.images.arcpublishing.com/ipmgroup/V2SHFWTCCBAWZABISSQV7TXGGY.jpg" alt="img" draggable="false"></div>
-                            <h2>Les Ardentes</h2>
-                            <span>Liège (BE)</span>
-                            <span>11-14 juillet</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
+                    <ul class="carousel-container carousel2">
+                        <?php foreach ($festivals as $festival): ?>
+                        <li class="card" data-target="detail<?= $festival['id'] ?>">
+                            <div class="img"><img src="<?= $festival['image'] ?>" alt="img" draggable="false"></div>
+                            <h2><?= $festival['nom'] ?></h2>
+                            <span><?= $festival['localisation'] ?></span>
+                            <span><?= date('j-n Y', strtotime($festival['date_début'])) ?> - <?= date('j-n Y', strtotime($festival['date_fin'])) ?></span>
+                            <span class="price"><strong><?= $festival['prix'] ?> &#8364;</strong> par jour</span>
+                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
                         </li>
-                        <li class="card">
-                            <div class="img"><img src="https://statics-infoconcert.digitick.com/media/a_effacer/lollapalooza_foule_visunews1222.jpg" alt="img" draggable="false"></div>
-                            <h2>Lollapalooza</h2>
-                            <span>Paris-Longchamp</span>
-                            <span>5-7 juillet</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://www.quotidien-libre.fr/wp-content/uploads/2023/12/jfjhgkhgkhjkh-350x250.png" alt="img" draggable="false"></div>
-                            <h2>Golden Coast Festival</h2>
-                            <span>Dijon</span>
-                            <span>13-14 septembre</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://www.guettapen.com/wp-content/uploads/2019/06/Solidays-2019-2.jpg" alt="img" draggable="false"></div>
-                            <h2>Solidays</h2>
-                            <span>Paris-Longchamp</span>
-                            <span>28-30 juin</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://chorus.hauts-de-seine.fr/wp-content/uploads/2023/04/4.jpg" alt="img" draggable="false"></div>
-                            <h2>Festival Chorus</h2>
-                            <span>Boulogne-Billancourt</span>
-                            <span>20-24 mars</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_1500,h_1000/https://krumpp.fr/wp-content/uploads/2023/05/@MAXLMNR_BOOMIN-FEST_-RENNES_10.jpg" alt="img" draggable="false"></div>
-                            <h2>Boomin Fest</h2>
-                            <span>Rennes</span>
-                            <span>19-20 avril</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://www.touslesfestivals.com/uploads/acfd9d1c8d8474d6072d856214f118efeb2e425b/b6392eeabb61a5426766f317a278f9df6e1ae963.jpg" alt="img" draggable="false"></div>
-                            <h2>Les Paradis Artificiels</h2>
-                            <span>Lille</span>
-                            <span>1-2 juin</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://www.jds.fr/medias/image/festival-marsatac-2-228912-1200-630.jpg" alt="img" draggable="false"></div>
-                            <h2>Marsatac</h2>
-                            <span>Marseille</span>
-                            <span>14-16 juin</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://static.actu.fr/uploads/2023/06/boby-boby-l1470093.jpg" alt="img" draggable="false"></div>
-                            <h2>Rose Festival</h2>
-                            <span>Aussonne</span>
-                            <span>29 août-1 septembre 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Les_3_%C3%A9l%C3%A9phants_2022_-_Laylow_%28c%29Alexis_Janicot.jpg" alt="img" draggable="false"></div>
-                            <h2>Les 3 éléphants</h2>
-                            <span>Laval</span>
-                            <span>26 mai-2 juin</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                        </li>
+                        <?php endforeach; ?>
                     </ul>
                     <i id="right-carousel2" class="fa-solid fa-angle-right arrow"></i>
-                </div>
 
+                    <?php foreach ($festivals as $festival): ?>
+                    <div class="details" id="detail<?= $festival['id'] ?>">
+
+                        <div class="leftSide">
+                            <h2><?= htmlspecialchars($festival['nom']) ?></h2>
+                            <div class="lieuDate">
+                                <span><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($festival['localisation']) ?></span>    
+                                <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('j - n Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('j - n Y', strtotime($festival['date_fin']))) ?></span>                          
+                            </div>
+                            <div class="resume">
+                                <h4><i class="fa-regular fa-pen-to-square"></i> Description</h4>
+                                <p><?= htmlspecialchars($festival['description']) ?></p>
+                            </div>
+                            <div class="artists">
+                                <h4><i class="fa-solid fa-music"></i> Artistes</h4>
+                                <p><?= htmlspecialchars($festival['artistes']) ?></p>
+                            </div>
+                        </div>
+                        
+                        <div class="middleSide">
+                            <h4><i class="fa-solid fa-ticket"></i> Billetterie</h4>
+                            <span><?= htmlspecialchars($festival['prix']) ?> &#8364;</span>
+                            <button class="cartButton">Ajouter au panier</button>
+                            <button class="favButton">Ajouter aux favoris <i class="fa-regular fa-heart"></i></button>
+                        </div>
+
+                        <div class="rightSide" id="slider<?= $festival['id'] ?>">
+                            <div class="slide-container">
+                                <div class="custom-slider fade">
+                                    <div class="slide-index">1 / 3</div>
+                                    <img class="slide-img2" src="<?= htmlspecialchars($festival['imageDetail1']) ?>">
+                                    <div class="slide-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                                </div>
+                                <div class="custom-slider fade">
+                                    <div class="slide-index">2 / 3</div>
+                                    <img class="slide-img2" src="<?= htmlspecialchars($festival['imageDetail2']) ?>">
+                                    <div class="slide-text">Nullam luctus aliquam ornare.</div>
+                                </div>
+                                <div class="custom-slider fade">
+                                    <div class="slide-index">3 / 3</div>
+                                    <img class="slide-img2" src="<?= htmlspecialchars($festival['imageDetail3']) ?>">
+                                    <div class="slide-text">Praesent lobortis libero sed egestas suscipit.</div>
+                                </div>
+                                <a class="prev" onclick="plusSlide(-1, 'slider<?= $festival['id'] ?>')">&#10094;</a>
+                                <a class="next" onclick="plusSlide(1, 'slider<?= $festival['id'] ?>')">&#10095;</a>
+                            </div>
+                        
+                            <br>
+                            <div class="slide-dot">
+                                <span class="dot" onclick="currentSlide(1, 'slider<?= $festival['id'] ?>')"></span>
+                                <span class="dot" onclick="currentSlide(2, 'slider<?= $festival['id'] ?>')"></span>
+                                <span class="dot" onclick="currentSlide(3, 'slider<?= $festival['id'] ?>')"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>                    
+
+                </div>
 
                 <div class="content-fest">
                     <h3>Festivals de Rock</h3>
