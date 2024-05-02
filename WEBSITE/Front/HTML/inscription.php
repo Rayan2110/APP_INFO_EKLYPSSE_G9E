@@ -78,7 +78,6 @@ if(isset($_POST['envoi'])){
             } 
         } 
     } else {
-        echo '<script>alert("Veuillez remplir tous les champs...");</script>';
     }
 }
 
@@ -161,19 +160,6 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
             return false;
         }
 
-        <?php 
-        $email = htmlspecialchars($_POST['email']);
-
-        // Vérification s'il y a un doublon pour l'email donné
-        $verifEmail = $bdd->prepare('SELECT * FROM users WHERE email = ?');
-        $verifEmail->execute(array($email));
-        $verifDoublon = $verifEmail->rowCount();
-
-        if($verifDoublon !== 0){
-            echo '<script>alert("Un compte avec cet email existe déjà.");</script>';
-            return false;
-        }
-        ?>
 
         if (date_naissance == "") {
             alert("Veuillez entrer votre date de naissance.");
