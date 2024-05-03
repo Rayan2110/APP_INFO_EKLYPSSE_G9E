@@ -686,3 +686,9 @@ section#hero {
     font-size: 2.5rem;
     padding: 0px;
 }
+
+/* carte */
+
+.carteContent {
+    min-height: 600px;
+}

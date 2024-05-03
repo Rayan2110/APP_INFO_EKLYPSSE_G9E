@@ -13,6 +13,9 @@
                 // Inclure le fichier header.php
                 include 'header.php';
                 ?>
+        <div class="carteContent" style="min-height: 600px;">
+            <!-- <h2> Carte </h2> -->
+        </div>
 
     </body>
     <footer>

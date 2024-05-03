@@ -16,7 +16,7 @@
                 // Inclure le fichier header.php
                 include 'header.php';
 
-                $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', 'Yanis2425262@');
+                $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
 
                 $recupArticle = $bdd->query('SELECT * FROM faq');
                 while($article = $recupArticle->fetch()){
