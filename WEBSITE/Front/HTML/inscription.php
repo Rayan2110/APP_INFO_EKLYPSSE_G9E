@@ -40,9 +40,7 @@ if(isset($_POST['envoi'])){
                 $recupUser->execute(array($pseudo));
                 $verifPseudo = $recupUser ->rowCount() ;
 
-                if($verifPseudo !== 0){
-                    echo '<script>alert("Un compte avec cet pseudo existe déjà");</script>';
-                } else {
+                
 
                     // Vérification des conditions pour un mot de passe
                     if(ConditionMotdePasse($mdp,$caracteres_speciaux) === false) {
@@ -74,7 +72,6 @@ if(isset($_POST['envoi'])){
                             }
                         }
                     }
-                }
             } 
         } 
     } else {
