@@ -549,6 +549,7 @@
 .eventMain button {
     appearance: none;
     border: 0px;
+    background-color: aliceblue;
 }
 .retourBtn a {
     display: flex;
@@ -595,13 +596,14 @@
 }
  
 .ajoutContainer {
-display: flex;
-flex-direction: column;
-justify-content: center;
-background-color: white;
-border-radius: 10px;
-padding: 30px;
-margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 40px 0;
+    box-shadow: 0px 0px 10px 0px rgba(185, 185, 185, 0.5);
 }
 
 .sousTitre {
@@ -665,7 +667,7 @@ margin: 40px 0;
     border: solid 2px orange;  
     background-color: white;
     color: orange;
-    padding: 5px;
+    padding: 8px;
     border-radius: 20px;
     margin-top: 30px;
     margin-left: 85px;
