@@ -68,6 +68,10 @@
     // Appeler la fonction pour afficher les utilisateurs
     afficherUtilisateurs();
     ?>
+    <br>
+    <br>
+    <br>
+    <br>
 
 </body>
 <footer>

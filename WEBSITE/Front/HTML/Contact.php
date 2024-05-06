@@ -6,16 +6,18 @@
         <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../CSS/header.css">
         <link rel="stylesheet" href="../CSS/pages.css">
-        <link rel="stylesheet" href="../CSS/contact.css">
         <meta charset=" utf-8" />
         <title>Contact</title>
     </head>
     <body>
-        <?php
+ 
+    <?php
                 // Inclure le fichier header.php
                 include 'header.php';
                 ?>
-  
+
+    
+                
         <div class="contact-container">
             <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
                 <div class="contact-left-title">
@@ -32,9 +34,13 @@
                 <img src="Front\Images\right_img.png" alt="">
             </div>
         </div>
-            <?php
-                    // Inclure le fichier header.php
-                    include 'footer.php';
-                    ?>
     </body>
+    <footer>
+
+    <?php
+                // Inclure le fichier header.php
+                include 'footer.php';
+                ?>
+        
+    </footer>
 </html>

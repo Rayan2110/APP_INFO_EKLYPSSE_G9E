@@ -15,12 +15,15 @@
     <?php
                 // Inclure le fichier header.php
                 include 'header.php';
-
+                ?>
+                <main class="faqMain">
+                <?php
                 $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
 
                 $recupArticle = $bdd->query('SELECT * FROM faq');
                 while($article = $recupArticle->fetch()){
                     ?>
+                    
                     <div class="faq active">
                         <button class="accordion">
                             <?= $article['question'] ?>
@@ -30,10 +33,11 @@
                             <p><?= $article['reponse'] ?></p>
                         </div>
                     </div>
+                
                     <?php
                 }
                 ?>
-
+</main>
                
 
         <script>
@@ -56,8 +60,14 @@
         });
     }
         </script>
+
+            <br>
+    <br>
+    <br>
+    <br>
+    
     </body>
-    <footer>
+    <footer class="faqMain">
     <?php
                 // Inclure le fichier header.php
                 include 'footer.php';
