@@ -12,74 +12,66 @@ compte utilisateur. */
     font-family: "Poppins", sans-serif;
 }
 
-font{
-    background-color:  #17a2b8;
+/* AUTHENTIFICATION ----- Cette feuille de style contiendra les 
+styles spécifiques aux pages de connexion, d'inscription et aux éléments associés à la gestion de 
+compte utilisateur. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url(header.css);
+
+/* Inscription */
+
+body{
+    background-image: url("../Images/FondInscricouleurtest.png") ;
+    background-color:  rgb(250, 228, 203);
+    background-size: contain;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;   
+    flex-direction: column;
 }
+
 
 form{
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-image: url("../Images/FormCo.png");
+    align-self: center;
+    opacity: 0.7;
+    margin-top: 100px;
+    border: 1px solid orange;
+    background-color: rgba(246, 234, 220, 0.349);
+    width: 300px;
     padding: 10px;
-    border-radius: 6px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.2);
+    
 }
 
-form .BoutonInscrire{
-    margin-top: 15px;
-    background-color: #17a2b8;
-    color: #fff;
-    border: 1px solid #17a2b8;
-    cursor: pointer;
-    border-radius: 10px;
-    height: 30px;
+.column {
+    display: flex;
+    flex-direction: column;
 }
 
-.BoutonInscrire:hover{
-    color: black;
-}
+.row {
+    display: flex;
+    flex-direction: row;
 
-form .BoutonConnecter{
-    margin-top: 15px;
-    background-color: #17a2b8;
-    color: #fff;
-    border: 1px solid #17a2b8;
-    cursor: pointer;
-    border-radius: 10px;
-    height: 30px;
-}
-
-.BoutonConnecter:hover{
-    color: black;
 }
 form .BoutonRetour{
     margin-top: 15px;
-    background-color: #808484;
-    color: #fff;
-    border: 1px solid #17a2b8;
+    background-color: orange;
+    color: white;
+    border: none;
     cursor: pointer;
     border-radius: 10px;
     height: 30px;
 }
+
 .BoutonRetour:hover{
     color: black;
 }
 h4{
     text-align: center;
-    font-size: 20px;
-}
-
-hr{
-    margin: 10px 0;
-    background-color: #ccc;
-    border: 0;
-    height: 1px;
-    width: 100%;
-
+    font-size: 30px;
+    color: #fff;
 }
 
 .name-field{
@@ -100,176 +92,263 @@ hr{
 
 label{
     margin-bottom: 6px;
-
+    text-align: center;
 }
+
 
 input{
    margin-bottom: 5px; 
    padding: 5px;
    outline: 0;
+   width: 80%;
+   align-self: center;
    border: 1px solid rgba(0,0,0,0.4);
+   border-radius: 20px;
+}
+
+input[type=text],[type=email],[type=password]{
+    text-align: center;
+}
+
+
+input:hover {
+    box-shadow:1px 1px 1px 1    px #17a2b8;
+    transition-duration: 1s;
+}
+
+
+input[type=submit]:active {
+    background-color: rgb(255, 186, 57);
+    transition-duration: 100ms;
+}
+
+::placeholder:hover {
+    opacity: 0.5;
+}
+
+::-webkit-input-placeholder:hover {
+    opacity: 0.5;
+}
+
+::-moz-placeholder:hover {
+    opacity: 0.5;
+}
+
+::-ms-placeholder:hover {
+    opacity: 0.5;
 }
 
 input:focus{
     border: 1px solid #17a2b8;
 }
 
+
 input[type="submit"]{
+    margin-top: 15px;
+    margin-bottom: 0px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+
+.retour{
+    border-radius: 10px 0px 0px 20px;
+    background-color: #17a2b8;
+    border: none;
+    color: white;
+}
+
+.retour:active {
+    background-color: #1dcbe6;
+    transition-duration: 100ms;
+}
+
+
+
+
+/*-------------------NUMERO TEL------------------ */
+
+
+
+.select-box {
+    position: relative;
+    width: 82%;
+    padding-top: 7px;
+    margin-top: 10px;
+    margin-left: 36px;
+}
+
+.select-box input {
+    width: 200%;
+    font-size: 12px;
+    border: .1rem solid transparent;
+    outline: none;
+    height: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+input[type="tel"] {
+    border-radius: 20px;
+}
+
+
+.selected-option {
+    background-color: #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-option div{
+    position: relative;
+    padding: 0 15px 0 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.selected-option div::after{
+    position: absolute;
+    content: "";
+    right: .8rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+    width: .8rem;
+    height: .8rem;
+    border-right: .12rem solid var(--primary);
+    border-bottom: .12rem solid var(--primary);
+
+    transition: .2s;
+}
+
+.selected-option div.active::after{
+    transform: translateY(-50%) rotate(225deg);
+}
+
+.select-box .options {
+    position: absolute;
+    top: 4rem;
+    width: 100%;
+    background-color: #fff;
+    border-radius: .5rem;
+
+    display: none;
+}
+
+.select-box .options.active {
+    display: block;
+}
+
+.select-box .options::before {
+    position: absolute;
+    content: "";
+    left: 1rem;
+    top: -1.2rem;
+    width: 0;
+    height: 0;
+    border: .6rem solid transparent;
+    border-bottom-color: var(--primary);
+}
+
+input.search-box {
+    align-self: center;
+    background-color: white;
+    border: 1px solid grey;
+    width: 290px;
+    color: black;
+    margin-left: 10px;
+    margin-right: 30px;
+    border-radius: .5rem .5rem 0 0;
+}
+
+.select-box ol {
+    list-style: none;
+    max-height: 23rem;
+    overflow: overlay;
+}
+
+.select-box ol::-webkit-scrollbar {
+    width: 0.6rem;
+}
+
+.select-box ol::-webkit-scrollbar-thumb {
+    width: 0.4rem;
+    height: 3rem;
+    background-color: #ccc;
+    border-radius: .4rem;
+}
+
+.select-box ol li {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.select-box ol li.hide {
+    display: none;
+}
+
+.select-box ol li:not(:last-child) {
+    border-bottom: .1rem solid #eee;
+}
+
+.select-box ol li:hover {
+    background-color: lightcyan;
+}
+
+.select-box ol li .country-name {
+    margin-left: 0px;
+}
+
+
+form .BoutonCondition{
+    width: 70px ;
+    background-color: #17a2b8;
+    border: 1px solid #17a2b8;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.BoutonCondition:hover{
+    color: black;
+}
+
+form .BoutonInscrire{
     margin-top: 15px;
     background-color: #17a2b8;
     color: #fff;
     border: 1px solid #17a2b8;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 20px;
+    height: 30px;
 }
 
-input[type="submit"]:hover{
+.BoutonInscrire:hover{
     color: black;
 }
 
-p{
-    text-align: center;
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-p a {
-    text-decoration: 0;
-    color: #17a2b8;
-}
-
-p a:hover{
-    text-decoration: underline;
-
-}
-
-/* Login */
-
-
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(https://media.timeout.com/images/105976410/750/562/image.jpg) no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-
-.boutonconnexion{
-    background-color: orangered; /* Couleur de fond */
-    border: none; /* Pas de bordure */
-    color: black; /* Couleur du texte */
-    padding: 15px 32px; /* Espacement à l'intérieur du bouton */
-    text-align: center; /* Alignement du texte */
-    text-decoration: none; /* Pas de soulignement */
-    display: inline-block; /* Afficher en ligne */
-    font-size: 16px; /* Taille de la police */
-    margin: 4px 2px; /* Marge autour du bouton */
-    cursor: pointer; /* Curseur au survol */
-    border-radius: 10px; /* Bordure arrondie */
-}
-.boutonconnexion:hover {
-    background-color: blue; /* Changement de couleur de fond au survol */
-}
-.wrapper{
-    width: 420px;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(20px);
-    box-shadow: 0 0 10px rgb(0, 0, 0, .2);
-    color: rgb(53, 51, 51);
-    border-radius: 10px;
-    padding: 30px 40px;
-}
-
-.wrapper h1{
-    font-size: 36px;
-    text-align: center;
-}
-
-.wrapper .input-box {
-    width: 300px;
-    height: 40px;
-    margin: 70px 0;
-}
-
-.input-box input {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    border: none;
-    outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
-    font-size: 16px;
+form .BoutonConnecter{  
+    background-color: orange;
     color: #fff;
-    padding: 20px 45px 20px 20px;
-}
-
-.input-box input::placeholder {
-    color: #fff;
-
-}
-
-.input-box i {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50px);
-    font-size: 20px;
-
-}
-
-.wrapper .remember-forgot{
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-
-.remember-forgot label input{
-    accent-color: #fff;
-    margin-right: 3px;
-
-}
-
-.remember-forgot a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.remember-forgot a:hover {
-    text-decoration: underline;
-}
-
-.wrapper .btn {
-    width: 100%;
-    height: 45px;
-    background: #fff;
-    border: none;
-    outline: none;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0, .1);
+    border: 1px solid #17a2b8;
     cursor: pointer;
-    font-size: 16px;
-    color: #333;
-    font-weight: 600;
+    border-radius: 0px 10px 20px 0px;
+    height: 30px;
 }
 
-.wrapper .register-link {
-    font-size: 14.5px;
-    text-align: center;
-    margin: 20px 0 15px;
-
+.BoutonConnecter:hover{
+    color: black;
 }
 
-.register-link p a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
+.BoutonConnecter:active{
+    background-color: orange;
+    transition-duration: 100ms;
 }
 
-.register-link p a:hover {
-    text-decoration:  underline;
-}
+

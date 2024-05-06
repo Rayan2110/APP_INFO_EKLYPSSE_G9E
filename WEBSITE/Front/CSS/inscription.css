@@ -7,8 +7,10 @@ compte utilisateur. */
 /* Inscription */
 
 body{
-    background-image: url("../Images/Festivals_ete.jpg");
+    background-image: url("../Images/FondInscricouleurtest.png") ;
     background-color:  #17a2b8;
+    background-size: contain;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -19,13 +21,16 @@ form{
     flex-direction: column;
     align-self: center;
     margin-top: 100px;
-    background-color: #fff;
+    background-color: rgba(246, 234, 220, 0.349);
+    opacity: 0.9;
     width: 400px;
     padding: 10px;
-    border-radius: 6px;
+    border: 1px solid orange;
+    border-radius: 15px;
     box-shadow: 0 0 50px rgba(0,0,0,0.2);
-    background-image: url("../Images/Festivals_ete.jpg");
-    
+    background-image: url(../Images/FormIns.png);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .column {
@@ -76,6 +81,11 @@ label{
     margin-bottom: 6px;
     text-align: center;
 }
+header{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
 
 
 input{
@@ -90,11 +100,13 @@ input{
 
 input[type=text],[type=email],[type=password]{
     text-align: center;
+    border: 1px solid orange;
 }
 
 input[type=date]{
     text-align: center;
     color:grey;
+    border: 1px solid orange;
 }
 
 input:hover {
@@ -168,14 +180,14 @@ input[type="submit"]{
 
 .nom{
     border-radius: 20px 0px 0px 20px;
-    width: 157px;
+    width: 148px;
     margin-left: 40px;
     margin-right: 6px;
 }
 
 .prenom{
     border-radius: 0px 20px 20px 0px;
-    width: 157px;
+    width: 148px;
 }
 
 .retour{
@@ -345,8 +357,8 @@ input.search-box {
 /*------*/
 form .BoutonCondition{
     width: 70px ;
-    background-color: #17a2b8;
-    border: 1px solid #17a2b8;
+    background-color: orange;
+    border: none;
     border-radius: 6px;
     color: #fff;
     cursor: pointer;
@@ -371,9 +383,9 @@ form .BoutonInscrire{
 }
 
 form .BoutonConnecter{  
-    background-color: #17a2b8;
+    background-color: orange;
     color: #fff;
-    border: 1px solid #17a2b8;
+    border: 1px solid ;
     cursor: pointer;
     border-radius: 0px 10px 20px 0px;
     height: 30px;

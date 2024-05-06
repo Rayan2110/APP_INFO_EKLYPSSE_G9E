@@ -8,19 +8,12 @@
 }
 
 
-.Admin{
-   cursor: pointer;
-   text-decoration: none;
-   display: flex;
-   justify-content: center;
-   margin-top: 100px;
-   width: 100%;
-   height: 35px;
-   color: black;
-}
-
 .Lien {
    margin-bottom: 50vh;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   padding: 0 300px;
 }
 .Lien a{
    color: black;
@@ -32,16 +25,6 @@
 
 .Lien a:hover{
    color: orange;
-}
-
-body{
-   background-color: aliceblue;
-   text-align: center;
-   min-height: 100vh;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   height: 100%;
 }
 
 .Lien button[type="button"]{
@@ -70,7 +53,7 @@ input[type="submit"]{
    cursor: pointer;
    border-radius: 10px;
    padding: 5px;
-   margin-bottom: 200px;
+   margin-bottom: 20px;
 }
 
 input[type="submit"]:hover{
@@ -86,7 +69,7 @@ form{
 input[type="text"], textarea {
    margin: 10px 0; 
    padding: 10px; 
-   width: 350px;
+   min-width: 600px;
    border: 1px solid #f2f2f2; 
    border-radius: 5px; 
 }
@@ -106,12 +89,6 @@ th, td {
 
 th {
    background-color: #f2f2f2;
-}
-
-/* footer */
-
-footer {
-
 }
 
 
@@ -153,7 +130,7 @@ footer {
    display: flex;
    flex-direction: column;
    justify-content: center;
-   margin-bottom: 20vh;
+   align-items: center;
 }
 
 .faq.active {
@@ -200,4 +177,149 @@ footer {
 
 .btnDelete:hover {
    background-color : rgb(255, 241, 241);
+}
+
+
+/* ajouter évènement */
+
+.adminMain button {
+   appearance: none;
+   border: 0px;
+   background-color: aliceblue;
+}
+.retourBtn a {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: rgb(246, 251, 255);
+   border: solid 1px orange;
+   border-radius: 20px;
+   text-decoration: none;
+   padding: 5px;
+   width: 100px;
+   color: orange;
+}
+.retourBtn a:hover {
+   border: solid 2px orange;
+}
+
+.adminBody {
+   background-color: rgb(246, 251, 255);
+}
+
+.adminMain {
+   padding: 30px;
+}
+
+.gestionTitre {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 60px;
+   width: 100%;
+   height: 35px;
+}
+.gestionTitre h2 {
+   color: orange;
+}
+.Admin{
+   cursor: pointer;
+   text-decoration: none;
+   display: flex;
+   justify-content: center;
+   color: black;
+   margin-right: 10px;
+}
+
+.ajoutContainer {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   background-color: white;
+   border-radius: 10px;
+   padding: 30px;
+   margin: 40px 0;
+   box-shadow: 0px 0px 10px 0px rgba(185, 185, 185, 0.5);
+}
+
+.sousTitre {
+   margin-bottom: 20px;
+   margin-left: 20px;
+   color: orange;
+   display: flex;
+   align-items: center;
+   cursor: pointer;
+   width: 400px;
+}
+.sousTitre:hover {
+   color: rgb(0, 0, 0);
+}
+.sousTitre h2{
+   margin-right: 10px;
+}
+
+.champs {
+   display: flex;
+   width: 100%;
+   justify-content: space-around;
+}
+
+
+.ajoutChamp {
+   display: flex;
+   flex-direction: column;
+   width: 200px;
+   margin-bottom: 10px;
+}
+
+.ajoutChamp label {
+   margin-bottom: 5px;
+}
+.ajoutChamp input {
+   border: solid 1px black;
+   height: 25px;
+   border-radius: 20px;
+   padding: 10px;
+}
+.champ2 {
+   display: flex;
+   justify-content: space-between;
+}
+.ajoutChamp.imag {
+   width: 500px;
+}
+.ajoutChamp input:hover {
+   border: solid 2px orange;    
+}
+.ajoutChamp input:focus {
+   border: 2px solid orange;    
+}
+
+.ajouterBtn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   border: solid 2px orange;  
+   background-color: white;
+   color: orange;
+   padding: 8px;
+   border-radius: 20px;
+   margin-top: 30px;
+   margin-left: 85px;
+}
+
+.ajouterBtn:hover {
+   color: #fdc482;
+   border-color: #fdc482;
+}
+
+
+.fa-chevron-down {
+   transform: rotate(0deg); 
+   transition: transform 0.3s ease; 
+}
+
+.hidden {
+   display: none; 
 }
