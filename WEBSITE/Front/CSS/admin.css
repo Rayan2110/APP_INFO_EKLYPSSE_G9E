@@ -7,22 +7,12 @@
    font-family: "Montserrat", sans-serif;
 }
 
-
 .Admin{
    cursor: pointer;
    text-decoration: none;
-   display: flex;
-   justify-content: center;
-   margin-top: 100px;
-   width: 100%;
-   height: 35px;
-   color: black;
 }
 
-.Lien {
-   margin-bottom: 50vh;
-}
-.Lien a{
+a{
    color: black;
    text-decoration: underline;
    width: 100px;
@@ -30,7 +20,7 @@
    cursor: pointer;
 }
 
-.Lien a:hover{
+a:hover{
    color: orange;
 }
 
@@ -38,13 +28,12 @@ body{
    background-color: aliceblue;
    text-align: center;
    min-height: 100vh;
-   display: flex;
    flex-direction: column;
+   justify-content: center;
    align-items: center;
-   height: 100%;
 }
 
-.Lien button[type="button"]{
+button[type="button"]{
    border: 1px solid black;
    padding: 10px;
    display: inline-block;
@@ -56,7 +45,7 @@ body{
    cursor: pointer;
 }
 
-.Lien button[type="button"]:hover{
+button[type="button"]:hover{
    border: 1px solid orange;
    color: orange;
 }
@@ -70,7 +59,6 @@ input[type="submit"]{
    cursor: pointer;
    border-radius: 10px;
    padding: 5px;
-   margin-bottom: 200px;
 }
 
 input[type="submit"]:hover{
@@ -106,98 +94,4 @@ th, td {
 
 th {
    background-color: #f2f2f2;
-}
-
-/* footer */
-
-footer {
-
-}
-
-
-/* delete */
-
-.deleteHeader {
-   display: flex;
-   justify-content: center;
-   max-width: 600px;
-   width: 100%;
-   margin-bottom: 20px;
-}
-
-.deleteHeader h2 {
-   display: flex;
-   /* flex-grow: 2; */
-}
-
-.deleteHeader button {
-   color: rgb(0, 0, 0);
-   background-color: aliceblue;
-   border: solid 2px rgb(0, 0, 0);
-   display: flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 10px;
-   padding: 6px;
-   cursor: pointer;
-   margin-left: 50px;
-   /* flex-grow: 3; */
-}
-
-.deleteHeader button:hover {
-   color: orange;
-   border: solid 2px orange;
-}
-
-.liste {
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   margin-bottom: 20vh;
-}
-
-.faq.active {
-   background-color: white;
-   max-width: 600px;
-   border-radius: 10px;
-   margin: 10px;
-   padding: 20px;
-   width: 100%;
-   display: flex;
-   justify-content: center;
-}
-.fa-chevron-down.active2 {
-   transform: rotate(180deg); /* Rotation de 180 degrés lorsqu'il est actif */
-}
-.questRep {
-   display: flex;
-   flex-direction: column;
-   margin-right: 15px;
-}
-.accordion {
-   padding: 8px;
-   color: rgb(80, 80, 80);
-   border: 2px solid rgb(80, 80, 80);
-   border-radius: 10px;
-   cursor: pointer;
-}
-.accordion:hover {
-   color: rgb(0, 0, 0);
-   border: 2px solid rgb(0, 0, 0);
-}
-.pannel {
-   margin-top: 5px;
-   display: none;
-}
-.btnDelete {
-   color:rgb(250, 95, 95);
-   background-color : rgb(255, 255, 255);
-   border-radius: 10px;
-   border: 2px solid rgb(250, 95, 95);
-   padding: 8px;
-   cursor: pointer;
-}
-
-.btnDelete:hover {
-   background-color : rgb(255, 241, 241);
 }

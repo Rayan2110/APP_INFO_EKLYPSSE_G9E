@@ -29,7 +29,9 @@
         <li><a href="FAQ.php">F.A.Q</a></li>
         <li><a href="Contact.php">Contact</a></li>
         <?php
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
             if(isset($_SESSION['pseudo'])) {
                 echo '<li><a href="Carte.php">Carte</a></li>';
             }

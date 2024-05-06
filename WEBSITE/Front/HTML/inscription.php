@@ -1,6 +1,7 @@
 <?php 
-session_start();
-$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+session_start();    
+
+$bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');       
 if(isset($_POST['envoi'])){
     if(!empty($_POST['nom']) and !empty($_POST['mdp']) and !empty($_POST['pseudo']) and !empty($_POST['email']) and !empty($_POST['date_naissance']) and !empty($_POST['cmdp'])){
         $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -233,9 +234,12 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
         }
     </script>
 </head>
+<?php include 'header.php'; ?>
 <body>
     <form id="monFormulaire"  action="" method="POST" onsubmit="return validateForm();">
         <h4>Inscription</h4>
+        <br>
+        <br>
         <div class="row">
             <input type="text" name="nom" class="nom" autocomplete="off" placeholder="nom">
             <input type="text" name="pseudo" class="prenom" autocomplete="off" placeholder="Prenom"> 
@@ -280,5 +284,10 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
         </div>
     </form>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <?php include 'footer.php'; ?>
 </body>
 </html>
