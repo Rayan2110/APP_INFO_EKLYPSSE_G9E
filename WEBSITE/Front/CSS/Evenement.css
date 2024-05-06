@@ -727,7 +727,7 @@ select {
 }
 
 input[type="submit"] {
-    background-color:  #fa0202;
+    background-color:  #fa8e02;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -736,5 +736,5 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #fa0202;
+    background-color: #fa8e02;
 }
