@@ -572,7 +572,9 @@
 }
 
 .eventMain {
-    padding: 30px;
+    padding: 20px 20px 0px 20px;
+    margin-top: 0px;
+
 }
 
 .gestionTitre {

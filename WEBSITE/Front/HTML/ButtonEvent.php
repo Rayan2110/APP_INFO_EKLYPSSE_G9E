@@ -95,13 +95,15 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
                     </div>
                 </div>
                 <input class="ajouterBtn" type="submit" name="envoi" value="Ajouter l'événement" >
-                
             </form>
-<div class="ajoutContainerF">
+    </main>
+<main class="eventMain">
+<div class="ajoutContainer">
     <div class="sousTitre">
         <h2>Supprimer un événement</h2>
         <h3><i class="fa-solid fa-chevron-down"></i></h3>
     </div>
+    <form method="POST" action="" class="hidden">
     <?php
     try {
         $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
@@ -137,9 +139,8 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
     }
     ?>
 </div>
-
-    </main>
-
+</form>
+</main>
 
     <script>
 
