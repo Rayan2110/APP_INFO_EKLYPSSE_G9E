@@ -19,8 +19,6 @@
                 // Inclure le fichier header.php
                 include 'header.php';
                 ?>
-
-
         <section class="about-us">
             <div class="main-img">
                 <img src="C:\Users\leona\Downloads\about-6.png" alt="Description de l'image">
@@ -47,11 +45,9 @@
             </div>
         </div>
         </section>
-        <footer>
         <?php
                 // Inclure le fichier header.php
                 include 'footer.php';
                 ?>
-        </footer>
     </body>
 </html>

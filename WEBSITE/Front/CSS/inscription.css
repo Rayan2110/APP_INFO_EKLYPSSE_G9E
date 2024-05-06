@@ -7,8 +7,10 @@ compte utilisateur. */
 /* Inscription */
 
 body{
-    background-image: url("../Images/Festivals_ete.jpg");
+    background-image: url("../Images/FondInscricouleurtest.png") ;
     background-color:  #17a2b8;
+    background-size: contain;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -75,6 +77,11 @@ h4{
 label{
     margin-bottom: 6px;
     text-align: center;
+}
+header{
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 
