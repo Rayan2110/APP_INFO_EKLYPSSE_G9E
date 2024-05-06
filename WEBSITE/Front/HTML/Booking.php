@@ -54,6 +54,7 @@ if ($result2->num_rows > 0) {
 
 // Fermer la connexion à la base de données
 $conn->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -342,15 +343,22 @@ $conn->close();
     </div>
 </div>
 
-        <div class="price">
-            <div class="total">
-                <span> <span class="count">0</span> Tickets </span>
-                <div class="amount">0</div>
+
+
+    <form id="reservation-form" method="post" action="traitement_reservation.php">
+            <!-- Autres éléments de formulaire ici -->
+            <div class="price">
+                <div class="total">
+                    <span> <span class="count">0</span> Tickets </span>
+                    <div class="amount">0</div>
+                </div>
+                <button type="submit" name="Booking">Bookinnn</button> <!-- Ajouter un attribut name -->
             </div>
-            <button type="button">Book</button>
-        </div>
-    </div>
+            </div>
+        </form>
+    
 </div>
+
 <script>
     let seats = document.querySelector(".all-seats");
     let tickets = seats.querySelectorAll("input");
@@ -378,6 +386,23 @@ $conn->close();
             }
         });
     });
+
+
 </script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let form = document.getElementById('reservation-form');
+
+        form.addEventListener('submit', function (event) {
+            let count = parseInt(document.querySelector(".count").innerHTML);
+            if (count === 0) {
+                event.preventDefault(); // Empêcher la soumission du formulaire
+                alert("Veuillez sélectionner au moins un jour avant de réserver.");
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
