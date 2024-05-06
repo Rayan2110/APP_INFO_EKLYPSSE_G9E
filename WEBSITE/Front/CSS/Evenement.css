@@ -687,3 +687,52 @@
 .hidden {
     display: none; 
 }
+
+   /* Supprimer évènement */
+   
+.ajoutContainerF {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.sousTitre {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sousTitre h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.sousTitre h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    background-color:  #fa0202;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #fa0202;
+}

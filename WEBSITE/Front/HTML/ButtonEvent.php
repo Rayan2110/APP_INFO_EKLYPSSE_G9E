@@ -97,13 +97,47 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
                 <input class="ajouterBtn" type="submit" name="envoi" value="Ajouter l'événement" >
                 
             </form>
-        </div>
-        <div class="ajoutContainer">
-            <div class="sousTitre">
-                <h2>Supprimer un événement</h2>
-                <h3><i class="fa-solid fa-chevron-down"></i></h3>
-            </div>
-        </div>
+<div class="ajoutContainerF">
+    <div class="sousTitre">
+        <h2>Supprimer un événement</h2>
+        <h3><i class="fa-solid fa-chevron-down"></i></h3>
+    </div>
+    <?php
+    try {
+        $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Récupération des événements depuis la base de données
+        $requete = $bdd->query('SELECT id, nom, localisation, date_début, date_fin, prix FROM evenements');
+
+        echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
+        echo '<label for="id_evenement">Sélectionnez un événement à supprimer :</label>';
+        echo '<select name="id_evenement" id="id_evenement">';
+
+        while ($row = $requete->fetch()) {
+            echo '<option value="' . $row['id'] . '">' . $row['nom'] . ' - ' . $row['localisation'] . ' - ' . $row['date_début'] . ' - ' . $row['date_fin'] . ' - ' . $row['prix'] . '</option>';
+        }
+
+        echo '</select>';
+        echo '<br><br>';
+        echo '<input type="submit" value="Supprimer">';
+        echo '</form>';
+
+        // Traitement de la suppression d'événement
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $id_evenement_a_supprimer = $_POST['id_evenement'];
+
+            // Suppression de l'événement sélectionné
+            $sql_suppression = "DELETE FROM evenements WHERE id = $id_evenement_a_supprimer";
+            $bdd->exec($sql_suppression);
+            echo "L'événement a été supprimé avec succès.";
+        }
+    } catch (PDOException $e) {
+        echo "Erreur : " . $e->getMessage();
+    }
+    ?>
+</div>
+
     </main>
 
 
