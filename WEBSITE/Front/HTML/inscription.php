@@ -237,6 +237,9 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
 <?php include 'header.php'; ?>
 <body>
     <form id="monFormulaire"  action="" method="POST" onsubmit="return validateForm();">
+        <div class="blackdiv">
+
+        </div>
         <h4>Inscription</h4>
         <br>
         <br>
@@ -277,9 +280,9 @@ function ConditionMotdePasse($mdp,$caracteres_speciaux){
             <input type="checkbox" name="cocheun" id="cocheun" >  
             <label for="cocheun" style="color: white;font-size: 14px;text-align: left;" >Je confirme avoir lu et accepté les <a href="uploads/CGU.pdf" target="_blank" style="font-size: 14px;">conditions générales d'utilisation</a> et <a href="uploads/MentionsLegales.pdf  " target="_blank" style="font-size: 14px">mentions légales</a></label>
         </div> 
-        <input type="submit" name="envoi" >
+        <input type="submit" name="envoi" style="background-color:orange;border:none" >
         <div class="row">
-        <button type="button" name="Retour" onclick="document.location='Evenement.php'" class="retour" style="width: 50%;margin-left: 40px ; height:27px">Retour</button>
+        <button type="button" name="Retour" onclick="document.location='Evenement.php'" class="retour" style="width: 50%;margin-left: 40px ; height:27px;background-color:orange;border:none">Retour</button>
             <button type="button" name="Connecter" class="BoutonConnecter" onclick="document.location='connexion.php'" style="width: 50%; height:27px;margin-left:5px;margin-right: 40px">Se connecter</button>
         </div>
     </form>
