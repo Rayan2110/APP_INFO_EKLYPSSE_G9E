@@ -104,6 +104,12 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
                 <h3><i class="fa-solid fa-chevron-down"></i></h3>
             </div>
         </div>
+        <div class="ajoutContainer">
+            <div class="sousTitre">
+                <h2>Modifier un événement</h2>
+                <h3><i class="fa-solid fa-chevron-down"></i></h3>
+            </div>
+        </div>
     </main>
 
 
