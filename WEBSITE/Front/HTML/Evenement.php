@@ -411,10 +411,8 @@
             <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </body>
     <footer>
-    <?php
-                // Inclure le fichier header.php
-                include 'footer.php';
-                ?>
+    <?php include 'footer.php';?>
     </footer>
 </html>
+
 

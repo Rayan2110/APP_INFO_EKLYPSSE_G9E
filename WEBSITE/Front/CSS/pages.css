@@ -203,17 +203,6 @@ hr{
     transform: rotate(180deg); /* Rotation de 180 degrés lorsqu'il est actif */
 }
   
-  footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #F6BF87;
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
   
   
   .social-icons {

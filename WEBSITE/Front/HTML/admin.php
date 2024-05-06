@@ -11,6 +11,9 @@
                 // Inclure le fichier header.php
                 include 'header.php';
                 ?>
+    
+    <br>
+    <br>
     <a href="admin.php" class="Admin" ><h1>Admin</h1></a>
     <br>
     <div class="Lien" >
@@ -19,11 +22,26 @@
         <button type="button" name="ButtonEvent" class="ButtonEvent" ><a href="ButtonEvent.php">Ajouter un evenement</a></button>
         <button type="button" name="CGU" class="CGU" ><a href="gestion-cgu.php">Modifier les CGU et mentions légales</a></button>
     </div>
-</body>
-<footer>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
     <?php
                 // Inclure le fichier header.php
                 include 'footer.php';
                 ?>
-    </footer>
+</body>
 </html>

@@ -49,17 +49,38 @@ if(isset($_POST['envoi'])){
     <title>Document</title>
     <link rel="stylesheet" href="../CSS/auth.css">
 </head>
+<?php include 'header.php';?>
 <body>
+<br>
+<br>
 <form action="" method="POST">
-    <label for="email">Email :</label>
-    <input type="text" name="email" autocomplete="off" placeholder="Email" >
+    <h4>Connexion</h4>
+    <br>
+    <br>
+    <br>
+    <input type="text" name="email" autocomplete="off" placeholder="Email" style="border: 1px solid orange;">
     <br/>
-    <label for="password">Mot de passe :</label>
-    <input type="password" name="mdp" autocomplete="off" placeholder="Mot de passe" >
-    <br/><br/>
+    <input type="password" name="mdp" autocomplete="off" placeholder="Mot de passe" style="border: 1px solid orange;" >
+    <br/>
     <input type="submit" name="envoi" value="Se Connecter">
-    <button type="button" name="Inscrire" class="BoutonInscrire" onclick="document.location='inscription.php'">S'inscrire</button>
-    <button type="button" name = "Retour" class= "BoutonRetour" onclick="window.location.href='Home.php'"> Retour </button>
+    <div class="row">
+        <button type="button" name = "Retour" class= "BoutonRetour" onclick="window.location.href='Home.php'" style="width: 50%;margin-left: 30px ; height:27px;border-radius: 10px 0px 0px 20px;"> Retour </button>
+        <button type="button" name="Inscrire" class="BoutonInscrire" onclick="document.location='inscription.php'" style="width: 50%; height:27px;margin-left:5px;margin-right: 30px;border-radius: 0px 10px 20px 0px;background-color:orange;border:none">S'inscrire</button>
+    </div>
 </form> 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<?php include 'footer.php';?>
 </body>
 </html>
