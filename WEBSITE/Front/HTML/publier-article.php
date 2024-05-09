@@ -26,12 +26,12 @@ include 'header.php';
                 <h2>Ajouter une nouvelle FAQ</h2>
                 <h3><i class="fa-solid fa-chevron-down"></i></h3>
             </div>
-            <form method="POST" action=""  class="hidden">
+            <form method="POST" action=""  class="hidden ajoutFAQ">
                 <input type="text" name="question" placeholder="Question">
                 <br/>
                 <textarea name="reponse" placeholder="Réponse"></textarea>
                 <br/>
-                <input type="submit" name="envoi">
+                <input type="submit" name="envoi" class="ajoutFaqBtn">
 
             </form>
         </div>

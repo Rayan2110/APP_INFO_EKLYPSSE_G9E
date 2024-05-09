@@ -9,11 +9,11 @@
 
 
 .Lien {
-   margin-bottom: 50vh;
+   margin-bottom: 15vh;
    width: 100%;
    display: flex;
    justify-content: center;
-   padding: 0 300px;
+   padding: 0 17vw;
 }
 .Lien a{
    color: black;
@@ -27,7 +27,7 @@
    color: orange;
 }
 
-.Lien button[type="button"]{
+button[type="button"]{
    border: 1px solid black;
    padding: 10px;
    display: inline-block;
@@ -39,12 +39,12 @@
    cursor: pointer;
 }
 
-.Lien button[type="button"]:hover{
+button[type="button"]:hover{
    border: 1px solid orange;
    color: orange;
 }
 
-input[type="submit"]{
+.ajoutFaqBtn {
    margin-top: 15px;
    margin-left: 15px;
    background-color: #f2f2f2;
@@ -56,7 +56,7 @@ input[type="submit"]{
    margin-bottom: 20px;
 }
 
-input[type="submit"]:hover{
+.ajoutFaqBtn:hover{
    color: orange;
    border: 1px solid orange;
 }
@@ -66,7 +66,7 @@ form{
    margin-left: 15px;   
 }
 
-input[type="text"], textarea {
+.ajoutFAQ input[type="text"], textarea {
    margin: 10px 0; 
    padding: 10px; 
    min-width: 600px;
@@ -142,6 +142,7 @@ th {
    width: 100%;
    display: flex;
    justify-content: center;
+   box-shadow: 0px 0px 10px 0px rgba(185, 185, 185, 0.5);
 }
 .fa-chevron-down.active2 {
    transform: rotate(180deg); /* Rotation de 180 degrés lorsqu'il est actif */
@@ -209,6 +210,7 @@ th {
 
 .adminMain {
    padding: 30px;
+   margin-bottom: 7vh;
 }
 
 .gestionTitre {

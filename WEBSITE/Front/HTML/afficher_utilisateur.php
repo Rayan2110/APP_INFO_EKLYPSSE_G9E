@@ -11,9 +11,13 @@
                 // Inclure le fichier header.php
                 include 'header.php';
                 ?>
-    <a href="admin.php" class="Admin" ><h1>Admin</h1></a>
-    <br>
-   
+    <main class="adminMain"> 
+        <button class="retourBtn" ><a href="admin.php">Retour</a></button>
+        <div class="gestionTitre">
+            <a href="admin.php" class="Admin"><h1>Admin </h1></a> 
+            <h2>/ Gestion des utilisateurs</h2>
+        </div>
+        <div class="userTab">
     
     <?php
     // Fonction pour afficher la liste des utilisateurs
@@ -68,6 +72,8 @@
     // Appeler la fonction pour afficher les utilisateurs
     afficherUtilisateurs();
     ?>
+        </div>
+        </main>
     <br>
     <br>
     <br>

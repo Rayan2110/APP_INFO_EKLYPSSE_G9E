@@ -34,6 +34,7 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un Événement</title>
+    <link rel="stylesheet" href="../CSS/admin.css"> 
     <link rel="stylesheet" href="../CSS/Evenement.css"> 
 </head>
 
@@ -96,7 +97,7 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
                 </div>
                 <input class="ajouterBtn" type="submit" name="envoi" value="Ajouter l'événement" >
             </form>
-
+        </div>
         <div class="ajoutContainer">
             <div class="sousTitre">
                 <h2>Supprimer un événement</h2>
@@ -148,7 +149,12 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
             </div>
         </div>
     </main>
-
+    <footer>
+        <?php
+            // Inclure le fichier header.php
+            include 'footer.php';
+        ?>
+    </footer>
     <script>
 
     var sousTitres = document.querySelectorAll('.sousTitre');
