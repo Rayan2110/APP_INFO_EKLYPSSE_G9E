@@ -35,7 +35,7 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
     <meta charset="UTF-8">
     <title>Ajouter un Événement</title>
     <link rel="stylesheet" href="../CSS/admin.css"> 
-    <link rel="stylesheet" href="../CSS/Evenement.css"> 
+    <!-- <link rel="stylesheet" href="../CSS/Evenement.css">  -->
 </head>
 
 <?php
@@ -95,7 +95,7 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
                         </div>
                     </div>
                 </div>
-                <input class="ajouterBtn" type="submit" name="envoi" value="Ajouter l'événement" >
+                <input class="ajouterBtn" type="submit" name="envoi" value="Ajouter" >
             </form>
         </div>
         <div class="ajoutContainer">
@@ -113,20 +113,22 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
                 $requete = $bdd->query('SELECT id, nom, localisation, date_début, date_fin, prix FROM evenements');
 
                 echo '<form method="post" action="' . htmlspecialchars($_SERVER["PHP_SELF"]) . '">';
-                echo '<label for="id_evenement">Sélectionnez un événement à supprimer :</label>';
+                echo '<div class ="choixEvent">';
+                echo '<label for="id_evenement">Sélectionnez un événement à supprimer</label>';
                 echo '<select name="id_evenement" id="id_evenement">';
-
+                
                 while ($row = $requete->fetch()) {
                     echo '<option value="' . $row['id'] . '">' . $row['nom'] . ' - ' . $row['localisation'] . ' - ' . $row['date_début'] . ' - ' . $row['date_fin'] . ' - ' . $row['prix'] . '</option>';
                 }
 
                 echo '</select>';
-                echo '<br><br>';
-                echo '<input type="submit" value="Supprimer">';
+                echo '</div>';
+
+                echo '<input class="ajouterBtn" name="supprimer" type="submit" value="Supprimer">';
                 echo '</form>';
 
                 // Traitement de la suppression d'événement
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['supprimer'])) {
                     $id_evenement_a_supprimer = $_POST['id_evenement'];
 
                     // Suppression de l'événement sélectionné
@@ -147,6 +149,114 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
                 <h2>Modifier un événement</h2>
                 <h3><i class="fa-solid fa-chevron-down"></i></h3>
             </div>
+
+            <?php
+                try {
+                    $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+                    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+                    $requete = $bdd->query('SELECT id, nom, localisation, date_début, date_fin, prix, image, type FROM evenements');
+                    $events = $requete->fetchAll(PDO::FETCH_ASSOC);
+                } catch (PDOException $e) {
+                    echo "Erreur : " . $e->getMessage();
+                }
+            ?>
+
+            <form method="POST" action="" class="hidden">
+                <div class="choixEvent">
+                    <label for="id_evenement_mod">Sélectionnez un événement à modifier</label>
+                    <select name="id_evenement_mod" id="id_evenement_mod">
+                        <?php foreach ($events as $event) {
+                            echo "<option value='{$event['id']}'>{$event['nom']} - {$event['localisation']}</option>";
+                        } ?>
+                    </select>
+                </div>
+                <button class= "ajouterBtn" type="button" onclick="loadEventData()">Choisir</button>
+               
+
+                <div id="eventDetails" style="display:none;">
+                    <div class="champs">
+                        <div class="champ1">
+                            <div class="ajoutChamp">
+                                <label for="nom">Nom de l'événement</label>
+                                <input type="text" id="nomM" name="nom">
+                            </div>
+                            <div class="ajoutChamp">
+                                <label for="localisation">Localisation</label>
+                                <input type="text" id="localisationM" name="localisation">
+                            </div>
+                        </div>
+                        <div class="champ1">
+                            <div class="ajoutChamp">
+                                <label for="date_début">Date de début</label>
+                                <input type="date" id="date_debutM" name="date_début">
+                            </div>
+                            <div class="ajoutChamp">
+                                <label for="date_fin">Date de fin</label>
+                                <input type="date" id="date_finM" name="date_fin">
+                            </div>
+                        </div>
+                        <div class="champ1">
+                            <div class="ajoutChamp imag">
+                                <label for="image">Image</label>
+                                <input type="text" id="imageM" name="image">
+                            </div>
+                            <div class="champ2">
+                                <div class="ajoutChamp">
+                                    <label for="type">Type</label>
+                                    <input type="number" id="typeM" name="type">
+                                </div>
+                                <div class="ajoutChamp">
+                                    <label for="prix">Prix par jour (€)</label>
+                                    <input type="text" id="prixM" name="prix">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="ajouterBtn" type="submit" name="modifier" value="Modifier">
+                </div>
+            </form>
+
+            <script>
+                function loadEventData() {
+                    var selectedIndex = document.getElementById('id_evenement_mod').value;
+                    var eventDetails = <?php echo json_encode($events); ?>;
+                    
+                    var selectedEvent = eventDetails.find(event => event.id == selectedIndex);
+                    if (selectedEvent) {
+                        document.getElementById('nomM').value = selectedEvent.nom;
+                        document.getElementById('localisationM').value = selectedEvent.localisation;
+                        document.getElementById('date_debutM').value = selectedEvent.date_début;
+                        document.getElementById('date_finM').value = selectedEvent.date_fin;
+                        document.getElementById('prixM').value = selectedEvent.prix;
+                        document.getElementById('imageM').value = selectedEvent.image;
+                        document.getElementById('typeM').value = selectedEvent.type;
+                        document.getElementById('eventDetails').style.display = 'block';
+                    }
+                }
+            </script>
+
+            <?php
+                if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier'])) {
+                    $id = $_POST['id_evenement_mod'];
+                    $nom = htmlspecialchars($_POST['nom']);
+                    $localisation = htmlspecialchars($_POST['localisation']);
+                    $date_debut = htmlspecialchars($_POST['date_début']);
+                    $date_fin = htmlspecialchars($_POST['date_fin']);
+                    $prix = htmlspecialchars($_POST['prix']);
+                    $image = htmlspecialchars($_POST['image']);
+                    $type = htmlspecialchars($_POST['type']);
+
+                    try {
+                        $stmt = $bdd->prepare("UPDATE evenements SET nom = ?, localisation = ?, date_début = ?, date_fin = ?, prix = ?, image = ?, type = ? WHERE id = ?");
+                        $stmt->execute([$nom, $localisation, $date_debut, $date_fin, $prix, $image, $type, $id]);
+                        echo "<p>L'événement a été modifié avec succès.</p>";
+                    } catch (PDOException $e) {
+                        echo "Erreur : " . $e->getMessage();
+                    }
+                }
+            ?>
+            
         </div>
     </main>
     <footer>

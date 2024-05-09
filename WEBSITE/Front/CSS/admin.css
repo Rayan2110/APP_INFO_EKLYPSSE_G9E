@@ -27,7 +27,7 @@
    color: orange;
 }
 
-button[type="button"]{
+.Lien button[type="button"]{
    border: 1px solid black;
    padding: 10px;
    display: inline-block;
@@ -39,7 +39,7 @@ button[type="button"]{
    cursor: pointer;
 }
 
-button[type="button"]:hover{
+.Lien button[type="button"]:hover{
    border: 1px solid orange;
    color: orange;
 }
@@ -92,7 +92,7 @@ th {
 }
 
 
-/* delete */
+/* delete faq */
 
 .deleteHeader {
    display: flex;
@@ -183,7 +183,7 @@ th {
 
 /* ajouter évènement */
 
-.adminMain button {
+.retourBtn{
    appearance: none;
    border: 0px;
    background-color: aliceblue;
@@ -270,7 +270,7 @@ th {
 .ajoutChamp {
    display: flex;
    flex-direction: column;
-   width: 200px;
+   min-width: 200px;
    margin-bottom: 10px;
 }
 
@@ -281,7 +281,8 @@ th {
    border: solid 1px black;
    height: 25px;
    border-radius: 20px;
-   padding: 10px;
+   padding: 0 8px;
+   max-width: 600px;
 }
 .champ2 {
    display: flex;
@@ -324,4 +325,50 @@ th {
 
 .hidden {
    display: none; 
+}
+
+/* supprimer un evenement */
+
+.choixEvent {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-left: 85px;
+}
+
+.choixEvent label {
+   margin-bottom: 5px;
+}
+
+#id_evenement {
+   border: solid 1px black;
+   height: 25px;
+   border-radius: 20px;
+   padding: 2px;
+   max-width: 600px;
+   padding: 0 8px;
+}
+#id_evenement:hover {
+   border: solid 2px orange;    
+}
+#id_evenement:focus {
+   border: 2px solid orange;    
+}
+#id_evenement_mod {
+   border: solid 1px black;
+   height: 25px;
+   border-radius: 20px;
+   padding: 2px;
+   max-width: 600px;
+   padding: 0 8px;
+}
+#id_evenement_mod:hover {
+   border: solid 2px orange;    
+}
+#id_evenement_mod:focus {
+   border: 2px solid orange;    
+}
+
+#eventDetails {
+   margin-top: 40px;
 }
