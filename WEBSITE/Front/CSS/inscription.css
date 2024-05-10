@@ -7,8 +7,8 @@ compte utilisateur. */
 /* Inscription */
 
 body{
-    background-image: url("../Images/FondInscricouleurtest.png") ;
-    background-color:  #17a2b8;
+    background-image: url("../Images/FondInscricouleurn.png") ;
+    background-color:  rgb(250, 228, 203);
     background-size: contain;
     width: 100%;
     display: flex;
@@ -22,7 +22,6 @@ form{
     align-self: center;
     margin-top: 100px;
     background-color: rgba(246, 234, 220, 0.349);
-    opacity: 0.9;
     width: 400px;
     padding: 10px;
     border: 1px solid orange;
