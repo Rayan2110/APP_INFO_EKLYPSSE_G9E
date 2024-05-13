@@ -7,12 +7,6 @@ if (!isset($_SESSION['pseudo'])) {
     exit();
 }
 
-// Vérifiez si les variables de session sont définies
-if (!isset($_SESSION['pseudo'], $_SESSION['email'], $_SESSION['mdp'])) {
-    echo "Variables de session non définies.";
-    exit();
-}
-
 // Connexion à la base de données
 $servername = "localhost";
 $username = "root";
@@ -27,8 +21,8 @@ if ($conn->connect_error) {
 }
 
 // Récupérer les informations de l'utilisateur depuis la base de données
-$user_id = $_SESSION['email']; // Assurez-vous d'avoir la colonne d'identifiant utilisateur appropriée
-$sql = "SELECT pseudo, nom, date_naissance FROM utilisateurs WHERE id = '$user_id'";
+$user_id = $_SESSION['id']; // Assurez-vous d'avoir la colonne d'identifiant utilisateur appropriée
+$sql = "SELECT pseudo, nom, date_naissance, email, mdp FROM users WHERE id = '$user_id'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -37,6 +31,8 @@ if ($result->num_rows > 0) {
     $pseudo = $row['pseudo'];
     $nom = $row['nom'];
     $date_naissance = $row['date_naissance'];
+    $email = $row['email'];
+    $mdp = $row['mdp'];
 } else {
     echo "Utilisateur non trouvé.";
 }
