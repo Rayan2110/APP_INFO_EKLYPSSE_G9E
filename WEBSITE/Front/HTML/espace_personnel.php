@@ -1,9 +1,16 @@
-<?php  $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
-session_start(); // Démarrez la session
+<?php  
+
+include 'header.php';
 
 // Vérifiez si l'utilisateur est connecté
-if (!isset($_SESSION['pseudo'])) {
-    header("Location: connexion.php"); // Redirigez vers la page de connexion
+if (!isset($_SESSION['id'])) {
+    header("Location: connexion.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
+    exit();
+}
+
+// Vérifiez si les variables de session sont définies
+if (!isset($_SESSION['pseudo'], $_SESSION['email'], $_SESSION['mdp'])) {
+    echo "Variables de session non définies.";
     exit();
 }
 
@@ -21,23 +28,20 @@ if ($conn->connect_error) {
 }
 
 // Récupérer les informations de l'utilisateur depuis la base de données
-$user_id = $_SESSION['id']; // Assurez-vous d'avoir la colonne d'identifiant utilisateur appropriée
-$sql = "SELECT pseudo, nom, date_naissance, email, mdp FROM users WHERE id = '$user_id'";
+$user_id = $_SESSION['email']; // Assurez-vous d'avoir la colonne d'identifiant utilisateur appropriée
+$sql = "SELECT pseudo, nom, date_naissance FROM utilisateurs WHERE id = '$user_id'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     // Récupérer les données de l'utilisateur
-    $row = $result->fetch_assoc();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $pseudo = $row['pseudo'];
     $nom = $row['nom'];
     $date_naissance = $row['date_naissance'];
-    $email = $row['email'];
-    $mdp = $row['mdp'];
 } else {
     echo "Utilisateur non trouvé.";
 }
 
-$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +61,7 @@ $conn->close();
         <label for="date_naissance">Date de naissance:</label>
         <input type="date" id="date_naissance" name="date_naissance" value="<?php echo $date_naissance; ?>">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<?php echo $_SESSION['email']; ?>" readonly>
+        <input type="email" id="email" name="email" value="<?php echo $email; ?>">
         <label for="mdp">Mot de passe:</label>
         <input type="password" id="mdp" name="mdp" value="<?php echo $_SESSION['mdp']; ?>" readonly>
         <button type="submit" name="submit">Enregistrer les changements</button>
