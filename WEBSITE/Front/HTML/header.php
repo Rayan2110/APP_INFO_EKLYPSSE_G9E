@@ -6,7 +6,7 @@
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../CSS/header.css">
     
-    <meta charset=" utf-8" />
+    <meta charset="utf-8" />
     <title>Accueil</title>
 </head>
 <body>
@@ -56,20 +56,29 @@
             </li>
         </ul>
     </div>
-        <?php
-        if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' && isset($_SESSION['mdp']) && $_SESSION['mdp'] === 'root') {
-            echo '<li><a href="admin.php"><i class="fa-solid fa-user-gear"></i></a></li>';
-        } 
-        ?>
+    
+    <?php
+    // Vérifier automatiquement le cookie lors du chargement de la page
+    if(isset($_COOKIE['user_id'])) {
+        $user_id = $_COOKIE['user_id'];
+        // Connecter automatiquement l'utilisateur en utilisant $user_id
+        // Remplacez cette ligne par votre logique pour connecter l'utilisateur
+    }
+    ?>
 
     <div class="action-btn-container">
-    <?php
+        <?php
         if(isset($_SESSION['id'])) {
             echo '<a href="deconnexion.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
         } else {
             echo '<a href="connexion.php" class="action_btn">Se connecter / S\'inscrire</a>';
         }
-    ?>
+        ?>
+        <?php
+        if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' && isset($_SESSION['mdp']) && $_SESSION['mdp'] === 'root') {
+            echo '<a href="admin.php"><i class="fa-solid fa-user-gear"></i></a>';
+        } 
+        ?>
     </div>
 
 </header>
@@ -79,7 +88,7 @@
 </main>
 
 <footer>
-    <!-- Contenu du pied de page -->
+
 </footer>
 
 </body>

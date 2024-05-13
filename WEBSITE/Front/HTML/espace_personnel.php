@@ -1,43 +1,70 @@
-<?php
-// Connexion à la base de données (remplacez les valeurs par les vôtres)
-$servername = "localhost";
-$username = "nom_utilisateur";
-$password = "mot_de_passe";
-$dbname = "nom_base_de_donnees";
+<?php  $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+session_start(); // Démarrez la session
 
-//$conn = new mysqli($servername, $username, $password, $users);
-
-
-
-// Récupérer les informations de l'utilisateur depuis la base de données (suppose que vous avez une table 'utilisateurs')
-// Vous devez d'abord récupérer les informations de l'utilisateur pour les afficher dans les champs de modification
-
-// Traitement du formulaire de modification
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Récupérer les valeurs du formulaire
-    $prenom = $_POST['prenom'];
-    $nom = $_POST['nom'];
-    $email = $_POST['email'];
-    $mot_de_passe = $_POST['mot_de_passe'];
-
-    // Mettre à jour les informations de l'utilisateur dans la base de données
-    $sql = "UPDATE utilisateurs SET prenom='$prenom', nom='$nom', email='$email', mot_de_passe='$mot_de_passe' WHERE id_utilisateur='$id_utilisateur'";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "Informations mises à jour avec succès";
-    } else {
-        echo "Erreur lors de la mise à jour des informations : " . $conn->error;
-    }
+// Vérifiez si l'utilisateur est connecté
+if (!isset($_SESSION['pseudo'])) {
+    header("Location: connexion.php"); // Redirigez vers la page de connexion
+    exit();
 }
 
+// Vérifiez si les variables de session sont définies
+if (!isset($_SESSION['pseudo'], $_SESSION['email'], $_SESSION['mdp'])) {
+    echo "Variables de session non définies.";
+    exit();
+}
 
+// Connexion à la base de données
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "espace_membres";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Vérifiez la connexion
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Récupérer les informations de l'utilisateur depuis la base de données
+$user_id = $_SESSION['email']; // Assurez-vous d'avoir la colonne d'identifiant utilisateur appropriée
+$sql = "SELECT pseudo, nom, date_naissance FROM utilisateurs WHERE id = '$user_id'";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Récupérer les données de l'utilisateur
+    $row = $result->fetch_assoc();
+    $pseudo = $row['pseudo'];
+    $nom = $row['nom'];
+    $date_naissance = $row['date_naissance'];
+} else {
+    echo "Utilisateur non trouvé.";
+}
+
+$conn->close();
 ?>
 
-<!-- Formulaire HTML pour permettre à l'utilisateur de modifier ses informations -->
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-    Prenom: <input type="text" name="prenom"><br>
-    Nom: <input type="text" name="nom"><br>
-    Email: <input type="email" name="email"><br>
-    Mot de passe: <input type="password" name="mot_de_passe"><br>
-    <input type="submit" value="Modifier">
-</form>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Personnel</title>
+</head>
+<body>
+    <h2>Espace Personnel</h2>
+    <form method="post" action="update_user.php">
+        <label for="pseudo">Pseudo:</label>
+        <input type="text" id="pseudo" name="pseudo" value="<?php echo $pseudo; ?>">
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom" value="<?php echo $nom; ?>">
+        <label for="date_naissance">Date de naissance:</label>
+        <input type="date" id="date_naissance" name="date_naissance" value="<?php echo $date_naissance; ?>">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<?php echo $_SESSION['email']; ?>" readonly>
+        <label for="mdp">Mot de passe:</label>
+        <input type="password" id="mdp" name="mdp" value="<?php echo $_SESSION['mdp']; ?>" readonly>
+        <button type="submit" name="submit">Enregistrer les changements</button>
+    </form>
+</body>
+</html>
