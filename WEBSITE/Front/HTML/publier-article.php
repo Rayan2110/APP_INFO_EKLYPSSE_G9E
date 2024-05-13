@@ -7,25 +7,34 @@
     <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
-<body>
+
 <?php
 // Inclure le fichier header.php
 include 'header.php';
 ?>
     
-<a href="admin.php" class="Admin" ><h1>Admin</h1></a>
-<br>
-<h2>Ajouter une section F.A.Q</h2>
-<br>
+<body class="adminBody">
 
-<form method="POST" action="">
-    <input type="text" name="question" placeholder="Question">
-    <br/>
-    <textarea name="reponse" placeholder="Réponse"></textarea>
-    <br/>
-    <input type="submit" name="envoi">
-    <input type="submit" name="supprimer" value="Supprimer une section">
-</form>
+    <main class="adminMain"> 
+        <button class="retourBtn" ><a href="admin.php">Retour</a></button>
+        <div class="gestionTitre">
+            <a href="admin.php" class="Admin"><h1>Admin </h1></a> 
+            <h2>/ Gestion des FAQ</h2>
+        </div>
+        <div class="ajoutContainer">
+            <div class="sousTitre">
+                <h2>Ajouter une nouvelle FAQ</h2>
+                <h3><i class="fa-solid fa-chevron-down"></i></h3>
+            </div>
+            <form method="POST" action=""  class="hidden ajoutFAQ">
+                <input type="text" name="question" placeholder="Question">
+                <br/>
+                <textarea name="reponse" placeholder="Réponse"></textarea>
+                <br/>
+                <input type="submit" name="envoi" class="ajoutFaqBtn">
+
+            </form>
+        </div>
 
 <?php
 if (isset($_POST['envoi'])) {
@@ -41,17 +50,17 @@ if (isset($_POST['envoi'])) {
     }
 }
 
-if (isset($_POST['supprimer'])) {
-    // Execute code for deleting FAQ entries
-    $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
+
 
     ?>
-    <div class="deleteHeader">
-        <h2>Liste des F.A.Q</h2>
-        <!-- <button class="closeBtn"><i class='bx bx-x'></i> Fermer</button> -->
+<div class="ajoutContainer">
+    <div class="sousTitre">
+        <h2>Supprimer une FAQ</h2>
+        <h3><i class="fa-solid fa-chevron-down"></i></h3>
     </div>
-    <div class="liste">
+    <div class="liste hidden">
     <?php
+    $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
     $recupArticle = $bdd->query('SELECT * FROM faq');
     while ($article = $recupArticle->fetch()) {
         ?>
@@ -73,10 +82,11 @@ if (isset($_POST['supprimer'])) {
         </div>
     
 <?php
-    }
 }
 ?>
-</div>
+        </div>
+    </div>
+</main>
 <footer>
     <?php
                 // Inclure le fichier header.php
@@ -103,6 +113,35 @@ if (isset($_POST['supprimer'])) {
             }
         });
     }
+
+    
+    var sousTitres = document.querySelectorAll('.sousTitre');
+
+    sousTitres.forEach(function(sousTitre) {
+        sousTitre.addEventListener('click', function() {
+            // Récupère le parent de la div sousTitre, c'est-à-dire la div ajoutContainer
+            var ajoutContainer = this.parentElement;
+
+            // Récupère tous les éléments enfants de la div ajoutContainer
+            var elements = ajoutContainer.querySelectorAll(':scope > *');
+
+            // Boucle à travers tous les éléments
+            elements.forEach(function(element) {
+                // Si l'élément n'est pas la div sousTitre elle-même
+                if (!element.classList.contains('sousTitre')) {
+                    // Basculer la classe hidden pour cacher ou afficher l'élément
+                    element.classList.toggle('hidden');
+                }
+            });
+
+            // Récupère l'élément i avec la classe fa-chevron-down
+            var chevron = this.querySelector('.fa-chevron-down');
+
+            // Basculer la rotation du chevron
+            chevron.style.transform = chevron.style.transform === 'rotate(180deg)' ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+    });
+
 
 </script>
 

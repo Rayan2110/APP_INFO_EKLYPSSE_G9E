@@ -21,7 +21,7 @@ compte utilisateur. */
 /* Inscription */
 
 body{
-    background-image: url("../Images/FondInscricouleurtest.png") ;
+    background-image: url("../Images/FondInscricouleurn.png") ;
     background-color:  rgb(250, 228, 203);
     background-size: contain;
     display: flex;
@@ -32,9 +32,8 @@ body{
 form{
     display: flex;
     flex-direction: column;
-    background-image: url("../Images/FormCo.png");
+    background-image: url("../Images/FormCoT.png");
     align-self: center;
-    opacity: 0.7;
     margin-top: 100px;
     border: 1px solid orange;
     background-color: rgba(246, 234, 220, 0.349);
