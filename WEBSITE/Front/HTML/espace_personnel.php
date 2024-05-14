@@ -2,8 +2,8 @@
 session_start(); // Démarrez la session
 
 // Vérifiez si l'utilisateur est connecté
-if (!isset($_SESSION['pseudo'])) {
-    header("Location: connexion.php"); // Redirigez vers la page de connexion
+if (!isset($_SESSION['email'])) {
+    header("Location: admin.php"); // Redirigez vers la page de connexion
     exit();
 }
 
