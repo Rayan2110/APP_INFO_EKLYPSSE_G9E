@@ -250,10 +250,13 @@
 .search-bar:hover{
     background-color: #f2f2f2;
 }
-.search-bar:hover input,
-.search-bar input:focus {
+.search-bar:hover input[type="text"],
+.search-bar input[type="text"]:focus {
     width: 400px;
+    padding-left: 10px;
   }
+
+
 
 .search-bar input{
     width: 0;
@@ -264,11 +267,44 @@
     transition: 0.8s;
     background: transparent;
 }
-
-.search-bar a .fas{
-    color: orange;
-    font-size: 18px;
+.search-bar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 38px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 45%;
 }
+.search-bar:hover button{
+    background-color: #f2f2f2;
+}
+.search-bar button:hover {
+    background-color: #f6e7d7;
+}
+.search-bar .fas{
+    color: orange;
+    font-size: 20px;
+}
+
+.afficherEvent {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    /* justify-content: center; */
+    max-width: 1550px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+.searchResult {
+    width: calc((100% / 4) - 15px);
+    margin: 0 8px;
+}
+
+
 
 /* carroussel global */
 
@@ -333,6 +369,7 @@
     cursor: grab;
     user-select: none;
 }
+.searchResult .card,
 .carousel-container .card {
     scroll-snap-align: start;
     height: 370px;
@@ -690,7 +727,7 @@
     display: none; 
 } */
 
-   /* Supprimer évènement */
+   /* Supprimer évènement
    
 .ajoutContainerF {
     background-color: #f0f0f0;
@@ -737,4 +774,4 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #fa8e02;
-}
+} */

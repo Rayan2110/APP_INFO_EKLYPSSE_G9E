@@ -15,9 +15,9 @@
     
  
         <?php
-                // Inclure le fichier header.php
-                include 'header.php';
-                ?>
+        // Inclure le fichier header.php
+        include 'header.php';
+        ?>
 
 <body class="evenement-body">    
             <div class="content-promo">
@@ -61,12 +61,25 @@
                     <div class="left">
                         <i class="fa-regular fa-user filters"></i>
                         <i class="fa-regular fa-bookmark filters"></i>
-                        <div class="search-bar">
-                            <input type="text" placeholder="Rechercher...">
-                            <a href="#">
-                                <i class="fas fa-search"></i>
-                            </a>
-                        </div>
+                        <?php
+                        $allEvent = $bdd->query('SELECT * FROM evenements ORDER BY id DESC');
+                        $searching = false;
+                        if(isset($_GET['s']) AND !empty($_GET['s'])){
+                            $recherche = htmlspecialchars($_GET['s']);
+                            $allEvent = $bdd->query('SELECT * FROM evenements WHERE nom LIKE "%'.$recherche.'%" ORDER BY id DESC');
+                            $searching = true;
+                        }
+                        ?>
+                        <form method="GET">
+                            <div class="search-bar">
+                                <input type="text" name="s" placeholder="Rechercher..." autocomplete="off">
+
+                                <button type="submit" name="envoyer">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+ 
                         <i class="fa-solid fa-sliders filters"></i>
                     </div>
                     <div class="right">
@@ -74,7 +87,33 @@
                     </div>
                     <!-- <i class="fa-regular fa-bag-shopping"></i> -->
                 </div>
+            
+                <section class="afficherEvent">
+                            <?php
+                                if($searching){
+                                    if($allEvent->rowCount() > 0){
+                                        while($event = $allEvent->fetch()){
+                                            ?>
+                                            <div class="searchResult">
+                                                <li class="card" data-target="detail<?= $event['id'] ?>">
+                                                    <div class="img"><img src="<?= $event['image'] ?>" alt="img" draggable="false"></div>
+                                                    <h2><?= $event['nom'] ?></h2>
+                                                    <span><?= $event['localisation'] ?></span>
+                                                    <span><?= date('j-n Y', strtotime($event['date_début'])) ?> - <?= date('j-n Y', strtotime($event['date_fin'])) ?></span>
+                                                    <span class="price"><strong><?= $event['prix'] ?> &#8364;</strong> par jour</span>
+                                                </li>
+                                            </div>
+                                        <?php
+                                        }
+                                    } else {
+                                    ?>
+                                    <p>Aucun évènement trouvé</p>
+                                    <?php
+                                    }
 
+                                }
+                            ?>
+                        </section>
 
                 <!-- <div class="content-fest">
                     <h3>Festivals populaires</h3>
