@@ -162,29 +162,14 @@
             </div>
 
             <div class ="chiffre"><h1> Des nombres qui attestent de notre réussite</h1></div>
-
-            <div class="container-information">
-                <div class="box-info">
-                        <h1>+100</h1>
-                        <h2>Festivals partenaires</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet facere, veniam laudantium perferendis dolorem </br>cupiditate delectus dolorum aliquid. Veniam voluptas eos atque earum vel facere delectus ut illo! Qui, asperiores!
-                            </p>
-                </div>
-
-                <div class="box-info">
-                    <h1>+100</h1>
-                        <h2>Festivals partenaires</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet facere, veniam laudantium perferendis dolorem </br>cupiditate delectus dolorum aliquid. Veniam voluptas eos atque earum vel facere delectus ut illo! Qui, asperiores!</p>
-                </div>
-
-                <div class="box-info">
-                    <h1>+100</h1>
-                        <h2>Festivals partenaires</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet facere, veniam laudantium perferendis dolorem </br>cupiditate delectus dolorum aliquid. Veniam voluptas eos atque earum vel facere delectus ut illo! Qui, asperiores!</p>
-                
-
+            
+            <div style="background-color: white;" >
+                <?php
+                    include 'Afficher_commentaire.php';
+                    echo'<br>';
+                    echo'<br>';
+                ?>
             </div>
-        </div>
         
         </main>
         <footer>
@@ -193,6 +178,5 @@
                 include 'footer.php';
                 ?>
         </footer>
-        
         </body>
         </html>

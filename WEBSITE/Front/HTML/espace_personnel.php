@@ -2,19 +2,8 @@
 include 'header.php';
 
 // Vérifiez si l'utilisateur est connecté
-<<<<<<< HEAD
-if (!isset($_SESSION['email'])) {
-    header("Location: admin.php"); // Redirigez vers la page de connexion
-    exit();
-}
-
-// Vérifiez si les variables de session sont définies
-if (!isset($_SESSION['pseudo'], $_SESSION['email'], $_SESSION['mdp'])) {
-    echo "Variables de session non définies.";
-=======
 if (!isset($_SESSION['id'])) {
     header("Location: connexion.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
->>>>>>> 151b8bdc7d1b6e528868c88f2ff6f77f16239bd3
     exit();
 }
 

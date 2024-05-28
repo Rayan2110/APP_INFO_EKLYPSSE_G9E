@@ -33,6 +33,9 @@
                 session_start();
             }
             if(isset($_SESSION['pseudo'])) {
+                echo '<li><a href="Envoie_commentaire.php">Commentaire</a></li>';
+            }
+            if(isset($_SESSION['pseudo'])) {
                 echo '<li><a href="Carte.php">Carte</a></li>';
             }
             if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' ) {

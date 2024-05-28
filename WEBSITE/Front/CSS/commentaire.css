@@ -1,0 +1,44 @@
+.body{
+    background-color: white;
+}
+
+.commentaire {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.contenue {
+    border-radius: 10px;
+    border: 2px solid orange;
+    background-color: white;
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+.bouton-page {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid orange;
+    background-color: white;
+    color: orange;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.bouton-precedent {
+    margin-left: 24.5%;
+}
+
+.bouton-suivant {
+    margin-left: 46%;
+}
+
+.bouton-page:hover {
+    background-color: orange;
+    color: black;
+}
