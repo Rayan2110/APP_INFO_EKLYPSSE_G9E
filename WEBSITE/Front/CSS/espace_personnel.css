@@ -1,0 +1,16 @@
+body {
+    background-color: #999999;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    background-image: url("../Images/FormCoT.png");
+    align-self: center;
+    margin-top: 100px;
+    border: 1px solid orange;
+    background-color: rgba(246, 234, 220, 0.349);
+    width: 300px;
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.2);
+}
