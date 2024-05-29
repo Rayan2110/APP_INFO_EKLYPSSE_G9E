@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,6 @@
 
     <ul class="liens">
         <li><a href="Evenement.php">Evenement</a></li>
-        <li><a href="APropos.php">A propos</a></li>
         <li><a href="FAQ.php">F.A.Q</a></li>
         <li><a href="Contact.php">Contact</a></li>
         <?php
@@ -70,7 +69,7 @@
     <div class="action-btn-container">
         <?php
         if(isset($_SESSION['id'])) {
-            echo '<a href="deconnexion.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
+            echo '<a href="espace_personnel.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
         } else {
             echo '<a href="connexion.php" class="action_btn">Se connecter / S\'inscrire</a>';
         }

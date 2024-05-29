@@ -142,20 +142,21 @@
             <div class="box-container">
                 <div class="vertical-text">Programmation</div>
                 <div class="box">
-                    <a href="Evenement.html">
-                        <h3><b>Vendredi <br> 14 <br> juillet</b></h3>
+                    
+                    <a href="Evenement.php">
+                        <h3><b>Vendredi <br> 28 <br> juin</b></h3>
                     </a>
                 </div>
 
                 <div class="box">
-                    <a href="Evenement.html">
-                    <h3> <b> Jeudi  <br>14 <br> juillet</b></h3>
+                    <a href="Evenement.php">
+                    <h3> <b> Jeudi  <br>21<br> août</b></h3>
                 </a>
                 </div>
 
                 <div class="box">
-                    <a href="Evenement.html">
-                    <h3> <b>Samedi <br> 14 <br> juillet</b></h3>
+                    <a href="Evenement.php">
+                    <h3> <b>Samedi <br> 4<br> septembre</b></h3>
                     </a>
                 </div>
 
