@@ -23,25 +23,11 @@ if ($conn->connect_error) {
 // Initialiser le mois sélectionné par défaut à juillet
 $selected_month = isset($_POST['selected_month']) ? $_POST['selected_month'] : '07';
 
-// Requête SQL pour récupérer les initiales du festival "We Love Green"
-$sql = "SELECT initiales FROM evenements WHERE nom = 'We Love Green'";
+
 $sql2 = "SELECT date_début, id, nom FROM evenements WHERE DATE_FORMAT(date_début, '%m') = '$selected_month'";
 
-// Exécution de la requête SQL pour récupérer les initiales
-$resultInitiales = $conn->query($sql);
 
-// Variable pour stocker les initiales
-$initiales = '';
 
-// Vérifier si des résultats sont retournés
-if ($resultInitiales->num_rows > 0) {
-    // Récupérer les initiales
-    while ($row = $resultInitiales->fetch_assoc()) {
-        $initiales = $row['initiales'];
-    }
-} else {
-    echo "Aucun résultat trouvé pour les initiales du festival.";
-}
 
 // Exécution de la requête SQL pour récupérer les dates et noms du mois sélectionné
 $result2 = $conn->query($sql2);
