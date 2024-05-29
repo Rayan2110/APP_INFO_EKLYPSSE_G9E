@@ -97,22 +97,40 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espace Personnel</title>
 </head>
-<body>
+<body class="espBody">
     <h2>Espace Personnel</h2>
     <form method="post" action="espace_personnel.php">
-        <label for="pseudo">Pseudo:</label><br>
-        <input type="text" id="pseudo" name="pseudo" value="<?php echo htmlspecialchars($pseudo); ?>"><br>
-        <label for="nom">Nom:</label><br>
-        <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($nom); ?>"><br>
-        <label for="date_naissance">Date de naissance:</label><br>
-        <input type="date" id="date_naissance" name="date_naissance" value="<?php echo htmlspecialchars($date_naissance); ?>"><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>"><br>
-        <label for="old_password">Ancien mot de passe:</label><br>
-        <input type="password" id="old_password" name="old_password"><br>
-        <label for="new_password">Nouveau mot de passe:</label><br>
-        <input type="password" id="new_password" name="new_password"><br>
-        <button type="submit" name="submit">Enregistrer les changements</button><br>
+        <div class="form-row">
+            <label for="pseudo">Pseudo:</label>
+            <input type="text" id="pseudo" name="pseudo" value="<?php echo htmlspecialchars($pseudo); ?>">
+        </div>
+        <div class="form-row">
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom" value="<?php echo htmlspecialchars($nom); ?>">
+        </div>
+        <div class="form-row">
+            <label for="date_naissance">Date de naissance:</label>
+            <input type="date" id="date_naissance" name="date_naissance" value="<?php echo htmlspecialchars($date_naissance); ?>">
+        </div>
+        <div class="form-row">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email); ?>">
+        </div>
+        <div class="form-row">
+            <label for="old_password">Ancien mot de passe:</label>
+            <input type="password" id="old_password" name="old_password">
+        </div>
+        <div class="form-row">
+            <label for="new_password">Nouveau mot de passe:</label>
+            <input type="password" id="new_password" name="new_password">
+        </div>
+        <button type="submit" name="submit">Enregistrer les changements</button>
     </form>
+     <form method="post" action="deconnexion.php">
+        <button type="submit">Déconnexion</button>
+</form>
 </body>
+<footer>
+    <?php include 'footer.php';?>
+    </footer>
 </html>

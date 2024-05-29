@@ -1,16 +1,81 @@
-body {
-    background-color: #999999;
-}
-form{
+body{
+    background-image: url("../Images/FondInscricouleurn.png") ;
+    background-color:  rgb(250, 228, 203);
+    background-size: contain;
     display: flex;
     flex-direction: column;
-    background-image: url("../Images/FormCoT.png");
+}
+
+.espBody {
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
     align-self: center;
     margin-top: 100px;
     border: 1px solid orange;
-    background-color: rgba(246, 234, 220, 0.349);
+    background-color: rgba(246, 234, 220, 0.5);
     width: 300px;
     padding: 10px;
     border-radius: 15px;
     box-shadow: 0 0 50px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+h2 {
+    color: black;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px; /* Reduced space between label and input */
+    font-weight: bold;
+    color: black;
+    font-size: 18px; /* Increased font size */
+}
+
+input[type="text"],
+input[type="date"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px; /* Increased padding for larger input field */
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 18px; /* Increased font size */
+}
+
+button[type="submit"] {
+    margin-top: 20px;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: orange;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: black;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.form-row label,
+.form-row input {
+    width: 48%; /* Adjust the width as needed */
 }
