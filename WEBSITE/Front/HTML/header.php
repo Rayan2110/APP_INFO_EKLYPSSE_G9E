@@ -39,7 +39,7 @@
                 echo '<li><a href="admin.php">Admin</a></li>';
             }
             if(isset($_SESSION['pseudo'])) {
-                echo '<li><a href="espace_personnel.php">Pers</a></li>';
+                echo '<li><a href="espace_personnel.php">Profil</a></li>';
             }
         ?>
 
