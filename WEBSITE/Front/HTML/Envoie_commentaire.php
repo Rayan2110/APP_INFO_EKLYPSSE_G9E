@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/pages.css">
+    <link rel="stylesheet" href="../CSS/commentaire.css">
     <title>Commentaire</title>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -14,13 +15,7 @@
     </script>
 </head>
 <body>
-
-    <?php
-        // Inclure le fichier header.php
-        include 'header.php';
-    ?>
-
-    <div class="contact-container">
+    <div class="comment-container">
         <?php
             if (session_status() === PHP_SESSION_NONE) {
                 session_start();
@@ -28,16 +23,18 @@
             $pseudo = isset($_SESSION['pseudo']) ? $_SESSION['pseudo'] : '';
         ?>
 
-        <form action="" method="POST" class="contact-left">
-            <div class="contact-left-title">
-                <h2>Comments</h2>
-                <hr>
+        <form action="" method="POST" class="comment-left">
+            <div class="comment-left-title">
+                <h2>Commentaire</h2>
+                <br>
             </div>
-            <input type="hidden" name="access_key" value="f0389b80-465b-4565-ab58-897042271442">
-            <input type="text" name="pseudo" class="contact-inputs pseudo" required value="<?php echo htmlspecialchars($pseudo); ?>">
-            <input type="text" name="reference" placeholder="Your object" class="contact-inputs reference" required>
-            <textarea name="commentaire" placeholder="Your comments" class="contact-inputs commentaire" required></textarea>
-            <button type="submit" name="envoie" id="submitBtn">Submit</button>
+            <input type="text" name="pseudo" class="comment pseudo" required value="<?php echo htmlspecialchars($pseudo); ?>" placeholder="Pseudo">
+            <br>
+            <input type="text" name="reference" placeholder="Titre" class="comment reference" required>
+            <br>
+            <textarea name="commentaire" placeholder="Commentaire" class="comment commentaire" required></textarea>
+            <br>
+            <button type="submit" name="envoie" class="envoie" id="submitBtn">Envoyer</button>
         </form>
     </div>
 
