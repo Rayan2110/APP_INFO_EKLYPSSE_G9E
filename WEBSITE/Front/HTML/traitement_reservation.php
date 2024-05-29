@@ -16,6 +16,7 @@ if ($conn->connect_error) {
 
 // Déclarer la variable qui va stocker l'ID de l'événement
 $eventID = '';
+$name = ''; // Initialiser la variable $name
 
 // Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $selected_date = $_POST['selected_date'];
 
     // Préparer la requête SQL pour obtenir l'ID de l'événement
-    $sql = "SELECT id FROM evenements WHERE DATE_FORMAT(date_début, '%m') = ? AND DATE_FORMAT(date_début, '%d') = ?";
+    $sql = "SELECT id, nom FROM evenements WHERE DATE_FORMAT(date_début, '%m') = ? AND DATE_FORMAT(date_début, '%d') = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ss", $selected_month, $selected_date);
     $stmt->execute();
@@ -38,10 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Extraire le premier résultat (dans ce cas, l'ID de l'événement)
         $row = $resultatid->fetch_assoc();
         $eventID = $row['id'];
+        $name = $row['nom']; // Corriger 'riw' en 'row'
     } else {
-        $eventID = 'No events found';
+        $eventID = null;
     }
-
 
     // Vérifier si un ID d'événement valide a été trouvé
     if (is_numeric($eventID)) {
@@ -63,6 +64,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/espace_personnel.css">
     <title>Achat réussi</title>
     <style>
         body {
@@ -114,7 +116,7 @@ $conn->close();
 <body>
     <div class="container">
         <h1>Achat bien effectué</h1>
-        <p>Merci pour votre achat ! Votre ID event est : <?php echo htmlspecialchars($eventID); ?></p>
+        <p>Merci pour votre achat ! A bientôt pour le festival : <?php echo htmlspecialchars($name); ?></p>
         <p>Vous pouvez consulter vos événements dans votre espace membre.</p>
 
         <button class="btn" onclick="window.location.href = 'Home.php';">Retour à l'accueil</button>
