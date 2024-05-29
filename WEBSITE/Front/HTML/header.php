@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -38,9 +38,7 @@
             if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' ) {
                 echo '<li><a href="admin.php">Admin</a></li>';
             }
-            if(isset($_SESSION['pseudo'])) {
-                echo '<li><a href="espace_personnel.php">Pers</a></li>';
-            }
+            
         ?>
 
 
