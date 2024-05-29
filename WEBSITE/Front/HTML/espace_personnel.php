@@ -86,6 +86,25 @@ if (isset($_POST['submit'])) {
     }
 }
 
+// Récupérer les billets de l'utilisateur depuis la base de données
+$sql_billets = "SELECT e.nom, e.date_début, e.date_fin, e.localisation, e.prix 
+                FROM billet b 
+                JOIN evenements e ON b.id_evenements = e.id 
+                WHERE b.id_users = ?";
+$stmt_billets = $conn->prepare($sql_billets);
+$stmt_billets->bind_param("i", $user_id);
+$stmt_billets->execute();
+$result_billets = $stmt_billets->get_result();
+$billets = [];
+if ($result_billets->num_rows > 0) {
+    while ($row_billet = $result_billets->fetch_assoc()) {
+        $billets[] = $row_billet;
+    }
+} else {
+    echo "Aucun billet trouvé pour cet utilisateur.";
+}
+$stmt_billets->close();
+
 $conn->close();
 ?>
 
@@ -126,6 +145,25 @@ $conn->close();
         </div>
         <button type="submit" name="submit">Enregistrer les changements</button>
     </form>
+    <div class="billets-section">
+    <h3>Mes Billets</h3>
+    <?php if (!empty($billets)): ?>
+        <ul>
+            <?php foreach ($billets as $billet): ?>
+                <li>
+                    <strong><?php echo htmlspecialchars($billet['nom']); ?></strong> - 
+                    Date début: <?php echo htmlspecialchars($billet['date_début']); ?> - 
+                    Date fin: <?php echo htmlspecialchars($billet['date_fin']); ?> - 
+                    Localisation: <?php echo htmlspecialchars($billet['localisation']); ?> - 
+                    Prix: <?php echo htmlspecialchars($billet['prix']); ?> €
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>Aucun billet trouvé.</p>
+    <?php endif; ?>
+</div>
+
      <form method="post" action="deconnexion.php">
         <button type="submit">Déconnexion</button>
 </form>

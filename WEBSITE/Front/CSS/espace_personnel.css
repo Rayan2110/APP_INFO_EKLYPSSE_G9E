@@ -1,7 +1,9 @@
-body{
-    background-image: url("../Images/FondInscricouleurn.png") ;
-    background-color:  rgb(250, 228, 203);
-    background-size: contain;
+body {
+    background-image: url("../Images/FondInscricouleurn.png");
+    background-color: black; /* Fond noir en dehors de l'image */
+    background-size: cover; /* Ajuste l'image pour couvrir le fond sans répétition */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    background-position: center center; /* Centre l'image */
     display: flex;
     flex-direction: column;
 }
@@ -78,4 +80,39 @@ button[type="submit"]:hover {
 .form-row label,
 .form-row input {
     width: 48%; /* Adjust the width as needed */
+}
+
+.billets-section {
+    margin-top: 20px;
+    background-color: rgba(246, 234, 220, 0.5);
+    padding: 20px; /* Increased padding for a more spacious layout */
+    border-radius: 15px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.2);
+    max-width: 800px; /* Increased maximum width */
+    margin: 20px auto;
+}
+
+.billets-section h3 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+}
+
+.billets-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.billets-section li {
+    padding: 15px; /* Increased padding for each list item */
+    border-bottom: 1px solid #ccc;
+}
+
+.billets-section li:last-child {
+    border-bottom: none;
+}
+
+.deco {
+    background-color: black;
 }
