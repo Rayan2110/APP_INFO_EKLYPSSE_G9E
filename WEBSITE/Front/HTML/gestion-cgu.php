@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION['pseudo'] !== "root"){
+    header('Location: forbidden.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

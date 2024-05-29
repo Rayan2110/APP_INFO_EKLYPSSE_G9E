@@ -1,5 +1,11 @@
 <?php
 
+session_start();
+if($_SESSION['pseudo'] !== "root"){
+    header('Location: forbidden.php');
+    exit();
+}
+
 // Traitement du formulaire
 if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
     if (!empty($_POST['nom']) && !empty($_POST['localisation']) && !empty($_POST['date_début']) && !empty($_POST['date_fin']) && !empty($_POST['prix']) && !empty($_POST['image']) && !empty($_POST['type'])) {
