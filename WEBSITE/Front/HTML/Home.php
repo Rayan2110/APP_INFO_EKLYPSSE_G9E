@@ -165,9 +165,15 @@
             
             <div style="background-color: white;" >
                 <?php
+                    echo'<br>';
                     include 'Afficher_commentaire.php';
                     echo'<br>';
-                    echo'<br>';
+                    if (session_status() === PHP_SESSION_NONE) {
+                        session_start();
+                    }
+                    if(isset($_SESSION['pseudo'])) {
+                        include 'Envoie_commentaire.php';
+                    }
                 ?>
             </div>
         
