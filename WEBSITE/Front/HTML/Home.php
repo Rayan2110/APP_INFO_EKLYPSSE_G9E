@@ -171,9 +171,6 @@
                     if (session_status() === PHP_SESSION_NONE) {
                         session_start();
                     }
-                    if(isset($_SESSION['pseudo'])) {
-                        include 'Envoie_commentaire.php';
-                    }
                 ?>
             </div>
         
