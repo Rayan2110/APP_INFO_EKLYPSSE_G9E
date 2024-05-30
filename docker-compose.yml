@@ -3,24 +3,21 @@ version: '3.8'
 services:
   web:
     build:
-      context: ./WEBSITE/Front/HTML
+      context: ./WEBSITE/Front
+      dockerfile: Dockerfile
     ports:
-      - "8000:80"  # Mapping du port 8000 de l'hôte sur le port 80 du conteneur
+      - "8000:80"
     volumes:
       - ./WEBSITE/Front/HTML:/var/www/html
+      - ./WEBSITE/Front/CSS:/var/www/html/CSS
     depends_on:
       - db
-    environment:
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true  # Utilisation d'un mot de passe vide pour le compte root
 
   db:
     image: mysql:8.0
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "true"  # Utilisation d'un mot de passe vide pour le compte root
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_DATABASE: espace_membres
     volumes:
       - db_data:/var/lib/mysql
       - ./dump/espace_membres.sql:/docker-entrypoint-initdb.d/espace_membres.sql:ro

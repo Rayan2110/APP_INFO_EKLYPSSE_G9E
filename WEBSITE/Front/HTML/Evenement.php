@@ -1,6 +1,25 @@
 
-<?php $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', ''); ?>
+<?php
+// Paramètres de connexion
+$host = 'db';  // Utilisez le nom du service MySQL dans Docker Compose
+$dbname = 'espace_membres';
+$user = 'root';
+$password = '';
 
+// DSN de connexion
+$dsn = "mysql:host=$host;dbname=$dbname;charset=utf8";
+
+try {
+    // Connexion à la base de données
+    $bdd = new PDO($dsn, $user, $password);
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+} catch (PDOException $e) {
+    // En cas d'erreur de connexion
+    echo 'Connection failed: ' . $e->getMessage();
+    die(); // Arrête le script en cas d'erreur
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>

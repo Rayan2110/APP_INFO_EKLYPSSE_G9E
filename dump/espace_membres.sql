@@ -52,39 +52,40 @@ INSERT INTO `billet` (`id_billet`, `id_users`, `id_evenements`) VALUES
 -- Structure de la table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `pseudo` varchar(255) NOT NULL,
-  `date` date NOT NULL,
-  `commentaire` text NOT NULL,
-  `reference` varchar(2555) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+-- DROP TABLE IF EXISTS `comments`;
+-- CREATE TABLE IF NOT EXISTS `comments` (
+--   `id` int NOT NULL AUTO_INCREMENT,
+--   `pseudo` varchar(255) NOT NULL,
+--   `date` date NOT NULL,
+--   `commentaire` text NOT NULL,
+--   `reference` varchar(255) NOT NULL, -- Correction de la longueur de la colonne `reference`
+--   PRIMARY KEY (`id`)
+-- ) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `comments`
---
+-- --
+-- -- Déchargement des données de la table `comments`
+-- --
 
-INSERT INTO `comments` (`id`, `pseudo`, `date`, `commentaire`, `reference`) VALUES
-(1, 'Dong', '2024-05-12', 'HEY, comment sa va ? Vous avez manger? C\'était comment le festival ?', 'POST'),
-(2, 'Dong', '2024-05-15', 'teste modif', 'Modidication'),
-(23, 'TESTE', '2024-05-14', 'TESTE', 'TESTE'),
-(3, 'Dong', '2024-05-12', 'sqdhcxlkcclxkcisl,fqnslki,qml nvcmkjeqfl!q,mlscnojmoqsl,fclqmojfzl, sqclmsqjfl,csmsqzl,mcqskskdkmqls', 'POST'),
-(4, 'Dong', '2024-05-12', 'lqskdmsqkdmlqlscxlm;cwskdqsl;cxqskdlmsqkdlmqksldksmqkdlkqmdkozdqmlslmkclx', 'POST'),
-(14, 'FAN', '2024-05-15', 'TESTE TESTE ', 'TESTE'),
-(6, 'Dong', '2024-05-12', 'lkdsqx', 'POST'),
-(8, 'Dong', '2024-05-12', 'Salut', 'Post'),
-(9, 'Dong', '2024-05-12', 'Coucou', 'Post'),
-(36, 'Dong', '2024-05-17', 'envoie', 'envoie'),
-(37, 'root', '2024-05-17', 'test', 'teste'),
-(11, 'Dong', '2024-05-12', 'Hello\r\nsqdhcxlkcclxkcisl,fqnslki,qml nvcmkjeqfl!q,mlscnojmoqsl,fclqmojfzl, sqclmsqjfl,csmsqzl,mcqskskdkmqls', 'POST'),
-(12, 'Dong', '2024-05-12', 'Allo\r\nsqdhcxlkcclxkcisl,fqnslki,qml nvcmkjeqfl!q,mlscnojmoqsl,fclqmojfzl, sqclmsqjfl,csmsqzl,mcqskskdkmqls', 'POST'),
-(13, 'Dong', '2024-05-12', 'Holla\nsqdhcxlkcclxkcisl,fqnslki,qml nvcmkjeqfl!q,mlscnojmoqsl,fclqmojfzl, sqclmsqjfl,csmsqzl,mcqskskdkmqls', 'Festival'),
-(15, 'TONG', '2024-05-15', 'Bonne festival', 'TESTE 2'),
-(16, 'LOL', '2024-05-15', 'teste 3', 'teste 3 '),
-(26, 'XIAO', '2024-05-08', 'teste', 'teste'),
-(35, 'Dong', '2024-05-17', 'envoie', 'envoie');
+-- INSERT INTO `comments` (`id`, `pseudo`, `date`, `commentaire`, `reference`) VALUES
+-- (1, 'Dong', '2024-05-12', 'HEY, comment sa va ? Vous avez manger? C\'était comment le festival ?', 'POST'),
+-- (2, 'Dong', '2024-05-15', 'teste modif', 'Modification'),
+-- (23, 'TESTE', '2024-05-14', 'TESTE', 'TESTE'),
+-- (3, 'Dong', '2024-05-12', 'sqdhcxlkcclxkcisl,fqnslki,qml nvcmkjeqfl!q,mlscnojmoqsl,fclqmojfzl, sqclmsqjfl,csmsqzl,mcqskskdkmqls', 'POST'),
+-- (4, 'Dong', '2024-05-12', 'lqskdmsqkdmlqlscxlm;cwskdqsl;cxqskdlmsqkdlmqksldksmqkdlkqmdkozdqmlslmkclx', 'POST'),
+-- (14, 'FAN', '2024-05-15', 'TESTE TESTE ', 'TESTE'),
+-- (6, 'Dong', '2024-05-12', 'lkdsqx', 'POST'),
+-- (8, 'Dong', '2024-05-12', 'Salut', 'POST'), -- Correction de la référence "Post" à "POST"
+-- (9, 'Dong', '2024-05-12', 'Coucou', 'POST'),
+-- (36, 'Dong', '2024-05-17', 'envoie', 'envoie'),
+-- (37, 'root', '2024-05-17', 'test', 'teste'),
+-- (11, 'Dong', '2024-05-12', 'Hello\r\nsqdhcxlkcclxkcisl,fqnslki,qml nvcmkjeqfl!q,mlscnojmoqsl,fclqmojfzl, sqclmsqjfl,csmsqzl,mcqskskdkmqls', 'POST'),
+-- (12, 'Dong', '2024-05-12', 'Allo\r\nsqdhcxlkcclxkcisl,fqnslki,qml nvcmkjeqfl!q,mlscnojmoqsl,fclqmojfzl, sqclmsqjfl,csmsqzl,mcqskskdkmqls', 'POST'),
+-- (13, 'Dong', '2024-05-12', 'Holla\nsqdhcxlkcclxkcisl,fqnslki,qml nvcmkjeqfl!q,mlscnojmoqsl,fclqmojfzl, sqclmsqjfl,csmsqzl,mcqskskdkmqls', 'Festival'),
+-- (15, 'TONG', '2024-05-15', 'Bonne festival', 'TESTE 2'),
+-- (16, 'LOL', '2024-05-15', 'teste 3', 'teste 3 '),
+-- (26, 'XIAO', '2024-05-08', 'teste', 'teste'),
+-- (35, 'Dong', '2024-05-17', 'envoie', 'envoie');
+
 
 -- --------------------------------------------------------
 
