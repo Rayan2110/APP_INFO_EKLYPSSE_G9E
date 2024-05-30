@@ -1,5 +1,7 @@
 <?php
+ob_start();
 include 'header.php';
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -11,36 +13,36 @@ if (!isset($_SESSION['id'])) {
 }
 
 // Connexion à la base de données
-$servername = "localhost";
+$servername = "db";
 $username = "root";
 $password = "";
 $dbname = "espace_membres";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Vérifiez la connexion
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 
 // Récupérer les informations de l'utilisateur depuis la base de données
 $user_id = $_SESSION['id']; // Assurez-vous d'avoir la colonne d'identifiant utilisateur appropriée
 
 // Modifiez ici si le champ password a un nom différent dans votre table
-$sql = "SELECT pseudo, nom, date_naissance, email, mdp FROM users WHERE id = ?";
+$sql = "SELECT pseudo, nom, date_naissance, email, mdp FROM users WHERE id = :id";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
+$stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
 $stmt->execute();
-$result = $stmt->get_result();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($result->num_rows > 0) {
+if ($user) {
     // Récupérer les données de l'utilisateur
-    $row = $result->fetch_assoc();
-    $pseudo = $row['pseudo'];
-    $nom = $row['nom'];
-    $date_naissance = $row['date_naissance'];
-    $email = $row['email'];
-    $hashed_password = $row['mdp'];
+    $pseudo = $user['pseudo'];
+    $nom = $user['nom'];
+    $date_naissance = $user['date_naissance'];
+    $email = $user['email'];
+    $hashed_password = $user['mdp'];
 } else {
     echo "Utilisateur non trouvé.";
     exit();
@@ -61,22 +63,29 @@ if (isset($_POST['submit'])) {
         // Mettre à jour les données de l'utilisateur
         if (!empty($new_password)) {
             $new_hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-            $sql_update = "UPDATE users SET pseudo = ?, nom = ?, date_naissance = ?, email = ?, mdp = ? WHERE id = ?";
+            $sql_update = "UPDATE users SET pseudo = :pseudo, nom = :nom, date_naissance = :date_naissance, email = :email, mdp = :mdp WHERE id = :id";
             $stmt = $conn->prepare($sql_update);
-            $stmt->bind_param("sssssi", $pseudo, $nom, $date_naissance, $email, $new_hashed_password, $user_id);
+            $stmt->bindParam(':pseudo', $pseudo);
+            $stmt->bindParam(':nom', $nom);
+            $stmt->bindParam(':date_naissance', $date_naissance);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':mdp', $new_hashed_password);
+            $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
         } else {
-            $sql_update = "UPDATE users SET pseudo = ?, nom = ?, date_naissance = ?, email = ? WHERE id = ?";
+            $sql_update = "UPDATE users SET pseudo = :pseudo, nom = :nom, date_naissance = :date_naissance, email = :email WHERE id = :id";
             $stmt = $conn->prepare($sql_update);
-            $stmt->bind_param("ssssi", $pseudo, $nom, $date_naissance, $email, $user_id);
+            $stmt->bindParam(':pseudo', $pseudo);
+            $stmt->bindParam(':nom', $nom);
+            $stmt->bindParam(':date_naissance', $date_naissance);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
         }
 
         if ($stmt->execute()) {
             echo "Changements enregistrés avec succès.";
         } else {
-            echo "Erreur lors de l'enregistrement des changements: " . $stmt->error;
+            echo "Erreur lors de l'enregistrement des changements: " . $stmt->errorInfo()[2];
         }
-
-        $stmt->close();
 
         // Rediriger l'utilisateur vers la même page pour afficher les changements mis à jour
         header("Location: espace_personnel.php");
@@ -90,22 +99,13 @@ if (isset($_POST['submit'])) {
 $sql_billets = "SELECT e.nom, e.date_début, e.date_fin, e.localisation, e.prix 
                 FROM billet b 
                 JOIN evenements e ON b.id_evenements = e.id 
-                WHERE b.id_users = ?";
+                WHERE b.id_users = :id_users";
 $stmt_billets = $conn->prepare($sql_billets);
-$stmt_billets->bind_param("i", $user_id);
+$stmt_billets->bindParam(':id_users', $user_id, PDO::PARAM_INT);
 $stmt_billets->execute();
-$result_billets = $stmt_billets->get_result();
-$billets = [];
-if ($result_billets->num_rows > 0) {
-    while ($row_billet = $result_billets->fetch_assoc()) {
-        $billets[] = $row_billet;
-    }
-} else {
-    echo "Aucun billet trouvé pour cet utilisateur.";
-}
-$stmt_billets->close();
+$billets = $stmt_billets->fetchAll(PDO::FETCH_ASSOC);
 
-$conn->close();
+$conn = null; // Fermer la connexion à la base de données
 ?>
 
 <!DOCTYPE html>
@@ -170,5 +170,9 @@ $conn->close();
 </body>
 <footer>
     <?php include 'footer.php';?>
-    </footer>
+</footer>
 </html>
+
+<?php
+ob_end_flush();
+?>

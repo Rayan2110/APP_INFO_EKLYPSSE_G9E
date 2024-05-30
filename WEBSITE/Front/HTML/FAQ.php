@@ -18,7 +18,7 @@
                 ?>
                 <main class="faqMain">
                 <?php
-                $bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
+                $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
 
                 $recupArticle = $bdd->query('SELECT * FROM faq');
                 while($article = $recupArticle->fetch()){

@@ -223,7 +223,6 @@ try {
                     <i id="right-carousel1" class="fa-solid fa-angle-right arrow"></i> -->
 
             <?php  
-            // $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
             $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true;");
             $festivals = $fest->fetchAll(PDO::FETCH_ASSOC);
              ?>

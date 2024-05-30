@@ -16,26 +16,28 @@ if (!isset($_SESSION['id'], $_SESSION['pseudo'], $_SESSION['email'], $_SESSION['
 
 $user_id = $_SESSION['id']; // Assurez-vous d'avoir la colonne d'identifiant utilisateur appropriée
 
-// Connexion à la base de données
-$servername = "localhost";
+// Connexion à la base de données en utilisant PDO
+$servername = "db";
 $username = "root";
 $password = "";
 $dbname = "espace_membres";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Vérifiez la connexion
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
 }
 
 // Récupérer les informations de l'utilisateur depuis la base de données
-$sql = "SELECT pseudo, nom, date_naissance, email FROM users WHERE id = '$user_id'";
-$result = $conn->query($sql);
+$sql = "SELECT pseudo, nom, date_naissance, email FROM users WHERE id = :user_id";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':user_id', $user_id);
+$stmt->execute();
 
-if ($result->num_rows > 0) {
+if($stmt->rowCount() > 0) {
     // Récupérer les données de l'utilisateur
-    $row = $result->fetch_assoc();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $pseudo = $row['pseudo'];
     $nom = $row['nom'];
     $date_naissance = $row['date_naissance'];
@@ -53,20 +55,29 @@ if(isset($_POST['submit'])) {
     $date_naissance = $_POST['date_naissance'];
     $email = $_POST['email'];
 
-    // Votre code pour mettre à jour les données de l'utilisateur dans la base de données
-    $sql_update = "UPDATE users SET pseudo = '$pseudo', nom = '$nom', date_naissance = '$date_naissance', email = '$email' WHERE id = '$user_id'";
-    if ($conn->query($sql_update) === TRUE) {
+    // Préparation de la requête SQL pour la mise à jour
+    $sql_update = "UPDATE users SET pseudo = :pseudo, nom = :nom, date_naissance = :date_naissance, email = :email WHERE id = :user_id";
+    $stmt = $conn->prepare($sql_update);
+    $stmt->bindParam(':pseudo', $pseudo);
+    $stmt->bindParam(':nom', $nom);
+    $stmt->bindParam(':date_naissance', $date_naissance);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':user_id', $user_id);
+
+    // Exécution de la requête
+    try {
+        $stmt->execute();
         echo "<p>Changements enregistrés avec succès.</p>";
-    } else {
-        echo "Erreur lors de l'enregistrement des changements: " . $conn->error;
+    } catch(PDOException $e) {
+        echo "Erreur lors de l'enregistrement des changements: " . $e->getMessage();
     }
 
-    // Après avoir traité la mise à jour, vous pouvez rediriger l'utilisateur vers la même page pour afficher les changements mis à jour
+    // Redirection
     header("Location: espace_personnel.php");
     exit(); // Assurez-vous d'arrêter l'exécution du script après la redirection
 }
 
-$conn->close();
+$conn = null; // Fermer la connexion à la base de données
 ?>
 
 <!DOCTYPE html>

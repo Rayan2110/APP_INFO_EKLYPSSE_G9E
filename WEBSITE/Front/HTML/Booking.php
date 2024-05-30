@@ -1,59 +1,48 @@
 <?php
 session_start();
 
-if(!$_SESSION['id']){
+if (!isset($_SESSION['id'])) {
     header('Location: connexion.php');
     exit();
 }
 
 // Connexion à la base de données
-$servername = "localhost";
+$servername = "db";
 $username = "root";
 $password = "";
 $dbname = "espace_membres";
 
-// Création de la connexion
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 
 // Initialiser le mois sélectionné par défaut à juillet
 $selected_month = isset($_POST['selected_month']) ? $_POST['selected_month'] : '07';
 
+$sql2 = "SELECT date_début, id, nom FROM evenements WHERE DATE_FORMAT(date_début, '%m') = :selected_month";
 
-$sql2 = "SELECT date_début, id, nom FROM evenements WHERE DATE_FORMAT(date_début, '%m') = '$selected_month'";
+$stmt = $conn->prepare($sql2);
+$stmt->execute(['selected_month' => $selected_month]);
 
+$dates_mois = [];
+$id_events = [];
+$nom_events = [];
 
-// Exécution de la requête SQL pour récupérer les dates et noms du mois sélectionné
-$result2 = $conn->query($sql2);
-
-// Tableaux pour stocker les dates et les noms des événements du mois sélectionné
-$dates_mois = array();
-$id_events = array();
-$nom_events = array(); // Nouveau tableau pour stocker les noms des événements
-
-// Vérifier si des résultats sont retournés
-if ($result2->num_rows > 0) {
-    // Parcourir chaque ligne de résultats
-    while ($row = $result2->fetch_assoc()) {
-        // Extraire le jour de la date récupérée
+if ($stmt->rowCount() > 0) {
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $day = date("d", strtotime($row["date_début"]));
-        // Ajouter le jour au tableau des dates du mois
         $dates_mois[] = $day;
-        // Ajouter l'ID et le nom de l'événement aux tableaux correspondants
         $id_events[] = $row['id'];
-        $nom_events[] = $row['nom']; // Ajouter le nom de l'événement
+        $nom_events[] = $row['nom'];
     }
 } else {
     echo "Aucun résultat trouvé pour le mois sélectionné.";
 }
-
-// Fermer la connexion à la base de données
-$conn->close();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,14 +56,12 @@ $conn->close();
             margin: 0;
             font-family: 'Poppins', sans-serif;
         }
-
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
-
         .tickets {
             width: 80%;
             max-width: 600px;
@@ -84,19 +71,16 @@ $conn->close();
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         .title {
             text-align: center;
             font-size: 24px;
             margin-bottom: 20px;
         }
-
         .dates-container {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 10px;
         }
-
         .date-option {
             display: flex;
             flex-direction: column;
@@ -106,16 +90,13 @@ $conn->close();
             border-radius: 8px;
             cursor: pointer;
         }
-
         .date-option:hover {
             background-color: #f9f9f9;
         }
-
         .selected {
             background-color: #4CAF50;
             color: #fff;
         }
-
         .btn {
             display: block;
             width: 100%;
@@ -129,16 +110,14 @@ $conn->close();
             text-align: center;
             cursor: pointer;
         }
-
         .btn:hover {
             background-color: #45a049;
         }
-
         .month-select {
             margin-bottom: 20px;
         }
     </style>
-    <?php include 'header.php';?>
+    <?php include 'header.php'; ?>
 </head>
 <body>
 <div class="container">
@@ -199,6 +178,6 @@ $conn->close();
         });
     });
 </script>
-<?php include 'footer.php';?>
+<?php include 'footer.php'; ?>
 </body>
 </html>

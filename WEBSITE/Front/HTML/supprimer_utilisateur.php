@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     // Validation des données (vous pouvez ajouter des validations supplémentaires ici si nécessaire)
 
     // Connexion à la base de données
-    $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+    $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
 
     // Requête SQL pour supprimer l'utilisateur
     $requete = "DELETE FROM users WHERE pseudo = :pseudo AND nom = :nom AND email = :email";

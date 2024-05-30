@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=localhost;dbname=espace_admins', 'root', '');
+$bdd = new PDO('mysql:host=db;dbname=espace_admins', 'root', '');
 if(isset($_GET['id'])){
     $getid = $_GET['id'];
     $deletesection = $bdd->prepare('SELECT * FROM faq WHERE id = ?');

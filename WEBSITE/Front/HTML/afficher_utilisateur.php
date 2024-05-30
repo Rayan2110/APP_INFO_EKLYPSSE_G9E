@@ -32,7 +32,7 @@ if($_SESSION['pseudo'] !== "root"){
         // Connexion à la base de données
 
         // Connexion
-        $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+        $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
 
         $requete = "SELECT * FROM users";
         $resultat = $bdd->query($requete);

@@ -10,6 +10,7 @@ services:
     volumes:
       - ./WEBSITE/Front/HTML:/var/www/html
       - ./WEBSITE/Front/CSS:/var/www/html/CSS
+      - ./WEBSITE/Front/Images:/var/www/html/Images
     depends_on:
       - db
 

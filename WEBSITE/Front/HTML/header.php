@@ -14,7 +14,7 @@
 <header>
     <div class="logos">
         <div class="logoEklypsse">
-            <img src="../Images/logo.png">
+            <img src="../Images/Logo.png">
         </div>
         <a href="Home.php" style="margin-left:5px;font-size:22px;color:rgb(249, 186, 68);">SonoFest</a> 
         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,300,250">

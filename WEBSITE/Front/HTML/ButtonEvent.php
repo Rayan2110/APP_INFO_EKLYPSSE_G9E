@@ -21,7 +21,7 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
 
         try {
             // Préparation et exécution de la requête SQL
-            $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+            $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
             $stmt = $bdd->prepare("INSERT INTO evenements (nom, localisation, date_début, date_fin, prix, image, type) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute(array($nom, $localisation, $date_debut, $date_fin, $prix, $image, $type));
             
@@ -112,7 +112,7 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
             <form method="POST" action="" class="hidden">
             <?php
             try {
-                $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+                $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
                 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 // Récupération des événements depuis la base de données
@@ -158,7 +158,7 @@ if (isset($_POST['envoi'])) {  // Vérifier si le formulaire a été envoyé
 
             <?php
                 try {
-                    $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+                    $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
                     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     $requete = $bdd->query('SELECT id, nom, localisation, date_début, date_fin, prix, image, type FROM evenements');

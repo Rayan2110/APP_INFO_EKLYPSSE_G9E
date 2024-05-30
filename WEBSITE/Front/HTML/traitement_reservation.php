@@ -1,17 +1,18 @@
 <?php
 session_start();
+
 // Connexion à la base de données
-$servername = "localhost";
+$servername = "db";
 $username = "root";
 $password = "";
 $dbname = "espace_membres";
 
-// Création de la connexion 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Vérifier la connexion
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+// Création de la connexion
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 
 // Déclarer la variable qui va stocker l'ID de l'événement
@@ -28,18 +29,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $selected_date = $_POST['selected_date'];
 
     // Préparer la requête SQL pour obtenir l'ID de l'événement
-    $sql = "SELECT id, nom FROM evenements WHERE DATE_FORMAT(date_début, '%m') = ? AND DATE_FORMAT(date_début, '%d') = ?";
+    $sql = "SELECT id, nom FROM evenements WHERE DATE_FORMAT(date_début, '%m') = :selected_month AND DATE_FORMAT(date_début, '%d') = :selected_date";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $selected_month, $selected_date);
-    $stmt->execute();
-    $resultatid = $stmt->get_result();
+    $stmt->execute(['selected_month' => $selected_month, 'selected_date' => $selected_date]);
+    $resultatid = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Vérifier si des résultats ont été trouvés
-    if ($resultatid->num_rows > 0) {
+    if ($resultatid) {
         // Extraire le premier résultat (dans ce cas, l'ID de l'événement)
-        $row = $resultatid->fetch_assoc();
-        $eventID = $row['id'];
-        $name = $row['nom']; // Corriger 'riw' en 'row'
+        $eventID = $resultatid['id'];
+        $name = $resultatid['nom'];
     } else {
         $eventID = null;
     }
@@ -47,16 +46,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérifier si un ID d'événement valide a été trouvé
     if (is_numeric($eventID)) {
         // Insérer l'utilisateur et l'événement dans la table billet
-        $insertUser = $conn->prepare('INSERT INTO billet (id_users, id_evenements) VALUES (?, ?)');
-        $insertUser->bind_param('ii', $idUser, $eventID);
-        $insertUser->execute();
+        $insertUser = $conn->prepare('INSERT INTO billet (id_users, id_evenements) VALUES (:idUser, :eventID)');
+        $insertUser->execute(['idUser' => $idUser, 'eventID' => $eventID]);
     } else {
         echo "Invalid event ID. Unable to insert into billet table.";
     }
 }
 
 // Fermer la connexion à la base de données
-$conn->close();
+$conn = null;
 ?>
 
 <!DOCTYPE html>

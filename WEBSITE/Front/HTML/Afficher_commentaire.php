@@ -6,10 +6,9 @@
     <link rel="stylesheet" href="../CSS/commentaire.css">
 </head>
 <body>
-
 <?php
     // Connexion à la base de données
-    $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+    $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
 
     // Déterminer la page actuelle
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -22,8 +21,8 @@
 
     // Requête pour récupérer les données depuis la base de données
     $requete = $bdd->prepare("SELECT pseudo, commentaire, date, reference FROM comments LIMIT :debut, :limite");
-    $requete->bindParam(':debut', $debut, PDO::PARAM_INT);
-    $requete->bindParam(':limite', $comments_par_page, PDO::PARAM_INT);
+    $requete->bindValue(':debut', $debut, PDO::PARAM_INT);
+    $requete->bindValue(':limite', $comments_par_page, PDO::PARAM_INT);
     $requete->execute();
 
     // Afficher les commentaires dans un encadré
@@ -59,6 +58,7 @@
     // Fermer la connexion à la base de données
     $requete->closeCursor();
 ?>
+
 
 </body>
 </html>

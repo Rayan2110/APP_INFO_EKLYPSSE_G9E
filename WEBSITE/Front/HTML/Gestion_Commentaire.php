@@ -72,7 +72,7 @@ if($_SESSION['pseudo'] !== "root"){
 
                     try {
                         // Préparation et exécution de la requête SQL
-                        $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+                        $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
                         $stmt = $bdd->prepare("INSERT INTO comments (pseudo, reference, date, commentaire) VALUES (?, ?, ?, ?)");
                         $stmt->execute(array($pseudo, $reference, $date, $commentaire));
                         echo "Le commentaire a été ajouté avec succès";
@@ -93,7 +93,7 @@ if($_SESSION['pseudo'] !== "root"){
             <form method="POST" action="" class="hidden">
             <?php
             try {
-                $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+                $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
                 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                 // Récupération des événements depuis la base de données
@@ -138,7 +138,7 @@ if($_SESSION['pseudo'] !== "root"){
 
             <?php
                 try {
-                    $bdd = new PDO('mysql:host=localhost;dbname=espace_membres', 'root', '');
+                    $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
                     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     $requete = $bdd->query('SELECT id, pseudo, date, commentaire, reference FROM comments');
