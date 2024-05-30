@@ -27,9 +27,6 @@ $selected_month = isset($_POST['selected_month']) ? $_POST['selected_month'] : '
 $sql2 = "SELECT date_début, id, nom FROM evenements WHERE DATE_FORMAT(date_début, '%m') = '$selected_month'";
 
 
-
-
-
 // Exécution de la requête SQL pour récupérer les dates et noms du mois sélectionné
 $result2 = $conn->query($sql2);
 
