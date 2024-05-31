@@ -529,6 +529,11 @@
     border: none;
     border-radius: 20px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 0.9rem;
 }
 
 .details .middleSide .cartButton:hover {

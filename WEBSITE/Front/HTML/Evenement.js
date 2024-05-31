@@ -49,6 +49,11 @@ slideIndex['slider16'] = 1;
 slideIndex['slider17'] = 1;
 slideIndex['slider18'] = 1;
 slideIndex['slider20'] = 1;
+slideIndex['slider21'] = 1;
+slideIndex['slider22'] = 1;
+slideIndex['slider23'] = 1;
+slideIndex['slider24'] = 1;
+slideIndex['slider30'] = 1;
 
 showSlides(slideIndex['slider1'], 'slider1');
 showSlides(slideIndex['slider2'], 'slider2');
@@ -69,6 +74,11 @@ showSlides(slideIndex['slider16'], 'slider16');
 showSlides(slideIndex['slider17'], 'slider17');
 showSlides(slideIndex['slider18'], 'slider18');
 showSlides(slideIndex['slider20'], 'slider20');
+showSlides(slideIndex['slider21'], 'slider21');
+showSlides(slideIndex['slider22'], 'slider22');
+showSlides(slideIndex['slider23'], 'slider23');
+showSlides(slideIndex['slider24'], 'slider24');
+showSlides(slideIndex['slider30'], 'slider30');
 
 
 function plusSlide(n, id) {
