@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: ./WEBSITE/Front
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - ./WEBSITE/Front/HTML:/var/www/html
+      - ./WEBSITE/Front/CSS:/var/www/html/CSS
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+      MYSQL_DATABASE: espace_membres
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./dump/espace_membres.sql:/docker-entrypoint-initdb.d/espace_membres.sql:ro
+
+volumes:
+  db_data:

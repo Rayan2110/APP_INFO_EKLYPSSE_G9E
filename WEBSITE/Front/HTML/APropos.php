@@ -26,11 +26,14 @@
             </div>
 
             <div class="text">
-                <h4>About us</h4>
-                <h1>We guarantee Your Business <br> Success - Love to Help you</h1>
+                <h4>A propos de nous</h4>
+                <h1>Eklypsse vous assure une protection de vos oreilles <br></h1>
                 <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et leo pulvinar, pulvinar turpis quis, euismod nunc. Nulla eget ipsum tellus. Pellentesque at ligula nec urna vulputate finibus. Phasellus fermentum ipsum odio, id facilisis diam facilisis eu. Maecenas placerat, libero sit amet luctus condimentum, sapien urna ultrices nunc, quis elementum enim odio et metus. Nulla eleifend fringilla nisl, in condimentum erat pretium vitae. Integer molestie pharetra arcu nec rutrum. Phasellus tellus est, elementum et rhoncus viverra, rhoncus quis erat. Aenean placerat nisl sit amet finibus tristique.</p>
-
+                <p>Bienvenue chez Eklypsse, l'équipe dynamique et innovante spécialisée dans la création de sites internet pour les festivals. Nous sommes passionnés par l'univers des festivals et nous croyons fermement que chaque événement mérite une présence en ligne à la hauteur de son ambiance et de son énergie. C'est cette passion qui nous motive à concevoir des sites web uniques, interactifs et captivants, parfaitement adaptés aux besoins spécifiques de chaque festival.</p>
+                <h4>Pourquoi choisir Eklypsse</h4>
+                <p>Choisir Eklypsse, c'est opter pour une équipe dévouée et passionnée, prête à mettre son expertise à votre service pour faire de votre site internet un véritable reflet de votre festival. Nous croyons en la puissance des expériences digitales pour créer des connexions durables et marquantes avec votre public. Rejoignez-nous et laissez-nous vous aider à écrire le prochain chapitre de l'histoire de votre festival avec un site internet à la hauteur de vos ambitions. Pour en savoir plus, n'hésitez pas à nous contacter. Ensemble, faisons briller votre festival sur la toile !</p>
+                
+                <br>
                 <div class="last-text">
                     <div class="class text1">
                         <h3>500+</h3>
@@ -45,9 +48,10 @@
             </div>
         </div>
         </section>
-        <?php
-                // Inclure le fichier header.php
-                include 'footer.php';
-                ?>
+        
     </body>
+    <footer>
+    <?php include 'footer.php';?>
+    </footer>
+    
 </html>
