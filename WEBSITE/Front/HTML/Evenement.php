@@ -19,6 +19,9 @@ try {
     echo 'Connection failed: ' . $e->getMessage();
     die(); // Arrête le script en cas d'erreur
 }
+
+// Démarrage de la session
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
