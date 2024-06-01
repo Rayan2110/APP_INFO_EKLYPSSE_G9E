@@ -23,5 +23,15 @@ services:
       - db_data:/var/lib/mysql
       - ./dump/espace_membres.sql:/docker-entrypoint-initdb.d/espace_membres.sql:ro
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ""
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+
 volumes:
   db_data:

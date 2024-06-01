@@ -775,3 +775,22 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #fa8e02;
 } */
+.evenement-body {
+    text-align: center;
+}
+
+.cartButton {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6600; /* Adjust the color as needed */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.cartButton:hover {
+    background-color: #e65c00; /* Adjust the hover color as needed */
+}

@@ -1,5 +1,5 @@
-
 <?php
+session_start();
 // Paramètres de connexion
 $host = 'db';  // Utilisez le nom du service MySQL dans Docker Compose
 $dbname = 'espace_membres';
@@ -19,9 +19,6 @@ try {
     echo 'Connection failed: ' . $e->getMessage();
     die(); // Arrête le script en cas d'erreur
 }
-
-// Démarrage de la session
-session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -137,93 +134,7 @@ session_start();
                             ?>
                         </section>
 
-                <!-- <div class="content-fest">
-                    <h3>Festivals populaires</h3>
-                    <i id="left-carousel1" class="fa-solid fa-angle-left arrow"></i>
-                    <ul class="carousel-container carousel1">
-
-                        <li class="card" data-target="détail1">
-                            <div class="img"><img src="https://www.guettapen.com/wp-content/uploads/2019/06/Solidays-2019-2.jpg" alt="img" draggable="false"></div>
-                            <h2>Solidays</h2>
-                            <span>Paris-Longchamp</span>
-                            <span>28-30 juin 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card" data-target="détail2">
-                            <div class="img"><img src="https://www.francetvinfo.fr/pictures/PM2zCQ6oCISr8wmr_MKxNh3xkvk/1200x1200/2023/08/24/64e74e485f6d1_billie-eilish-9-olivierhoffschir.jpg" alt="img" draggable="false"></div>
-                            <h2>Rock en Seine</h2>
-                            <span>Saint-Cloud</span>
-                            <span>21-25 août 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://weloveart.net/wp-content/uploads/2013/09/photo_wlg.jpeg" alt="img" draggable="false"></div>
-                            <h2>We Love Green</h2>
-                            <span>Paris</span>
-                            <span>31 mai-2 juin 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://static.wixstatic.com/media/cbbad6_0b8204041c92473da366669e12317f75~mv2.jpg/v1/fill/w_640,h_426,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/cbbad6_0b8204041c92473da366669e12317f75~mv2.jpg" alt="img" draggable="false"></div>
-                            <h2>Hellfest</h2>
-                            <span>Clisson</span>
-                            <span>27-30 juin 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://www.sncf-connect.com/assets/media/2022-05/eurockeennes.jpg" alt="img" draggable="false"></div>
-                            <h2>Les Eurockéennes</h2>
-                            <span>Belfort</span>
-                            <span>4-7 juillet 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://www.parc-marais-poitevin.fr/wp-content/uploads/parc-naturel-regional-marais-poitevin-villes-de-nuit-vibrer-Franck_Moreau-1280-1280x610.jpg" alt="img" draggable="false"></div>
-                            <h2>Les Francofolies</h2>
-                            <span>La Rochelle</span>
-                            <span>10-14 juillet 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://offloadmedia.feverup.com/marseillesecrete.com/wp-content/uploads/2022/04/13123511/Delta-Festival-Marseille-1024x576.jpg" alt="img" draggable="false"></div>
-                            <h2>Le Delta Festival</h2>
-                            <span>Marseille</span>
-                            <span>4-8 septembre 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://www.longueurdondes.com/wp-content/uploads/2016/04/PDB2016_Ambiance_W@Marylene_Eytier-2968.jpg" alt="img" draggable="false"></div>
-                            <h2>Le Printemps de Bourges</h2>
-                            <span>Bourges</span>
-                            <span>22-28 avril 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://static.actu.fr/uploads/2023/06/boby-boby-l1470093.jpg" alt="img" draggable="false"></div>
-                            <h2>Rose Festival</h2>
-                            <span>Aussonne</span>
-                            <span>29 août-1 septembre 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                        <li class="card">
-                            <div class="img"><img src="https://crtb.cloudly.space/app/uploads/crt-bretagne/2022/12/thumbs/Festival-Art-Rock_Gwendal-Le-Flem-1920x960.jpg" alt="img" draggable="false"></div>
-                            <h2>Festival Art Rock</h2>
-                            <span>Saint-Brieuc</span>
-                            <span>17-19 mai 2024</span>
-                            <span class="price"><strong>59 &#8364;</strong> par jour</span>
-                            <i class="fa-solid fa-chevron-down" id="chevron"></i>
-                        </li>
-                    </ul>
-                    <i id="right-carousel1" class="fa-solid fa-angle-right arrow"></i> -->
+               
 
             <?php  
             $fest = $bdd->query("SELECT * FROM evenements WHERE popular = true;");
@@ -270,7 +181,7 @@ session_start();
                         <div class="middleSide">
                             <h4><i class="fa-solid fa-ticket"></i> Billetterie</h4>
                             <span><?= htmlspecialchars($festival['prix']) ?> &#8364;</span>
-                            <button class="cartButton">Ajouter au panier</button>
+                            <a href="Booking.php" class="cartButton">Ajouter au panier</a>
                             <button class="favButton">Ajouter aux favoris <i class="fa-regular fa-heart"></i></button>
                         </div>
 
@@ -352,7 +263,7 @@ session_start();
                         <div class="middleSide">
                             <h4><i class="fa-solid fa-ticket"></i> Billetterie</h4>
                             <span><?= htmlspecialchars($festival['prix']) ?> &#8364;</span>
-                            <button class="cartButton">Ajouter au panier</button>
+                            <a href="./Booking.php"><button class="cartButton">Ajouter au panier</button>
                             <button class="favButton">Ajouter aux favoris <i class="fa-regular fa-heart"></i></button>
                         </div>
 
@@ -474,5 +385,3 @@ session_start();
     <?php include 'footer.php';?>
     </footer>
 </html>
-
-

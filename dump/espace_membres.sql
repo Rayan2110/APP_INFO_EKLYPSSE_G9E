@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 31 mai 2024 à 09:39
+-- Généré le : sam. 01 juin 2024 à 19:23
 -- Version du serveur : 8.0.36
 -- Version de PHP : 8.2.13
 
@@ -226,6 +226,38 @@ INSERT INTO `faq` (`id`, `question`, `reponse`) VALUES
 (21, 'Quels sont les artistes qui se produiront lors du festival cette année ?', 'Consultez notre programme pour connaître la liste complète des artistes et les horaires de leurs performances.'),
 (22, 'Y a-t-il des restrictions d&#039;âge pour assister au festival ?', 'Certains festivals peuvent avoir des restrictions d&#039;âge. Veuillez vérifier les informations sur l&#039;âge minimum sur notre site web.'),
 (24, 'Quelles sont les mesures de sécurité mises en place pendant le festival ?', 'Nous mettons en œuvre diverses mesures de sécurité, y compris la présence de personnel de sécurité, des points de premiers secours et des procédures d&#039;urgence.');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `files`
+--
+
+DROP TABLE IF EXISTS `files`;
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `filename` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `filesize` int NOT NULL,
+  `filetype` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `files`
+--
+
+INSERT INTO `files` (`id`, `filename`, `filesize`, `filetype`, `upload_date`) VALUES
+(8, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:05:23'),
+(9, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:43:40'),
+(10, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:49:31'),
+(11, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:49:34'),
+(12, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:49:37'),
+(13, 'MentionsLegales.pdf', 50104, 'application/pdf', '2024-05-02 18:50:26'),
+(14, 'MentionsLegales.pdf', 50104, 'application/pdf', '2024-05-02 18:50:35'),
+(15, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:56:48'),
+(16, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 19:00:30'),
+(17, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 19:02:21');
 
 -- --------------------------------------------------------
 

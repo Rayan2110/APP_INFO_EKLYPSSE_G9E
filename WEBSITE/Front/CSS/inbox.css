@@ -1,0 +1,211 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+#conversation {
+    flex: 1;
+    padding: 20px;
+    height: 60px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.conversation-container {
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.conversation {
+    padding: 10px;
+}
+
+
+#conversation::before {
+    top: 0;
+    content: '';
+    position: absolute;
+    left: 22%;
+    right: 120px;
+    margin-top: 90px;
+    border-radius: 10px;
+    height: 30px;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+}
+
+
+#conversation.top::before {
+    display: flex;
+}
+
+
+.message {
+    max-width: 70%;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 15px;
+    word-wrap: break-word;
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: orange;
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+}
+
+#messageForm {
+    display: flex;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ccc;
+}
+
+#messageInput {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+button.envoyer {
+    padding: 10px 20px;
+    width: 10% !important;
+    border: none;
+    background-color: orange !important;
+    color: #ffffff;
+    border-radius: 20px;
+    margin: 0 !important;
+    cursor: pointer;
+}
+        
+button {
+    padding: 10px 20px ;
+    border: 1px solid orange ;
+    width: 100% !important;
+    background-color: f0f0f0;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    color: orange ;
+    border-radius: 5px ;
+    cursor: pointer ;
+}
+
+button:hover {
+    background-color: orange;
+    color: white;
+}
+
+/* Ajout du style pour cacher la barre de défilement */
+#conversation::-webkit-scrollbar {
+    display: none; /* Cacher la barre de défilement sur Chrome/Safari */
+}
+#conversation {
+    scrollbar-width: none; /* Cacher la barre de défilement sur Firefox */
+}
+
+.message .date {
+    font-size: 0.8em;
+    color: gray;
+}
+
+.recherche {
+    border: 1px solid orange;
+    border-radius: 10px;
+    height: 25px;
+    width: 100%;
+    margin-left: 10px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+#close {
+    float:right !important;
+    display: inline-block;
+    padding:2px 5px !important;;
+    background:#ccc !important;;
+}
+
+.hidden {
+    display: none;
+}
+
+.liste {
+    margin-left: 100px;
+    padding-left: 100px;
+    align-self: center;
+}
+
+select{
+    width: 90%;
+}
+br{
+    background-color: #f0f0f0;
+}
+
+#recentUsers {
+    max-height: 400px; /* ou une autre hauteur qui convient à votre design */
+    overflow-y: auto;
+    overflow-x: hidden; /* Empêche le défilement horizontal */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#recentUsers::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+
+.raccourci {
+    width: 100%; /* Assure que les boutons utilisent toute la largeur disponible */
+    box-sizing: border-box; /* Inclure le padding et les bordures dans la largeur */
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
+    margin: 10px 0; /* Ajoute une marge pour l'espacement */
+    padding-left: 5px;
+    margin-left: 15px;
+    width: 95%!important;
+    margin-top: 0;
+}
+
+.raccourci.active {
+    background-color: orange; /* Couleur de fond pour la conversation active */
+    color: white; /* Couleur du texte pour la conversation active */
+}
+
+.raccourci.active {
+    background-color: orange; /* Couleur de fond pour la conversation active */
+    color: white; /* Couleur du texte pour la conversation active */
+}

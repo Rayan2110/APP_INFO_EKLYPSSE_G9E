@@ -49,7 +49,7 @@ if (isset($_POST['envoi'])) {
         $question = htmlspecialchars($_POST['question']);
         $reponse = htmlspecialchars($_POST['reponse']);
 
-        $bdd = new PDO('mysql:host=db;dbname=espace_admins', 'root', '');
+        $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
         $insertArticle = $bdd->prepare('INSERT INTO faq(question, reponse) VALUES(?, ?)');
         $insertArticle->execute(array($question, $reponse));
     } else {
@@ -67,7 +67,7 @@ if (isset($_POST['envoi'])) {
     </div>
     <div class="liste hidden">
     <?php
-    $bdd = new PDO('mysql:host=db;dbname=espace_admins', 'root', '');
+    $bdd = new PDO('mysql:host=db;dbname=espace_membres', 'root', '');
     $recupArticle = $bdd->query('SELECT * FROM faq');
     while ($article = $recupArticle->fetch()) {
         ?>
