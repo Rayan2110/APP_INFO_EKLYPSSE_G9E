@@ -8,6 +8,58 @@
     
     <meta charset="utf-8" />
     <title>Accueil</title>
+
+    <style>
+        /* Style du conteneur du menu déroulant */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Style du bouton principal */
+        .dropbtn {
+            background-color: orange;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style du contenu du menu déroulant */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        /* Style des liens à l'intérieur du menu déroulant */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change la couleur du lien au survol */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Affiche le contenu du menu déroulant lors du survol */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Style du lien actif */
+        .dropdown-content a.active {
+            background-color: #ff6600;
+            color: white;
+        }
+    </style>
 </head>
 <body>
 
@@ -65,20 +117,23 @@
         // Remplacez cette ligne par votre logique pour connecter l'utilisateur
     }
     ?>
+<div class="action-btn-container">
+        <?php if(isset($_SESSION['id'])) : ?>
+            <div class="dropdown">
+                <button class="dropbtn"><?php echo $_SESSION['pseudo']; ?></button>
+                <div class="dropdown-content">
+                    <a href="espace_personnel.php">Espace Personnel</a>
+                    <a href="deconnexion.php">Déconnexion</a>
+                    <a href="messagerie.php">Messagerie</a>
+                </div>
+            </div>
+        <?php else : ?>
+            <a href="connexion.php" class="action_btn">Se connecter / S'inscrire</a>
+        <?php endif; ?>
 
-    <div class="action-btn-container">
-        <?php
-        if(isset($_SESSION['id'])) {
-            echo '<a href="espace_personnel.php" class="action_btn">' . $_SESSION['pseudo'] . '</a>';
-        } else {
-            echo '<a href="connexion.php" class="action_btn">Se connecter / S\'inscrire</a>';
-        }
-        ?>
-        <?php
-        if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' && isset($_SESSION['mdp']) && $_SESSION['mdp'] === 'root') {
-            echo '<a href="admin.php"><i class="fa-solid fa-user-gear"></i></a>';
-        } 
-        ?>
+        <?php if(isset($_SESSION['pseudo']) && $_SESSION['pseudo'] === 'root' && isset($_SESSION['mdp']) && $_SESSION['mdp'] === 'root') : ?>
+            <a href="admin.php"><i class="fa-solid fa-user-gear"></i></a>
+        <?php endif; ?>
     </div>
 
 </header>

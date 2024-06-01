@@ -42,7 +42,7 @@ include 'header.php';
         <?php
         // Paramètres de connexion à la base de données
         $db_host = "db";
-        $db_name = "fileuploaddownload";
+        $db_name = "espace_membres";
         $db_user = "root";
         $db_pass = "";
 
