@@ -83,9 +83,7 @@
 
 </header>
 
-<main>
-    <!-- Le reste de votre contenu HTML va ici -->
-</main>
+
 
 <footer>
 
