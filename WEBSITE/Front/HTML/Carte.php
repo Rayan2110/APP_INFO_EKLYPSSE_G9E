@@ -80,6 +80,7 @@ if (!empty($event_name)) {
                 <?php if ($is_admin): ?>
                     <button id="add-sensor">Ajouter un capteur</button>
                     <button id="save-changes">Enregistrer les Modifications</button>
+                    <button id="add-audio" onclick="window.open('audio.php', '_blank');">Ajouter Audio</button>
                 <?php endif; ?>
             <?php endif; ?>
         </div>
