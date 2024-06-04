@@ -263,7 +263,7 @@ try {
                         <div class="middleSide">
                             <h4><i class="fa-solid fa-ticket"></i> Billetterie</h4>
                             <span><?= htmlspecialchars($festival['prix']) ?> &#8364;</span>
-                            <a href="./Booking.php"><button class="cartButton">Ajouter au panier</button>
+                            <a href="./Booking.php"><button class="cartButton">Accéder à la billeterie</button>
                             <button class="favButton">Ajouter aux favoris <i class="fa-regular fa-heart"></i></button>
                         </div>
 
