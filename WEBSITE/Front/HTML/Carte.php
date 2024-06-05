@@ -13,10 +13,11 @@ $username = "root";
 $password = "";
 $dbname = "espace_membres";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Échec de la connexion : " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    die("Échec de la connexion : " . $e->getMessage());
 }
 
 $event_name = isset($_GET['event_name']) ? $_GET['event_name'] : '';
@@ -26,31 +27,26 @@ $map = null;
 $capteurs = [];
 
 if (!empty($event_name)) {
-    $event_name = $conn->real_escape_string($event_name);
+    $event_name = htmlspecialchars($event_name);
 
     $query = "SELECT e.id as evenement_id, c.id as carte_id, c.map_image 
               FROM evenements e 
               JOIN cartes_evenements c ON e.id = c.evenement_id 
-              WHERE e.nom = ?";
+              WHERE e.nom = :event_name";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param('s', $event_name);
+    $stmt->bindParam(':event_name', $event_name, PDO::PARAM_STR);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($result->num_rows > 0) {
-        $data = $result->fetch_assoc();
-        $evenement_id = $data['evenement_id'];
-        $map = ['id' => $data['carte_id'], 'map_image' => $data['map_image']];
+    if ($result) {
+        $evenement_id = $result['evenement_id'];
+        $map = ['id' => $result['carte_id'], 'map_image' => $result['map_image']];
 
-        $capteurs_query = "SELECT * FROM capteurs WHERE carte_evenement_id = ?";
+        $capteurs_query = "SELECT * FROM capteurs WHERE carte_evenement_id = :carte_id";
         $capteurs_stmt = $conn->prepare($capteurs_query);
-        $capteurs_stmt->bind_param('i', $map['id']);
+        $capteurs_stmt->bindParam(':carte_id', $map['id'], PDO::PARAM_INT);
         $capteurs_stmt->execute();
-        $capteurs_result = $capteurs_stmt->get_result();
-
-        while ($row = $capteurs_result->fetch_assoc()) {
-            $capteurs[] = $row;
-        }
+        $capteurs = $capteurs_stmt->fetchAll(PDO::FETCH_ASSOC);
     } else {
         echo "Événement ou carte non trouvé.";
     }
@@ -121,7 +117,7 @@ if (!empty($event_name)) {
             <div style="display: flex; align-items: center;">
                 <div id="color-scale"></div>
                 <div id="color-scale-labels">
-                    <span>0 dB</span>
+                    <span>10 dB</span>
                     <span>20 dB</span>
                     <span>40 dB</span>
                     <span>60 dB</span>

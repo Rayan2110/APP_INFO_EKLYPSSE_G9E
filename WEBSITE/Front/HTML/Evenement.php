@@ -1,7 +1,7 @@
 
 <?php
 // Paramètres de connexion
-$host = 'db';  // Utilisez le nom du service MySQL dans Docker Compose
+$host = 'localhost';  // Utilisez le nom du service MySQL dans Docker Compose
 $dbname = 'espace_membres';
 $user = 'root';
 $password = '';
@@ -253,7 +253,8 @@ try {
                             <h2><?= htmlspecialchars($festival['nom']) ?></h2>
                             <div class="lieuDate">
                                 <span><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($festival['localisation']) ?></span>    
-                                <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_fin']))) ?></span>                          
+                                <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_fin']))) ?></span>
+                                <span><i class=""></i>~<?= htmlspecialchars($festival['decibels_moyens']) ?> dB</span>                          
                             </div>
                             <div class="resume">
                                 <h4><i class="fa-regular fa-pen-to-square"></i> Description</h4>
@@ -335,7 +336,8 @@ try {
                             <h2><?= htmlspecialchars($festival['nom']) ?></h2>
                             <div class="lieuDate">
                                 <span><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($festival['localisation']) ?></span>    
-                                <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_fin']))) ?></span>                          
+                                <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_fin']))) ?></span>
+                                <span><i class=""></i> <?= htmlspecialchars($festival['decibels_moyens']) ?></span>                          
                             </div>
                             <div class="resume">
                                 <h4><i class="fa-regular fa-pen-to-square"></i> Description</h4>
@@ -416,7 +418,8 @@ try {
                             <h2><?= htmlspecialchars($festival['nom']) ?></h2>
                             <div class="lieuDate">
                                 <span><i class="fa-solid fa-location-dot"></i> <?= htmlspecialchars($festival['localisation']) ?></span>    
-                                <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_fin']))) ?></span>                          
+                                <span><i class="fa-solid fa-calendar-days"></i> <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_début']))) ?> - <?= htmlspecialchars(date('d/m/Y', strtotime($festival['date_fin']))) ?></span>
+                                <span><i class=""></i> <?= htmlspecialchars($festival['decibels_moyens']) ?> db</span>                          
                             </div>
                             <div class="resume">
                                 <h4><i class="fa-regular fa-pen-to-square"></i> Description</h4>

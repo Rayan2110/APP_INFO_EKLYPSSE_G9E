@@ -160,3 +160,56 @@ header .action_btn:active {
     display: block;
 }
 
+
+.action-btn-container {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.action_btn {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #3e8e41;
+    color: white;
+    border-radius: 4px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: orange;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    flex-direction: column;
+    margin-left: 40px;
+    transform: translateX(-100%); /* Ensure it doesn't overflow to the right */
+    border-radius: 10px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    font-size: 13px;
+    display: block;
+    
+}
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+
+.dropdown:hover .action_btn {
+    background-color: rgb(248, 184, 64);
+    color: white;
+}

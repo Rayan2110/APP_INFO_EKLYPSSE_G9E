@@ -148,7 +148,7 @@ hr{
   }
   
   .accordion {
-    background-color: #F9D8B7;
+    background: linear-gradient(270deg,#f9a851 , orange);
     color: rgba(0, 0, 0, 0.8);
     cursor: pointer;
     font-size: 1.2rem;
@@ -178,7 +178,7 @@ hr{
   
   .pannel {
     padding: 0 2rem 2.5rem 2rem;
-    background-color: #F9D8B7;
+    background-color: #fbb34e;
     overflow: hidden;
     background-color: #F6BF87;
     display: none;
@@ -246,7 +246,7 @@ hr{
 
 body{
     font-family: 'outfit';
-    background: linear-gradient(#ffdad5,#fff7f9);
+    background: linear-gradient(rgba(233, 216, 196, 0.308)  ,#fff7f9);
 }
 
 .faqFooter{
@@ -270,7 +270,7 @@ body{
 
 .contact-left-title h2{
     font-weight: 600;
-    color: #a363aa;
+    color: orange;
     font-size: 40px;
     margin-bottom: 5px;
 }
@@ -279,7 +279,7 @@ body{
     border: none;
     width: 120px;
     height: 5px;
-    background-color: #a363aa;
+    background-color: orange;
     border-radius: 10px;
     margin-bottom: 20px;
 }

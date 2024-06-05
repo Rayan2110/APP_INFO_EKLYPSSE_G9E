@@ -1,102 +1,76 @@
-body {
-    background-image: url("../Images/FondInscricouleurn.png");
-    background-color: black; /* Fond noir en dehors de l'image */
-    background-size: cover; /* Ajuste l'image pour couvrir le fond sans répétition */
-    background-repeat: no-repeat; /* Empêche la répétition de l'image */
-    background-position: center center; /* Centre l'image */
-    display: flex;
-    flex-direction: column;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: "Montserrat", sans-serif;
 }
 
-.espBody {
+body.espBody {
+    background-color: #f2f2f2;
     margin: 0;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    margin-top: 100px;
-    border: 1px solid orange;
-    background-color: rgba(246, 234, 220, 0.5);
-    width: 300px;
-    padding: 10px;
-    border-radius: 15px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.2);
-    width: 100%;
-    max-width: 400px;
-    margin: 20px auto;
-}
-
 h2 {
-    color: black;
+    color: orange;
     text-align: center;
-    font-size: 36px;
-    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-label {
-    display: block;
-    margin-bottom: 4px; /* Reduced space between label and input */
-    font-weight: bold;
-    color: black;
-    font-size: 18px; /* Increased font size */
-}
-
-input[type="text"],
-input[type="date"],
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 12px; /* Increased padding for larger input field */
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 18px; /* Increased font size */
-}
-
-button[type="submit"] {
-    margin-top: 20px;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    background-color: orange;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: black;
+form {
+    color: orange;
 }
 
 .form-row {
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 15px;
 }
 
-.form-row label,
+.form-row label {
+    display: block;
+    color: black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
 .form-row input {
-    width: 48%; /* Adjust the width as needed */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.form-row input:focus {
+    border-color: orange;
+}
+
+button[type="submit"] {
+    background-color: orange;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: darkorange;
 }
 
 .billets-section {
-    margin-top: 20px;
-    background-color: rgba(246, 234, 220, 0.5);
-    padding: 20px; /* Increased padding for a more spacious layout */
-    border-radius: 15px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.2);
-    max-width: 800px; /* Increased maximum width */
+    max-width: 600px;
     margin: 20px auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(185, 185, 185, 0.5);
 }
 
 .billets-section h3 {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
+    color: orange;
+    margin-bottom: 15px;
 }
 
 .billets-section ul {
@@ -105,14 +79,153 @@ button[type="submit"]:hover {
 }
 
 .billets-section li {
-    padding: 15px; /* Increased padding for each list item */
-    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    color: black;
 }
 
-.billets-section li:last-child {
-    border-bottom: none;
+.billet {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
-.deco {
-    background-color: black;
+form button[type="submit"] {
+    background-color: orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
 }
+
+form button[type="submit"]:hover {
+    background-color: darkorange;
+}
+
+/* Dropdown styles */
+.ajoutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    margin: 40px 0;
+    box-shadow: 0px 0px 10px 0px rgba(185, 185, 185, 0.5);
+}
+
+.sousTitre {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: orange;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 600px;
+}
+
+.sousTitre:hover {
+    color: rgb(0, 0, 0);
+}
+
+h1 {
+    text-align: center;
+}
+
+.sousTitre h2 {
+    margin-right: 10px;
+    align-self: start;
+}
+
+.champs {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.champ1 {
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    margin-bottom: 10px;
+}
+
+.ajoutChamp label {
+    margin-bottom: 5px;
+    display: block;
+    color: black;
+    margin-top: 5px;
+}
+
+.ajoutChamp input {
+    border: solid 1px black;
+    height: 25px;
+    border-radius: 20px;
+    padding: 0 8px;
+    max-width: 600px;
+}
+
+.ajoutChamp input:hover {
+    border: solid 2px orange;
+}
+
+.ajoutChamp input:focus {
+    border: 2px solid orange;
+}
+
+.ajouterBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: solid 2px orange;
+    background-color: white;
+    color: orange;
+    padding: 8px;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-left: 85px;
+}
+
+.ajouterBtn:hover {
+    color: #fdc482;
+    border-color: #fdc482;
+}
+
+.fa-chevron-down {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    margin-bottom: 5px;
+    color: black;
+}
+
+.retourBtn a {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: rgb(246, 251, 255);
+   border: solid 1px orange;
+   border-radius: 20px;
+   text-decoration: none;
+   padding: 5px;
+   width: 100px;
+   color: orange;
+}
+.retourBtn a:hover {
+   border: solid 2px orange;
+}   
+
+ 
+ .adminMain {
+    padding: 30px;
+    margin-bottom: 7vh;
+ }

@@ -138,3 +138,9 @@ body {
     width: 14px;
     height: 14px;
 }
+
+input[type="text" i] {
+    padding-block: 1px;
+    border-radius: 10px;
+    border: 1px solid black ;
+}
