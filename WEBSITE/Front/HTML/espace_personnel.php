@@ -12,7 +12,7 @@ if (!isset($_SESSION['id'])) {
     exit();
 }
 if ($_SESSION['pseudo'] === 'root') {
-    header("Location: Home.php"); // Redirigez vers la page d'interdiction si l'utilisateur est root
+    header("Location: index.php"); // Redirigez vers la page d'interdiction si l'utilisateur est root
     exit();
 }
 
