@@ -48,7 +48,7 @@ if ($stmt->rowCount() > 0) {
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Ticket Booking</title>
+    <title>Réservation de billet</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet"/>
     <style>
@@ -122,21 +122,21 @@ if ($stmt->rowCount() > 0) {
 <body>
 <div class="container">
     <div class="tickets">
-        <h1 class="title">Choose a Date for Ticket Booking</h1>
+        <h1 class="title">Choisissez une date </h1>
         <form id="date-form" method="post" action="">
             <select name="selected_month" class="month-select" onchange="this.form.submit();">
-                <option value="01" <?php if ($selected_month == '01') echo 'selected'; ?>>January</option>
-                <option value="02" <?php if ($selected_month == '02') echo 'selected'; ?>>February</option>
-                <option value="03" <?php if ($selected_month == '03') echo 'selected'; ?>>March</option>
-                <option value="04" <?php if ($selected_month == '04') echo 'selected'; ?>>April</option>
-                <option value="05" <?php if ($selected_month == '05') echo 'selected'; ?>>May</option>
-                <option value="06" <?php if ($selected_month == '06') echo 'selected'; ?>>June</option>
-                <option value="07" <?php if ($selected_month == '07') echo 'selected'; ?>>July</option>
-                <option value="08" <?php if ($selected_month == '08') echo 'selected'; ?>>August</option>
-                <option value="09" <?php if ($selected_month == '09') echo 'selected'; ?>>September</option>
-                <option value="10" <?php if ($selected_month == '10') echo 'selected'; ?>>October</option>
-                <option value="11" <?php if ($selected_month == '11') echo 'selected'; ?>>November</option>
-                <option value="12" <?php if ($selected_month == '12') echo 'selected'; ?>>December</option>
+                <option value="01" <?php if ($selected_month == '01') echo 'selected'; ?>>Janvier</option>
+                <option value="02" <?php if ($selected_month == '02') echo 'selected'; ?>>Février</option>
+                <option value="03" <?php if ($selected_month == '03') echo 'selected'; ?>>Mars</option>
+                <option value="04" <?php if ($selected_month == '04') echo 'selected'; ?>>Avril</option>
+                <option value="05" <?php if ($selected_month == '05') echo 'selected'; ?>>Mai</option>
+                <option value="06" <?php if ($selected_month == '06') echo 'selected'; ?>>Juin</option>
+                <option value="07" <?php if ($selected_month == '07') echo 'selected'; ?>>Juillet</option>
+                <option value="08" <?php if ($selected_month == '08') echo 'selected'; ?>>Août</option>
+                <option value="09" <?php if ($selected_month == '09') echo 'selected'; ?>>Septembre</option>
+                <option value="10" <?php if ($selected_month == '10') echo 'selected'; ?>>Octobre</option>
+                <option value="11" <?php if ($selected_month == '11') echo 'selected'; ?>>Novembre</option>
+                <option value="12" <?php if ($selected_month == '12') echo 'selected'; ?>>Decembre</option>
             </select>
         </form>
         <form id="book-form" method="post" action="traitement_reservation.php">
@@ -149,7 +149,7 @@ if ($stmt->rowCount() > 0) {
             </div>
             <input type="hidden" name="selected_month" value="<?php echo htmlspecialchars($selected_month); ?>">
             <input type="hidden" name="selected_date" id="selected_date" />
-            <button id="book-btn" class="btn" disabled>Book Tickets</button>
+            <button id="book-btn" class="btn" disabled>Réserver le billet</button>
         </form>
     </div>
 </div>

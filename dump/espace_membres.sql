@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 30 mai 2024 à 20:47
+-- Généré le : sam. 01 juin 2024 à 19:23
 -- Version du serveur : 8.0.36
 -- Version de PHP : 8.2.13
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `espace_membres`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `artistes`
+--
+
+DROP TABLE IF EXISTS `artistes`;
+CREATE TABLE IF NOT EXISTS `artistes` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nom_artiste` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -45,6 +58,56 @@ INSERT INTO `billet` (`id_billet`, `id_users`, `id_evenements`) VALUES
 (30, 1, 5),
 (31, 1, 11),
 (32, 1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `capteurs`
+--
+
+DROP TABLE IF EXISTS `capteurs`;
+CREATE TABLE IF NOT EXISTS `capteurs` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `carte_evenement_id` int DEFAULT NULL,
+  `x_coordinate` float DEFAULT NULL,
+  `y_coordinate` float DEFAULT NULL,
+  `sound_level` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_carte_evenement_id` (`carte_evenement_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `capteurs`
+--
+
+INSERT INTO `capteurs` (`id`, `carte_evenement_id`, `x_coordinate`, `y_coordinate`, `sound_level`) VALUES
+(25, 1, 52.7143, 64.95, 0),
+(24, 1, 64.7143, 31.575, 0),
+(23, 1, 40.8571, 31.95, 0),
+(22, 1, 63.4286, 11.2, 0),
+(21, 1, 39.5714, 10.95, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cartes_evenements`
+--
+
+DROP TABLE IF EXISTS `cartes_evenements`;
+CREATE TABLE IF NOT EXISTS `cartes_evenements` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `evenement_id` int DEFAULT NULL,
+  `map_image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idx_event_id` (`evenement_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `cartes_evenements`
+--
+
+INSERT INTO `cartes_evenements` (`id`, `evenement_id`, `map_image`) VALUES
+(1, 1, 'cartes/Solidays.png');
 
 -- --------------------------------------------------------
 
@@ -109,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `evenements` (
   `imageDetail3` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `popular` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `evenements`
@@ -127,6 +190,7 @@ INSERT INTO `evenements` (`id`, `nom`, `localisation`, `image`, `description`, `
 (9, 'Rose Festival', 'Aussonne', 'https://static.actu.fr/uploads/2023/06/boby-boby-l1470093.jpg', 'Le Rose Festival est né de la volonté de Bigflo et Oli de créer un festival innovant aux multiples facettes culturelles s’inscrivant dans la durée sur le territoire toulousain. ', 'JAIN - FRANCIS CABREL - MC SOLAAR - NINA KRAVIZ - BOOBA -ZOLA - POMME - TIF - LA FEVE - JUSTICE', 2, 59, '2024-08-01', '2024-09-01', 'https://cdn.al-ain.com/images/2022/8/27/229-122925-0596385e-e400-4921-9f44-bb8446ed1771.jpeg', 'https://www.aficia.info/wp-content/uploads/2023/09/RoseFest_3516%C2%A9MDHML-scaled.jpg', 'https://cdt31.media.tourinsoft.eu/upload/Rose-Festival-2023---Remi-Deligeon-copie.jpg', 1),
 (10, 'Festival Art Rock', 'Saint-Brieuc', 'https://crtb.cloudly.space/app/uploads/crt-bretagne/2022/12/thumbs/Festival-Art-Rock_Gwendal-Le-Flem-1920x960.jpg', 'En 1983, l’association Wild Rose décide de créer un festival inédit à Saint-Brieuc et de se concentrer exclusivement sur ce projet. Le festival Art Rock est né. Depuis, chaque année Art Rock continue de faire vibrer le centre-ville de Saint-Brieuc.', 'THE LIBERTINES - ETIENNE DAHO - MORCHEEBA - HOSHI - LUIDJI - EDDY DE PRETTO - ZAHO DE SAGAZAN - YAME - FAVE - LOU DOILLON - OLIVIA RUIZ - JULIEN GRANEL - FLAVIEN BERGER - IRENE DRESEL - KERCHAK - ZED YUN PAVAROTTI - CLARA YSE - JOANNA - CALYPSO VALOIS', 2, 59, '2024-05-17', '2024-05-19', 'https://www.artrock.org/wp-content/uploads/2024/02/art-rock-2022-credits-spoon-768x512.jpg', 'https://www.portdattache.bzh/wp-content/uploads/2018/06/art-rock-foule-gwendal-leflem.jpg', 'https://www.artrock.org/wp-content/uploads/2021/05/yelle-de-gwendal-le-flem-2015-9-1536x768.jpg', 1),
 (11, 'Les Ardentes', 'Liège (BE)', 'https://www.lalibre.be/resizer/sm6KnxernBa1o26E-RAez0VBQWI=/1200x800/filters:format(jpeg):focal(895x556.5:905x546.5)/cloudfront-eu-central-1.images.arcpublishing.com/ipmgroup/V2SHFWTCCBAWZABISSQV7TXGGY.jpg', 'Fondé en 2006, le festival se veut tout d\'abord électro-rock puis décide de s\'ouvrir tout doucement aux autres musiques que ça soit de la pop, du rock, de la musiques électroniques, de la chanson française mais aussi hip-hop et même jazz.', '13 BLOCK - 21 SAVAGE - ADVM - AYRA STARR - B.B. JACQUES - BB TRICKZ -BEKAR - BEN PLG - BOOBA - CENTRAL CEE - D-BLOCK EUROPE - DALI - DESTROY LONELY - DINA AYADA - DJ SNAKE - DOJA CAT - DON TOLIVER - DOUMS - DYSTINCT - ELGRANDETOTO - ENIMA - FALLY IPUPA', 1, 59, '2024-07-11', '2024-07-14', 'https://www.lavenir.net/resizer/v2/WJRTJ42IE5BTFOJD4QXCQCSCP4.jpg?auth=df5a311c351d8b332e54a438e98c3d982859a3c8325493a54199206a700d0f4c&width=1620&height=1080&quality=85&focal=373%2C249', 'https://live.staticflickr.com/8740/27949036690_88f6748901_b.jpg', 'https://wave.fr/images/1916/08/les_ardentes_festival_aftermovie.jpg', 0),
+(12, 'Lollapalooza', 'Paris-Longchamp', 'https://statics-infoconcert.digitick.com/media/a_effacer/lollapalooza_foule_visunews1222.jpg', 'Depuis le temps qu’il trône en tête de tous les classements dans l’hexagone, le Rap français méritait bien de trouver sa place dans les plus grands festivals...\r\nC’est chose faite à Lolla Paris ! Grâce à la scène Rap, la relève est à Lolla.', 'THE WEEKEND - RED HOT CHILI PEPPERS - IMAGINE DRAGONS - LANA DEL REY - DJ SNAKE - MARSHMELLO - ALAN WALKER - AVA MAX - KENDRICK LAMAR - ONREREPUBLIC - ROSALIA - LIL NAS X - KYGO - STRAYS KIDS - DAMSO', 1, 59, '2024-07-05', '2024-07-07', 'https://assets-global.website-files.com/616ee9a6ca0a92c43c8929b6/654d164f198220ef074b4209_34.jpg', 'https://cdn.koddmagazine.com/media/mg/images/2019/07/lollapalooza-kodd-magazine-2.jpg', 'https://arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/FMJ2KMILNWWLO3Z2EDN3IPFLF4.jpg', 0),
 (13, 'Golden Coast Festival', 'Dijon', 'https://www.quotidien-libre.fr/wp-content/uploads/2023/12/jfjhgkhgkhjkh-350x250.png', 'Et si le paradis des fans de rap francophone se trouvait à Dijon ? Cette année, on est tous hype par le Golden Coast Festival, et à raison. Le line-up est certifié 100 % hip-hop et s’inscrit comme l’un des plus impressionnants pour un festival naissant.', 'ANGIE & LAZULI - BUSHI - BAMBY - BOOBA -DJAJA & DINAZ - DORIA - FAVE - FONKY FAMILY - HOUDI - HUGO TSR - JOSMAN - JUNGELI - KAY THE PRODIGY - LA FEVE - LUIDJI - LUTHER - LALA &CE - LESRAM - MAUREEN - MERVEILLE - MORAD - NINHO - ROUNHAA - SCH - SDM ', 1, 59, '2024-09-13', '2024-09-14', 'https://static.cnews.fr/sites/default/files/golden_coast_656dfa5ad610d_0.jpg', 'https://europebookings.com/wp-content/uploads/solar-weekend-festival-stage-lights-show.jpg', 'https://europebookings.com/wp-content/uploads/solar-weekend-festival-stage-dancing.jpg', 0),
 (14, 'Festival Chorus', 'Boulogne-Billancourt', 'https://chorus.hauts-de-seine.fr/wp-content/uploads/2023/04/4.jpg', 'Au Chorus des Hauts-de-Seine, on pense aux festivaliers. Pendant tout le week-end, des animations sont proposées pour vivre votre festival à 100%.\r\nAvec le hors scène, grosse ambiance en perspective dans La Grande Rue et au Téléscope.', 'DINOS - SOPYCAL + LIVE BAND - AMAHLA - CALLING MARIAN - HOUDI - GUILLAUME PONCELET - PARQUET - FAVE - GROVE - BEKAR - BADA -BADA - IAMDDB - JULIEN GRANEL - LE SEINLAB - TONY LA FRIPE - DOMBRANCE - LUIDJI - COLT - RORI - DJ KERBY - SPIDER - TUERIE', 1, 59, '2024-03-20', '2024-03-24', 'https://chorus.hauts-de-seine.fr/wp-content/uploads/2023/01/parvis-3-sgo.jpg', 'https://mesinfos.fr/content/articles/152/A194152/initial-jok-air.jpg', 'https://www.hauts-de-seine.fr/fileadmin/user_upload/2304SGO032300.jpg', 0),
 (15, 'Boomin Fest', 'Rennes', 'https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_1500,h_1000/https://krumpp.fr/wp-content/uploads/2023/05/@MAXLMNR_BOOMIN-FEST_-RENNES_10.jpg', 'BOOMIN Fest, c\'est une célébration de la scène rap actuelle et une invitation au turn-up. Pour sa troisième édition les organisateurs proposeront une nouvelle fois un audacieux plateau rassemblant têtes d\'affiches, révélations et talents locaux.', 'TH - WALLACE CLEAVER - KOBA LAD - ZOLA - BUSHI', 1, 59, '2024-04-19', '2024-04-20', 'https://hypesoul.com/wp-content/uploads/2023/05/MAXLMNR_BOOMIN_NANTES_073-1-1536x1024-1-1024x683.jpg', 'https://www.fragil.org/wp-content/uploads/2023/05/coelho-lumieres-2.jpg', 'https://www.bigcitylife.fr/wp-content/uploads/2023/04/1yFfSBgg-scaled.jpg', 0),
@@ -135,7 +199,9 @@ INSERT INTO `evenements` (`id`, `nom`, `localisation`, `image`, `description`, `
 (18, 'Les 3 éléphants', 'Laval', 'https://upload.wikimedia.org/wikipedia/commons/a/a1/Les_3_%C3%A9l%C3%A9phants_2022_-_Laylow_%28c%29Alexis_Janicot.jpg', 'Les 3 éléphants est un festival de musiques actuelles et d’arts de la rue. Le festival a été créé en 1998 à Lassay-Les-Châteaux et se déroule dans le centre-ville de Laval depuis 2010 à destination d’un public plurigénérationnel et familial.', 'ETIENNE DAHO - SDM - BOYS NOIZE - LUTHER - YAME - CREEDS - ISAAC DELUSION - TIF - SOLANN - DALI - AUPINARD - MALO - PEPITE - SAM QUEALY - KABEAUSH2 - ADA ODA - BELARIA - RADIO CARGO - GURRIERS - NIKOLA - RALPHIE CHOO - JETLAG GANG - TURTLE WHITE', 1, 59, '2024-05-26', '2024-06-02', 'https://www.les3elephants.com/wp-content/uploads/2023/05/3lf23-alexis-janicot-samedi-6-800x400.jpg', 'https://storage.canalblog.com/85/85/291675/96077083_o.jpg', 'https://www.francebleu.fr/s3/cruiser-production/2023/05/98c1190f-b0b7-41db-b885-ff220741d733/1200x680_sc_fwhrmhbwiaqn7m3.jpg', 0),
 (20, 'Les Vieilles Charrues', 'Carhaix', 'https://media.ouest-france.fr/v1/pictures/MjAxODA3YTZjNTMzNWUyMjVkMjJlNDk2YTZmNGMxNjIyM2FkMjY?width=1260&height=708&focuspoint=50%2C25&cropresize=1&client_id=bpeditorial&sign=6a0c08127be878d28c8ae1502fa5cdc87dab77f41189b1ce61b62d088ea0e271', 'Réputé pour son esprit festif et convivial, le festival des Vieilles Charrues est né en 1992 sous l’impulsion d’une bande d’amis. La programmation est éclectique et de qualité : The Cure, Sting et Justice notamment à l’affiche en 2012.', 'DAVID GUETTA - LENNY KRAVITZ - SUM 41 - THE PRODIGY - BIGFLO & OLI - SCH - GAZO - DROPKICK MURPHYS - KAARIS - ROYAL BLOOD - IDLES - BLACK PUMAS - HEILUNG - SHAY - OUMOU SANGARE - ZAHO DE SAGAZAN - PURPLE DISCO MACHINE - THE BREEDERS - PRETENDERS', 3, 80, '2024-07-11', '2024-07-14', 'https://images.lesindesradios.fr/fit-in/1100x2000/filters:format(webp)/radios/alouette/importrk/news/original/6037934a97bc67.78118269.png', 'https://static.latribune.fr/full_width/1215618/vieilles-charrues-festival.jpg', 'https://www.jds.fr/medias/image/les-vieilles-charrues-1-168256-1200-630.jpg', 0),
 (21, 'La Route du Rock', 'Saint-Malo', 'https://static.actu.fr/uploads/2022/08/e7dbed76830368cdbed76830380ebev-960x612.jpg', 'L\'ancien édifice militaire datant du XVIIIe siècle, sur la commune de Saint-Père, en devient le site phare. Dans le même temps, le palais des Congrès se dédie entièrement au rock et une plage intra-muros devient synonyme de soirées mémorables.', 'DAVID GUETTA - LENNY KRAVITZ - SUM 41 - THE PRODIGY - BIGFLO & OLI - SCH - GAZO - DROPKICK MURPHYS - KAARIS - ROYAL BLOOD - IDLES - BLACK PUMAS - HEILUNG - SHAY - OUMOU SANGARE - ZAHO DE SAGAZAN - PURPLE DISCO MACHINE - THE BREEDERS - PRETENDERS', 3, 75, '2024-08-14', '2024-08-17', 'https://www.saint-malo-tourisme.com/app/uploads/saint-malo-tourisme/2023/07/thumbs/Easy-Ride-La-Route-du-Rock-1920x960-crop-1688635361.jpg', 'https://www.radiofrance.fr/s3/cruiser-production/2023/06/13a3f4dc-0b55-4fed-a50c-963d2701e2b1/1200x680_sc_la-route-du-rock-fort-de-st-pe-re-2022-ctitouan-masse-2.jpg', 'https://www.leparisien.fr/resizer/jQWjCSzghrN9SLW2Axa6q-WBujI=/932x582/arc-anglerfish-eu-central-1-prod-leparisien.s3.amazonaws.com/public/SX4QFXQAEUGTHVFXRSG2RUWHDI.jpg', 0),
-(22, 'Les Transmusicales', 'Rennes', 'https://france3-regions.francetvinfo.fr/image/xu4hyue16GIik9EwcSllwRew0a4/1200x900/regions/2021/11/22/619bb8ad9c124_photo-transmu.jpg', 'C\'est festival de musiques actuelles né en 1978, propose chaque année trois jours de concerts, début décembre. Gérées par une association, Les Trans ont derrière elles une réputation justifiée de dénicheur de jeunes pousses musicales. ', 'ASTRIX - GAZO - JUSTICE - MANDRAGORA - JAIN - MARTIN SOLVEIG - PLK - SCH - SEFA - TIAKOLA - VINI VICI - VLADIMIR CAUCHEMAR - ADIEL - ACID ARAB - BLOND:ISH - CERA KHIN - CARAVAN PALACE - CLARA CUVE - HECTOR OAKS - MATHAME - NICO MORENO', 3, 65, '2024-12-04', '2024-12-08', 'https://uploads.lebonbon.fr/source/2022/november/2037931/trans_1_2000.jpg', 'https://i.f1g.fr/media/cms/orig/2021/12/05/92a66f9678134d1e0db8a492f13628f4de7e5613feacb7ca414ac3d89caee3c9.jpg', 'https://static.actu.fr/uploads/2021/11/audience-g20e71d39e-1920.jpg', 0);
+(22, 'Les Transmusicales', 'Rennes', 'https://france3-regions.francetvinfo.fr/image/xu4hyue16GIik9EwcSllwRew0a4/1200x900/regions/2021/11/22/619bb8ad9c124_photo-transmu.jpg', 'C\'est festival de musiques actuelles né en 1978, propose chaque année trois jours de concerts, début décembre. Gérées par une association, Les Trans ont derrière elles une réputation justifiée de dénicheur de jeunes pousses musicales. ', 'ASTRIX - GAZO - JUSTICE - MANDRAGORA - JAIN - MARTIN SOLVEIG - PLK - SCH - SEFA - TIAKOLA - VINI VICI - VLADIMIR CAUCHEMAR - ADIEL - ACID ARAB - BLOND:ISH - CERA KHIN - CARAVAN PALACE - CLARA CUVE - HECTOR OAKS - MATHAME - NICO MORENO', 3, 65, '2024-12-04', '2024-12-08', 'https://uploads.lebonbon.fr/source/2022/november/2037931/trans_1_2000.jpg', 'https://i.f1g.fr/media/cms/orig/2021/12/05/92a66f9678134d1e0db8a492f13628f4de7e5613feacb7ca414ac3d89caee3c9.jpg', 'https://static.actu.fr/uploads/2021/11/audience-g20e71d39e-1920.jpg', 0),
+(23, 'Main Square Festival', 'Arras', 'https://www.europe2.fr/wp-content/uploads/europeradio/2022/11/main-square-festival-a-la-citadelle-darras-e1529060173154-1280x640-1.jpeg', 'Depuis sa première édition en 2004, la scène du Main Square a vu défiler les plus grandes stars internationales. D’abord dans le décor grandiose de la Grand’Place d’Arras puis dans la citadelle Vauban, afin d’augmenter la capacité d’accueil du public.', 'THE WEEKEND - RED HOT CHILI PEPPERS - IMAGINE DRAGONS - LANA DEL REY - DJ SNAKE - MARSHMELLO - ALAN WALKER - AVA MAX - KENDRICK LAMAR - ONREREPUBLIC - ROSALIA - LIL NAS X - KYGO - STRAYS KIDS - DAMSO', 3, 42, '2024-07-04', '2024-07-07', 'https://www.mainsquarefestival.fr/wp-content/uploads/2022/02/ms-news-def.jpg', 'https://images.lesindesradios.fr/fit-in/1100x2000/filters:format(webp)/medias/UBL5BgYYYQ/image/main_square1687876867544.png', 'https://www.mainsquarefestival.fr/wp-content/uploads/2022/02/lineup-hero.jpg', 0),
+(24, 'Le Rock dans tous ses états', 'Evreux', 'https://www.indiepoprock.fr/pandora/10441441_10152516829907346_3998789921745510414_n.jpg', 'Évreux peut être morne, et ses soirées mortes tout au long de l’année, mais les deux jours et deux nuits, chaque année, du Rock dans tous ses états déménagent et vibrent dans l’ambiance électrique de l’un des plus vieux festivals du genre en France.', 'THE WEEKEND - RED HOT CHILI PEPPERS - IMAGINE DRAGONS - LANA DEL REY - DJ SNAKE - MARSHMELLO - ALAN WALKER - AVA MAX - KENDRICK LAMAR - ONREREPUBLIC - ROSALIA - LIL NAS X - KYGO - STRAYS KIDS - DAMSO', 3, 52, '2024-06-28', '2024-06-29', 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Rock_Dans_Tous_Ses_Etats_Ska-P.jpg', 'https://www.eureka-attractivite.fr/wp-content/uploads/2023/08/52174054988_6b058344ac_k-1600x900.jpg', 'https://img.freepik.com/photos-premium/photographie-festival-musique-rock-photo-reelle_923558-716.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -145,18 +211,303 @@ INSERT INTO `evenements` (`id`, `nom`, `localisation`, `image`, `description`, `
 
 DROP TABLE IF EXISTS `faq`;
 CREATE TABLE IF NOT EXISTS `faq` (
-  `id` int DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `question` text NOT NULL,
-  `reponse` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `reponse` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `faq`
 --
 
 INSERT INTO `faq` (`id`, `question`, `reponse`) VALUES
-(NULL, 'zaza', 'zaza'),
-(NULL, 'test', 'test');
+(20, 'Comment puis-je acheter des billets pour le festival ?', 'Les billets sont disponibles à l&#039;achat sur notre site web. Vous pouvez également trouver des points de vente physiques ou des partenaires de distribution autorisés.'),
+(21, 'Quels sont les artistes qui se produiront lors du festival cette année ?', 'Consultez notre programme pour connaître la liste complète des artistes et les horaires de leurs performances.'),
+(22, 'Y a-t-il des restrictions d&#039;âge pour assister au festival ?', 'Certains festivals peuvent avoir des restrictions d&#039;âge. Veuillez vérifier les informations sur l&#039;âge minimum sur notre site web.'),
+(24, 'Quelles sont les mesures de sécurité mises en place pendant le festival ?', 'Nous mettons en œuvre diverses mesures de sécurité, y compris la présence de personnel de sécurité, des points de premiers secours et des procédures d&#039;urgence.');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `files`
+--
+
+DROP TABLE IF EXISTS `files`;
+CREATE TABLE IF NOT EXISTS `files` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `filename` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `filesize` int NOT NULL,
+  `filetype` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `upload_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `files`
+--
+
+INSERT INTO `files` (`id`, `filename`, `filesize`, `filetype`, `upload_date`) VALUES
+(8, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:05:23'),
+(9, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:43:40'),
+(10, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:49:31'),
+(11, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:49:34'),
+(12, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:49:37'),
+(13, 'MentionsLegales.pdf', 50104, 'application/pdf', '2024-05-02 18:50:26'),
+(14, 'MentionsLegales.pdf', 50104, 'application/pdf', '2024-05-02 18:50:35'),
+(15, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 18:56:48'),
+(16, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 19:00:30'),
+(17, 'CGU.pdf', 62717, 'application/pdf', '2024-05-02 19:02:21');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `messages`
+--
+
+DROP TABLE IF EXISTS `messages`;
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `sender_id` int NOT NULL,
+  `receiver_id` int NOT NULL,
+  `message` text NOT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `sender_id` (`sender_id`),
+  KEY `receiver_id` (`receiver_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=211 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `sender_id`, `receiver_id`, `message`, `timestamp`) VALUES
+(38, 14, 0, 's', '2024-05-15 11:58:15'),
+(37, 14, 0, 'z', '2024-05-15 11:58:13'),
+(31, 14, 6, 'a', '2024-05-15 11:56:15'),
+(30, 14, 0, 'szf', '2024-05-15 11:55:45'),
+(29, 14, 0, 'zf', '2024-05-15 11:55:14'),
+(28, 6, 6, 'Soleil', '2024-05-15 11:40:02'),
+(27, 6, 6, '3', '2024-05-15 11:39:57'),
+(26, 6, 6, '2', '2024-05-15 11:39:56'),
+(25, 6, 6, '1', '2024-05-15 11:39:52'),
+(24, 14, 1, 'ca', '2024-05-14 22:49:52'),
+(22, 6, 14, 'a', '2024-05-14 22:46:06'),
+(23, 14, 6, 'b', '2024-05-14 22:47:31'),
+(34, 14, 0, 'z', '2024-05-15 11:57:41'),
+(35, 14, 0, 'z', '2024-05-15 11:57:47'),
+(36, 14, 0, 'z', '2024-05-15 11:57:53'),
+(39, 14, 0, 's', '2024-05-15 11:59:47'),
+(40, 14, 0, 's', '2024-05-15 11:59:50'),
+(41, 14, 6, 'a', '2024-05-15 11:59:55'),
+(42, 14, 6, 'a', '2024-05-15 11:59:57'),
+(43, 14, 0, 'z', '2024-05-15 12:00:04'),
+(44, 14, 0, 'z', '2024-05-15 14:38:05'),
+(45, 14, 1, 'a', '2024-05-15 14:44:30'),
+(46, 14, 1, 'a', '2024-05-15 14:44:59'),
+(47, 14, 1, 'a', '2024-05-15 14:46:42'),
+(48, 14, 1, 'a', '2024-05-15 14:46:55'),
+(49, 14, 6, 'cr', '2024-05-15 14:47:06'),
+(50, 14, 11, 'a', '2024-05-15 14:49:13'),
+(51, 14, 12, 'efe', '2024-05-15 15:33:00'),
+(52, 14, 12, 'ça roule Jefe', '2024-05-15 15:33:07'),
+(53, 14, 12, 'a', '2024-05-15 15:34:57'),
+(54, 14, 12, 'a', '2024-05-15 15:34:59'),
+(55, 14, 12, 'a', '2024-05-15 15:35:01'),
+(56, 14, 12, 'a', '2024-05-15 15:35:03'),
+(57, 14, 12, 'a', '2024-05-15 15:35:04'),
+(58, 14, 12, 'a', '2024-05-15 15:35:05'),
+(59, 14, 12, 'a', '2024-05-15 15:35:07'),
+(60, 14, 12, 'a', '2024-05-15 15:35:08'),
+(61, 14, 12, 'a', '2024-05-15 15:35:10'),
+(62, 14, 12, 'a', '2024-05-15 15:35:11'),
+(63, 14, 12, 'a', '2024-05-15 15:35:12'),
+(64, 14, 12, 'a', '2024-05-15 15:35:13'),
+(65, 14, 12, 'a', '2024-05-15 15:35:15'),
+(66, 14, 12, 'a', '2024-05-15 15:35:17'),
+(67, 14, 12, 'a', '2024-05-15 15:35:18'),
+(68, 14, 12, 'a', '2024-05-15 15:35:19'),
+(69, 14, 12, 'a', '2024-05-15 15:35:20'),
+(70, 14, 12, 'a', '2024-05-15 15:35:22'),
+(71, 14, 12, 'a', '2024-05-15 15:35:24'),
+(72, 14, 12, 'a', '2024-05-15 15:35:25'),
+(73, 14, 12, 'a', '2024-05-15 15:35:26'),
+(74, 14, 12, 'a', '2024-05-15 15:35:27'),
+(75, 14, 12, 'a', '2024-05-15 15:35:29'),
+(76, 14, 12, 'a', '2024-05-15 15:35:30'),
+(77, 14, 12, 'a', '2024-05-15 15:35:31'),
+(78, 14, 12, 'a', '2024-05-15 15:35:32'),
+(79, 14, 12, 'a', '2024-05-15 15:35:33'),
+(80, 14, 12, 'a', '2024-05-15 15:35:34'),
+(81, 14, 12, 'a', '2024-05-15 15:35:37'),
+(82, 14, 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2024-05-15 20:30:54'),
+(83, 14, 1, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2024-05-15 20:31:19'),
+(84, 14, 1, 'dzdzd', '2024-05-15 22:24:41'),
+(85, 14, 1, 'lze;glez;g^;zeg^l;erlg;erpl;hpler;hpler', '2024-05-15 22:24:46'),
+(86, 14, 1, 'a', '2024-05-15 22:26:46'),
+(87, 14, 1, 'aa', '2024-05-15 22:27:41'),
+(88, 14, 1, 'efzgr', '2024-05-15 22:53:27'),
+(89, 14, 6, 'a', '2024-05-15 22:54:39'),
+(90, 14, 6, 'aa', '2024-05-15 23:21:39'),
+(91, 14, 6, 'a', '2024-05-15 23:21:40'),
+(92, 14, 6, 'a4', '2024-05-15 23:21:43'),
+(93, 14, 6, 'a', '2024-05-15 23:21:47'),
+(94, 14, 2, 'Bonjour ! Ca serait pour savoir si c\'est toujours d\'actualité pour ', '2024-05-15 23:26:53'),
+(95, 14, 2, 'la', '2024-05-15 23:28:18'),
+(96, 14, 2, 'lalalalalala', '2024-05-15 23:28:22'),
+(97, 14, 2, 'lalalalalaallalalala', '2024-05-15 23:28:26'),
+(98, 14, 2, 'lalalala', '2024-05-15 23:28:29'),
+(99, 14, 2, 'lalalalalala la laaaaaaaaaaaaaa', '2024-05-15 23:28:33'),
+(100, 14, 2, 'zefezf', '2024-05-15 23:28:35'),
+(101, 14, 2, 'zefezf', '2024-05-15 23:28:37'),
+(102, 14, 2, 'zfzef', '2024-05-15 23:28:39'),
+(103, 14, 2, 'zefezf', '2024-05-15 23:28:40'),
+(104, 14, 2, 'a', '2024-05-16 09:49:45'),
+(105, 14, 2, 'a', '2024-05-16 09:49:48'),
+(106, 14, 2, 'a', '2024-05-16 09:51:51'),
+(107, 14, 2, 'ff', '2024-05-16 09:51:56'),
+(108, 14, 2, 'qa', '2024-05-16 09:58:17'),
+(109, 14, 2, 'a', '2024-05-16 09:58:21'),
+(110, 14, 2, 'a', '2024-05-16 10:17:31'),
+(111, 14, 2, 'a', '2024-05-16 10:17:40'),
+(112, 14, 2, 'efz', '2024-05-16 10:17:44'),
+(113, 14, 2, 'zeg', '2024-05-16 10:17:47'),
+(114, 14, 2, 'gr', '2024-05-16 10:17:52'),
+(115, 14, 2, 's', '2024-05-16 10:17:57'),
+(116, 14, 2, 'd', '2024-05-16 10:18:00'),
+(117, 14, 1, 'a', '2024-05-16 10:58:31'),
+(118, 14, 1, 'z', '2024-05-16 10:58:33'),
+(119, 14, 1, 'z', '2024-05-16 10:58:36'),
+(120, 14, 1, 'a', '2024-05-16 11:00:26'),
+(121, 14, 1, 'a', '2024-05-16 11:00:31'),
+(122, 14, 1, 'e', '2024-05-16 11:01:08'),
+(123, 14, 1, 's', '2024-05-16 11:01:28'),
+(124, 14, 1, 'a', '2024-05-16 11:03:02'),
+(125, 14, 1, 'e', '2024-05-16 11:03:07'),
+(126, 14, 1, 'a', '2024-05-16 11:05:56'),
+(127, 14, 1, 'rgrg', '2024-05-16 11:06:50'),
+(128, 14, 1, 'z', '2024-05-16 11:12:07'),
+(129, 14, 1, 'a', '2024-05-16 14:48:18'),
+(130, 14, 1, 'a', '2024-05-16 14:48:22'),
+(131, 14, 1, 'f', '2024-05-16 14:48:25'),
+(132, 14, 1, 'a', '2024-05-16 14:48:55'),
+(133, 14, 1, 'enfin', '2024-05-16 14:48:58'),
+(134, 14, 1, 'fzd', '2024-05-16 14:57:00'),
+(135, 14, 1, 'a', '2024-05-16 15:28:19'),
+(136, 14, 1, 'ff', '2024-05-16 15:28:21'),
+(137, 14, 1, 'ee', '2024-05-16 15:28:27'),
+(138, 14, 1, 'a', '2024-05-16 15:28:58'),
+(139, 14, 1, 'a', '2024-05-16 15:50:30'),
+(140, 14, 1, 'zefz', '2024-05-16 15:50:44'),
+(141, 14, 1, 'qdzd', '2024-05-16 15:53:40'),
+(142, 14, 1, 'a', '2024-05-16 15:58:24'),
+(143, 14, 1, 'aa', '2024-05-16 15:59:56'),
+(144, 14, 1, 'ss', '2024-05-16 16:00:00'),
+(145, 14, 1, 'a', '2024-05-16 16:25:56'),
+(146, 14, 1, 'ffregerge', '2024-05-16 16:26:10'),
+(147, 14, 1, 'egezg', '2024-05-16 16:27:36'),
+(148, 14, 4, 'qfzfef', '2024-05-16 16:27:47'),
+(149, 14, 1, 'sfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd', '2024-05-16 17:13:54'),
+(150, 14, 6, 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', '2024-05-16 17:16:17'),
+(151, 14, 6, 's', '2024-05-16 17:16:25'),
+(152, 14, 6, 'fez', '2024-05-16 17:39:17'),
+(153, 14, 1, 'sds', '2024-05-16 17:41:10'),
+(154, 14, 1, 'azfzef', '2024-05-16 17:53:37'),
+(155, 14, 1, 'zze', '2024-05-16 18:07:20'),
+(156, 14, 1, 'Test', '2024-05-16 18:07:24'),
+(157, 14, 4, 'aa', '2024-05-16 21:06:45'),
+(158, 14, 4, 'qfez', '2024-05-16 21:06:48'),
+(159, 14, 4, 'egeggrrcc', '2024-05-16 21:06:50'),
+(160, 14, 4, 'efef', '2024-05-16 21:06:51'),
+(161, 14, 4, 'vvf', '2024-05-16 21:06:51'),
+(162, 14, 4, 'ef', '2024-05-16 21:06:52'),
+(163, 14, 4, 'ffgr', '2024-05-16 21:06:53'),
+(164, 14, 4, 'efef', '2024-05-16 21:06:54'),
+(165, 14, 4, 'dgdg', '2024-05-16 21:06:55'),
+(166, 14, 4, 'grg', '2024-05-16 21:06:55'),
+(167, 14, 4, 'zd', '2024-05-16 21:06:56'),
+(168, 14, 4, 'g', '2024-05-16 21:06:56'),
+(169, 14, 4, 'f', '2024-05-16 21:06:57'),
+(170, 14, 4, 'ez', '2024-05-16 21:06:57'),
+(171, 14, 4, 'z', '2024-05-16 21:06:58'),
+(172, 14, 5, 'zeggze', '2024-05-16 21:18:44'),
+(173, 14, 11, 'Petit à petit', '2024-05-16 21:20:32'),
+(174, 14, 11, 'Petit à petit à petit à petit', '2024-05-16 21:21:26'),
+(175, 14, 11, 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', '2024-05-16 21:21:34'),
+(176, 14, 6, 'zeg', '2024-05-16 21:35:52'),
+(177, 14, 9, 'qf', '2024-05-16 21:37:11'),
+(178, 14, 2, 'sf', '2024-05-16 22:36:43'),
+(179, 14, 12, 'b', '2024-05-17 08:56:42'),
+(180, 14, 3, 'fzzf', '2024-05-17 09:11:49'),
+(181, 6, 14, 'Arrête stp', '2024-05-17 09:30:27'),
+(182, 6, 14, 'wsh ?', '2024-05-17 09:48:11'),
+(183, 6, 14, '?', '2024-05-17 09:49:21'),
+(184, 14, 6, 'D', '2024-05-17 10:01:20'),
+(185, 14, 1, 'feeeeeeeee', '2024-05-19 16:37:37'),
+(186, 14, 1, 'gf', '2024-05-19 16:37:39'),
+(187, 14, 1, '^m^l', '2024-05-19 16:37:42'),
+(188, 14, 1, 'fege', '2024-05-19 17:51:10'),
+(189, 14, 5, 'efe', '2024-05-20 13:50:54'),
+(190, 14, 5, 'zfzf', '2024-05-20 13:50:56'),
+(191, 14, 1, 'fef', '2024-05-20 13:51:07'),
+(192, 14, 5, 'Test', '2024-05-28 09:42:25'),
+(193, 14, 5, '1 2 3', '2024-05-28 09:42:28'),
+(194, 14, 1, '1', '2024-05-28 09:42:38'),
+(195, 14, 1, '2', '2024-05-28 09:42:38'),
+(196, 14, 1, '3', '2024-05-28 09:42:39'),
+(197, 14, 1, '4', '2024-05-28 09:42:39'),
+(198, 14, 1, '5', '2024-05-28 09:42:39'),
+(199, 14, 1, '6', '2024-05-28 09:42:40'),
+(200, 14, 1, '7', '2024-05-28 09:42:40'),
+(201, 14, 1, '8', '2024-05-28 09:42:40'),
+(202, 14, 1, '9', '2024-05-28 09:42:40'),
+(203, 14, 1, '1', '2024-05-28 09:42:47'),
+(204, 14, 1, '10', '2024-05-28 09:42:49'),
+(205, 14, 1, 'Test', '2024-05-28 10:09:36'),
+(206, 14, 1, 'Fre', '2024-05-28 10:09:38'),
+(207, 14, 3, 'dd', '2024-05-28 10:11:14'),
+(208, 14, 1, 'Fsg', '2024-05-28 10:33:26'),
+(209, 14, 1, 'Je', '2024-05-28 10:33:28'),
+(210, 14, 6, 'Fre', '2024-05-28 10:36:44');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `sound_levels`
+--
+
+DROP TABLE IF EXISTS `sound_levels`;
+CREATE TABLE IF NOT EXISTS `sound_levels` (
+  `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT,
+  `sensor_id` int DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `sound_level` decimal(5,2) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  KEY `idx_sensor_id` (`sensor_id`),
+  KEY `idx_id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=129044 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `type`
+--
+
+DROP TABLE IF EXISTS `type`;
+CREATE TABLE IF NOT EXISTS `type` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(45) NOT NULL,
+  `ordre` int NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `type`
+--
+
+INSERT INTO `type` (`id`, `nom`, `ordre`) VALUES
+(1, 'Rock', 3);
 
 -- --------------------------------------------------------
 
@@ -167,31 +518,25 @@ INSERT INTO `faq` (`id`, `question`, `reponse`) VALUES
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `pseudo` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `nom` varchar(45) NOT NULL,
+  `pseudo` varchar(255) NOT NULL,
+  `nom` varchar(255) NOT NULL,
   `date_naissance` date NOT NULL,
   `email` varchar(255) NOT NULL,
   `mdp` varchar(255) NOT NULL,
+  `open_conversations` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `pseudo`, `nom`, `date_naissance`, `email`, `mdp`) VALUES
-(1, 'Gauthier', 'Schmitt', '2024-04-11', 'gauthier.schmitt1@gmail.com', '$2y$10$7KZ8xaN3eWOth2C2HgM3tOCK2qFQB5pyvOSlBwY1YhJeY0oJa1Wmm'),
-(3, 'Gauthier1', 'Schmitt', '2024-04-01', 'gauthier.schmitt1@gmail.com', '$2y$10$Yhcer/DfSxODMG2eIN6K2u13cl3uKUfwF65ttPqeoz.VxpZQsArDW');
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `billet`
---
-ALTER TABLE `billet`
-  ADD CONSTRAINT `user` FOREIGN KEY (`id_users`) REFERENCES `users` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+INSERT INTO `users` (`id`, `pseudo`, `nom`, `date_naissance`, `email`, `mdp`, `open_conversations`) VALUES
+(1, 'gauthier', 'Schmitt', '2024-04-04', 'gauthier.schmitt1@gmail.com', '$2y$10$H/6WDh0YY5wKEbV0tEpN5OoRtw9TDhHcQNCO0vBjkjAkb8xC4lhuC', '0'),
+(2, 'gauthier', 'Schmitt', '2024-04-04', 'gauthier.schmitt1@gmail.com', '$2y$10$1tVrCxIkAUOJELKuwORS0.t.J9XvnuNhqesXtQU6tHGNK65VQgexC', '0'),
+(3, 'mathurin', 'mathurin', '2024-04-01', 'gauthier.schmitt1@gmail.com', '$2y$10$XN/Pgg.p27gO1xD2EaZqVOZ2rCuoKXOZdq4dVsr5KZqTqfZNU2o06', '0'),
+(4, 'romain', 'loras', '2024-04-18', 'romain@gmail.com', '$2y$10$AOSPOPZ2hEYJbyLt0Zf8n.S7SgqU/CN0mtNmHLQdCq3aPik1skEpW', '0'),
+(5, 'mathurin1', 'mathurin1', '2024-05-03', 'mathurin1@gmail.com', '$2y$10$2SPvM8BrNqFn6OjfloJpYet8gha8MM5.z3aEr4nvpvJ6pU2arufL6', '0');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

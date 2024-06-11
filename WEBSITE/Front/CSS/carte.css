@@ -1,0 +1,140 @@
+body {
+    background: rgba(233, 216, 196, 0.308);
+}
+
+
+
+#map-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns the content to the left */
+    margin-left: 10px;
+    width: 700px;
+    height: 800px;
+    border-radius: 10px;
+}
+
+#festival-map {
+    width: 700px;  /* Adjust to desired width */
+    height: 800px; /* Adjust to desired height */
+    object-fit: cover; /* Ensures the image covers the area */
+    border: 2px solid orange;
+    border-radius: 10px;
+    
+}
+
+
+.capteur {
+    position: absolute;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 12px;
+    cursor: move;
+}
+
+.capteur {
+    position: absolute;
+    width: 10px;  /* Ajuster la taille selon les besoins */
+    height: 10px;
+    background-color: red; /* Couleur pour le capteur */
+    border-radius: 50%;
+    pointer-events: none;
+    pointer-events: none;
+    z-index: 10; /* Assurez-vous que les capteurs sont au-dessus de la carte */
+}
+
+.follow-cursor {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    pointer-events: none;
+    display: none; /* Cacher par défaut */
+    z-index: 10; /* Assurez-vous que le curseur est au-dessus de la carte */
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-panel, .right-panel {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Style pour l'échelle de couleur */
+#color-scale {
+    width: 30px;
+    height: 300px;
+    background: linear-gradient(to top, rgb(255, 69, 0), rgb(255, 140, 0), rgb(255, 215, 0), rgb(173, 255, 47), rgb(0, 128, 0));
+    margin-right: 20px;
+}
+#color-scale-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+}
+
+
+.crosshair-cursor {
+    cursor: crosshair;
+}
+
+.sensor-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.sensor-info {
+    border: 1px solid #000;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.average-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.average-info div {
+    border: 1px solid #000;
+    padding: 10px;
+    width: 45%;
+    background-color: #f9f9f9;
+}
+
+.info-box {
+    position: absolute;
+    background-color: white;
+    border: 1px solid #000;
+    padding: 10px;
+    display: none;
+    z-index: 10;
+}
+
+
+.sensor-info:hover {
+    border-color: orange;
+    transition: border-color 200ms;
+}
+
+.sensor-dot.highlight {
+    background-color: orange;
+    border: 1px solid blue;
+    width: 14px;
+    height: 14px;
+}

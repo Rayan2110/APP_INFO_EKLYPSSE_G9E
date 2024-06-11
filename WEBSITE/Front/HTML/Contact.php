@@ -10,10 +10,7 @@
         <title>Contact</title>
     </head>
     <body>
- 
-    <?php
-                // Inclure le fichier header.php
-                include 'header.php';
+    <?php include 'header.php';
                 ?>
 
     
@@ -38,7 +35,6 @@
     <footer>
 
     <?php
-                // Inclure le fichier header.php
                 include 'footer.php';
                 ?>
         

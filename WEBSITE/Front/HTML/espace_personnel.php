@@ -11,6 +11,10 @@ if (!isset($_SESSION['id'])) {
     header("Location: connexion.php"); // Redirigez vers la page de connexion si l'utilisateur n'est pas connecté
     exit();
 }
+if ($_SESSION['pseudo'] === 'root') {
+    header("Location: Home.php"); // Redirigez vers la page d'interdiction si l'utilisateur est root
+    exit();
+}
 
 // Connexion à la base de données
 $servername = "db";
