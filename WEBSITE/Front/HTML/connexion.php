@@ -27,7 +27,7 @@ if(isset($_POST['envoi'])){
             if (password_verify($mdp_clair, $mdp_hash)) {
                 $_SESSION['pseudo'] = $userInfo['pseudo'];
                 $_SESSION['id'] = $userInfo['id']; // Supposons que 'id' est le champ ID de l'utilisateur dans la base de données
-                header('Location: Home.php');
+                header('Location: index.php');
             } else {
                 echo '<script>alert("Mauvais mot de passe");</script>';
             }
@@ -64,7 +64,7 @@ if(isset($_POST['envoi'])){
     <br/>
     <input type="submit" name="envoi" value="Se Connecter">
     <div class="row">
-        <button type="button" name = "Retour" class= "BoutonRetour" onclick="window.location.href='Home.php'" style="width: 50%;margin-left: 30px ; height:27px;border-radius: 10px 0px 0px 20px;"> Retour </button>
+        <button type="button" name = "Retour" class= "BoutonRetour" onclick="window.location.href='index.php'" style="width: 50%;margin-left: 30px ; height:27px;border-radius: 10px 0px 0px 20px;"> Retour </button>
         <button type="button" name="Inscrire" class="BoutonInscrire" onclick="document.location='inscription.php'" style="width: 50%; height:27px;margin-left:5px;margin-right: 30px;border-radius: 0px 10px 20px 0px;background-color:orange;border:none">S'inscrire</button>
     </div>
 </form> 

@@ -117,7 +117,8 @@ $conn = null;
         <p>Merci pour votre achat ! A bientôt pour le festival : <?php echo htmlspecialchars($name); ?></p>
         <p>Vous pouvez consulter vos événements dans votre espace membre.</p>
 
-        <button class="btn" onclick="window.location.href = 'Home.php';">Retour à l'accueil</button>
+        <button class="btn" onclick="window.location.href = 'index
+        .php';">Retour à l'accueil</button>
     </div>
 </body>
 </html>

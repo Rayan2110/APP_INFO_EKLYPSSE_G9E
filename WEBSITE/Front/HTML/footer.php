@@ -17,7 +17,7 @@
             <a href=""><i class="fa-brands fa-youtube"></i></a>
         </div>
         <div class="footerNav">
-            <ul><li><a href="Home.php">Home</a></li>
+            <ul><li><a href="index.php">Home</a></li>
                 <li><a href="Evenement.php">Evenements</a></li>
                 <li><a href="APropos.php">A Propos</a></li>
                 <li><a href="FAQ.php">F.A.Q</a></li>

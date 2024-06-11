@@ -67,7 +67,7 @@ if(isset($_POST['envoi'])){
                                 $_SESSION['pseudo'] = $pseudo;
                                 $_SESSION['id'] = $recupUser->fetch()['id'];
                                 echo '<script>alert("Vous êtes connecté en tant que ' . $_SESSION['pseudo'] . '");</script>';
-                                header('Location: Home.php');
+                                header('Location: index.php');
                             } else {
                                 echo '<script>alert("Mot de passe incorrect");</script>';
                             }
